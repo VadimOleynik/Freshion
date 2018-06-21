@@ -1,0 +1,92 @@
+.reset();
+.container {
+	.wrapper();
+}
+
+body {
+	background-color: @bg-color;
+
+  font-size: 20px;
+  font-family: 'Comfortaa', cursive;
+  color: @accent-color;
+}
+
+a {
+	color: @accent-color;
+	text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+    transition: all 0.15s ease-in-out;
+  }
+
+  &:focus {
+    outline-color: @accent-color;
+  }
+}
+
+button {
+  &:focus {
+    outline-color: @accent-color;
+  }
+  &:hover,
+  &:active {
+    outline: none;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 25px ;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  color: @bg-color;
+
+  background-color: @accent-color;
+
+  border-radius: 10px;
+  border: 3px solid #252525;
+  
+  .xs-block({
+    padding: 1px 10px;
+    });
+
+  &:hover {
+    background-color: #15d289;
+    border-color: #fff;
+  }
+
+  &:active {
+    background-color: darken(#15d289, 10%);
+  }
+}
+
