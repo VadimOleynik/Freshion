@@ -1,0 +1,47 @@
+.alt-nav {
+	.md-block({
+		display: none;
+	});
+
+	&--item {
+		text-align: right;
+	}
+
+	&--link {
+		margin-top: 5px;
+		font-style: italic;
+
+		&::after {
+			content: "";
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			margin-left: 15px;
+			border: 2px solid @accent-color;
+			border-radius: 50%;
+		}
+
+		&:hover {
+			.alt-nav--text {
+				display: inline-block;
+			}
+
+			&::after {
+				background-color: @accent-color;
+			}
+		}
+
+		&__active {
+			.alt-nav--text {
+				display: inline-block;
+			}
+
+			&:after {
+				background-color: @accent-color;
+			}
+		}
+	}
+	&--text {
+		display: none;
+	}
+}

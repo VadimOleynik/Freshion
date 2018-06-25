@@ -2,21 +2,181 @@
 	position: fixed;
 	top: 0;
 	left: 0; 
-
 	width: 100%;
 	padding: 5px 0;
-
 	background-color: @header-bd;
 	color: @header-text;
-
 	z-index: 2;
 
 	.xs-block({
 		padding: 2px 0;
-		});
+	});
 
-	&--wrap {
+	&--container {
 		.row-flex();
 		justify-content: center;
+	}
+
+	&--nav {
+		.size(6);
+		.col();
+		margin-top: auto;
+		margin-bottom: auto;
+
+		.md-block({
+			width: auto;
+			margin-left: auto;
+			order: 1;
+		});
+	}
+
+	&--list {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+		.md-block({
+			display: block;
+			position: absolute;
+			top: 100%;
+			right: 0;
+			background-color: @header-bd;
+		});
+	}
+
+	&--item {
+		display: inline-block;
+
+		&__active {
+			.main-header--link {
+				color: @accent-color;
+				.md-block({
+					background-color: fade(@header-text, 40%);
+				});	
+			}
+		}
+
+		.md-block({
+			display: block;
+			font-size: 23px;
+			text-align: center;
+			border: 2px solid fade(@accent-color, 70%);
+			border-bottom: none;
+		});
+
+		&:last-child {
+			.md-block({
+				border-bottom: 2px solid fade(@accent-color, 70%);
+			});
+		}
+	}
+
+	&--link {
+		display: block;
+		color: @header-text;
+
+		.md-block({
+			padding: 20px 30px;
+		});
+
+		&:hover,
+		&:focus {
+			color: @accent-color;
+			.md-block({
+				background-color: fade(@header-text, 40%);
+			});	
+		}
+		&:active {
+			color: @accent-color;
+			.md-block({
+				background-color: fade(@header-text, 55%);
+			});
+		}
+	}
+	&--mobile {
+		padding: 0;
+		border: none;
+		font-size: 0;
+		background-color: transparent;
+		display: none;
+		margin: -5px 0;
+
+		.md-block({
+			display: block;
+		});
+
+		&::before {
+			content: "≡";
+			color: @accent-color;
+			font-size: 40px;
+		}
+		&__active {
+
+		}
+	}
+	
+	&--purchase {
+		display: flex;
+		align-items: center;
+		.col();
+	}
+
+	&--issue {
+		display: flex;
+
+		&:hover,
+		&:focus,
+		&:active {
+			.main-header--buy {
+				&::before {
+					background-image: url(../img/cart-active.svg);
+				}
+			}
+			.main-header--amount {
+				color: @accent-color;
+				border-color: @accent-color;
+				background-color: fade(@accent-color, 20%);
+			}
+		}
+	}
+
+	&--amount {
+		display: inline-block;
+		margin: auto 0 auto 8px;
+		padding: 3px 9px;
+		order: 1;
+		background-color: #344f45;
+		color: @header-text;
+		border: 2px solid #20312b;
+		border-radius: 50%;
+
+		.sm-block({
+			margin-left: 3px;
+			padding: 1px 6px;
+			font-size: 16px; 
+		});
+	}
+
+	&--buy {
+		font-size: 0;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 40px;
+			height: 38px;
+			background: url(../img/cart.svg) center no-repeat;
+			background-size: cover;
+
+			.sm-block({
+				width: 33px;
+				height: 31px;
+			});
+
+			.xs-block({
+				width: 37px;
+				height: 35px;
+			});
+		}
 	}
 }

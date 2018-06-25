@@ -1,31 +1,23 @@
 .shop-nav {
 	background: url(../../img/nav-bg-new.jpg) center no-repeat;
 	background-size: cover;
-	
 	font-size: 28px;	
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	
 	@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
 	  background-image: url("../../img/nav-bg-25.jpg");
 	}
 
 	&--container {
-		min-height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	
-
-	&--wrap {
 		.size(8);
 		.size-md(10);
 		.size-xs(12);
-
 		background-color: fade(#446655, 49%);
 		border: 10px solid fade(@accent-color, 24%);
-
 		text-align: center;
-
 		padding: 30px 0;
 
 		.sm-block({
