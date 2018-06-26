@@ -6,6 +6,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: @secondary-accent-color;
 	
 	@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
 	  background-image: url("../../img/nav-bg-25.jpg");
@@ -16,7 +17,7 @@
 		.size-md(10);
 		.size-xs(12);
 		background-color: fade(#446655, 49%);
-		border: 10px solid fade(@accent-color, 24%);
+		border: 10px solid fade(@secondary-accent-color, 24%);
 		text-align: center;
 		padding: 30px 0;
 
@@ -64,6 +65,8 @@
 	}
 
 	&--link {
+		color: @secondary-accent-color;
+		
 		&:hover,
 		&:focus,
 		&:active {

@@ -60,13 +60,13 @@
 			display: block;
 			font-size: 23px;
 			text-align: center;
-			border: 2px solid fade(@accent-color, 70%);
+			border: 2px solid fade(@secondary-accent-color, 70%);
 			border-bottom: none;
 		});
 
 		&:last-child {
 			.md-block({
-				border-bottom: 2px solid fade(@accent-color, 70%);
+				border-bottom: 2px solid fade(@secondary-accent-color, 70%);
 			});
 		}
 	}
@@ -81,13 +81,13 @@
 
 		&:hover,
 		&:focus {
-			color: @accent-color;
+			color: @secondary-accent-color;
 			.md-block({
 				background-color: fade(@header-text, 40%);
 			});	
 		}
 		&:active {
-			color: @accent-color;
+			color: @secondary-accent-color;
 			.md-block({
 				background-color: fade(@header-text, 55%);
 			});
@@ -107,7 +107,7 @@
 
 		&::before {
 			content: "≡";
-			color: @accent-color;
+			color: @secondary-accent-color;
 			font-size: 40px;
 		}
 		&__active {
@@ -133,9 +133,9 @@
 				}
 			}
 			.main-header--amount {
-				color: @accent-color;
-				border-color: @accent-color;
-				background-color: fade(@accent-color, 20%);
+				color: @secondary-accent-color;
+				border-color: @secondary-accent-color;
+				background-color: fade(@secondary-accent-color, 20%);
 			}
 		}
 	}
