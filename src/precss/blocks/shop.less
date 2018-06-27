@@ -20,12 +20,14 @@
 			margin-bottom: 0;
 		});
 	}
-}
+	
+	&--article {
+		margin-top: 50px;
+	}
 
-.shop {
 	&--list {
 		.row-flex();
-		justify-content: center;
+		justify-content: flex-start;
 		.md-block({
 			justify-content: space-between; 
 		});
@@ -36,6 +38,9 @@
 		.size(3);
 		.size-md(4);
 		.size-sm(6);
+		
+		margin-bottom: 30px;
+
 		.from-to(0px, 340px, {width: 100%;});
 		.sm-block({
 			margin-top: 30px;
@@ -61,13 +66,18 @@
 			display: inline-block;
 		}
 
-
 	}
 
 	&--more-info {
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&--about {
+		flex-grow: 1;
 	}
 
 	&--color {
