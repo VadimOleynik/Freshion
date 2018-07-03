@@ -378,15 +378,15 @@ img {
   display: none;
   max-height: 200px;
   width: auto;
-  -webkit-transition: -webkit-transform .25s ease-in-out;
-  transition: -webkit-transform .25s ease-in-out;
-  transition: transform .25s ease-in-out;
-  transition: transform .25s ease-in-out,-webkit-transform .25s ease-in-out
+  -webkit-transition: -webkit-transform .4s ease-in-out;
+  transition: -webkit-transform .4s ease-in-out;
+  transition: transform .4s ease-in-out;
+  transition: transform .4s ease-in-out,-webkit-transform .4s ease-in-out
 }
 .product--img:hover {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2)
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5)
 }
 .product--img__active {
   display: inline-block
@@ -486,6 +486,24 @@ img {
 }
 .green {
   background-color: #006954
+}
+.white {
+  background-color: #faeedc
+}
+.white-brown {
+  background-color: #b79f82
+}
+.mustard {
+  background-color: #fda859
+}
+.violet {
+  background-color: #bda7b3
+}
+.dark-violet {
+  background-color: #523f45
+}
+.bordo {
+  background-color: #270c1d
 }
 .alt-nav--item {
   text-align: right
