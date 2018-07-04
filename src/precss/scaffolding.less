@@ -66,15 +66,16 @@ img {
   color: @bg-color;
   background-color: @accent-color;
   border-radius: 10px;
-  border: 3px solid #252525;
+  border: 2px solid #252525;
   
   .xs-block({
     padding: 1px 10px;
-    });
+  });
 
   &:hover {
-    background-color: #15d289;
-    border-color: #fff;
+    background-color: #65F34F;
+    border-color: @accent-color;
+    color: @accent-color;
   }
 
   &:active {
@@ -82,3 +83,14 @@ img {
   }
 }
 
+.header {
+  font-size: 48px;
+  margin-bottom: 80px;
+
+  .md-block({
+    margin-bottom: 35px;
+  });
+  .sm-block({
+    margin-bottom: 0;
+  });
+}

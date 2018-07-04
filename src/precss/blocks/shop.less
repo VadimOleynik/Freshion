@@ -8,18 +8,6 @@
 		top: 50%;
 		right: 5%;
 	}
-
-	&--header {
-		font-size: 48px;
-		margin-bottom: 80px;
-
-		.md-block({
-			margin-bottom: 35px;
-		});
-		.sm-block({
-			margin-bottom: 0;
-		});
-	}
 	
 	&--article {
 		margin-top: 50px;
@@ -28,9 +16,6 @@
 	&--list {
 		.row-flex();
 		justify-content: flex-start;
-		.md-block({
-			justify-content: space-between; 
-		});
 	}
 
 	&--item {
@@ -57,6 +42,10 @@
 		max-height: 200px;
 		width: auto;
 		transition: transform 0.4s ease-in-out; 
+
+		.xs-block({
+			max-height: 150px;
+		});
 
 		&:hover {
 			transform: scale(1.5);
@@ -124,6 +113,7 @@
 		color: #028e72;
 		text-transform: uppercase;
 		font-style: italic;
+		color: @price-color;
 	}
 
 	&--buy {

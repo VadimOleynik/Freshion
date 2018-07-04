@@ -154,14 +154,19 @@ img {
   color: #9ee0ca;
   background-color: #1f2d2e;
   border-radius: 10px;
-  border: 3px solid #252525
+  border: 2px solid #252525
 }
 .button:hover {
-  background-color: #15d289;
-  border-color: #fff
+  background-color: #65f34f;
+  border-color: #1f2d2e;
+  color: #1f2d2e
 }
 .button:active {
   background-color: #10a46b
+}
+.header {
+  font-size: 48px;
+  margin-bottom: 80px
 }
 .main-header {
   position: fixed;
@@ -338,10 +343,6 @@ img {
   top: 50%;
   right: 5%
 }
-.shop--header {
-  font-size: 48px;
-  margin-bottom: 80px
-}
 .shop--article {
   margin-top: 50px
 }
@@ -440,9 +441,9 @@ img {
   margin-bottom: 20px;
   display: block;
   font-size: 27px;
-  color: #028e72;
   text-transform: uppercase;
-  font-style: italic
+  font-style: italic;
+  color: #a6603a
 }
 .product--buy {
   -ms-flex-item-align: center;
@@ -536,7 +537,13 @@ img {
 .alt-nav--text {
   display: none
 }
+.about-us {
+  text-align: center
+}
 @media screen and (max-width:992px) {
+  .header {
+    margin-bottom: 35px
+  }
   .main-header--nav {
     width: auto;
     margin-left: auto;
@@ -545,7 +552,7 @@ img {
     order: 1
   }
   .main-header--list {
-    display: block;
+    display: none;
     position: absolute;
     top: 100%;
     right: 0;
@@ -580,14 +587,6 @@ img {
   .shop-nav--container {
     width: calc(83.33333333333334% - 30px)
   }
-  .shop--header {
-    margin-bottom: 35px
-  }
-  .shop--list {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between
-  }
   .shop--item {
     width: calc(33.333333333333336% - 30px)
   }
@@ -599,6 +598,9 @@ img {
   .container {
     padding-left: 15px;
     padding-right: 15px
+  }
+  .header {
+    margin-bottom: 0
   }
   .main-header--amount {
     margin-left: 3px;
@@ -620,9 +622,6 @@ img {
     -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
     margin-bottom: 12px
-  }
-  .shop--header {
-    margin-bottom: 0
   }
   .shop--item {
     width: calc(50% - 30px);
@@ -656,6 +655,9 @@ img {
   .shop-nav--item {
     display: block;
     margin-bottom: 7px
+  }
+  .product--img {
+    max-height: 150px
   }
 }
 @media screen and (min-width:0px) and (max-width:340px) {
