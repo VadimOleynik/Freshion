@@ -1,0 +1,81 @@
+.about-us {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	.xs-block({
+			font-size: 17px;
+		});
+
+	&--container {
+		.col();
+		.size(10);
+		.size-md(12);
+	}
+
+	&--info {
+		line-height: 1.5;
+		margin-bottom: 140px;
+		.sm-block({
+			margin-bottom: 120px;
+		});
+		.xs-block({
+			margin-bottom: 10px;
+		});
+
+	}
+
+	&--advantages {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&--advantage {
+		position: relative;
+		.xs-block ({
+			width: 50%;
+			margin-top: 90px;
+		});
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: calc(100% + 60px);
+			left: 50%;
+			transform: translateX(-50%);
+			width: 60px;
+			height: 60px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			.sm-block({
+				width: 50px;
+				height: 50px;
+			})
+		}
+
+		&__favorably {
+			&::before {
+				background-image: url(../img/recommended.svg);
+			}
+		}
+
+		&__qualitatively {
+			&::before {
+				background-image: url(../img/medal.svg);
+			}
+		}
+
+		&__safely {
+			&::before {
+				background-image: url(../img/shield.svg);
+			}
+		}
+
+		&__always {
+			&::before {
+				background-image: url(../img/24-hours-phone.svg);
+			}
+		}
+	}
+}

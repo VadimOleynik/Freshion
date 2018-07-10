@@ -43,6 +43,10 @@ img {
   height: auto;
 }
 
+section {
+  margin-bottom: 80px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -70,10 +74,11 @@ img {
   
   .xs-block({
     padding: 1px 10px;
+    font-size: 22px;
   });
 
   &:hover {
-    background-color: #65F34F;
+    background-color: #aee5be;
     border-color: @accent-color;
     color: @accent-color;
   }
@@ -85,12 +90,19 @@ img {
 
 .header {
   font-size: 48px;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 
   .md-block({
     margin-bottom: 35px;
   });
   .sm-block({
-    margin-bottom: 0;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+  });
+  .xs-block({
+    margin-bottom: 25px;
+  });
+  .from-to(0px, 340px, {
+    font-size: 40px;
   });
 }

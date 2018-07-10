@@ -1,0 +1,147 @@
+.contacts {
+	text-align: center;
+	margin-bottom: 40px;
+
+	.sm-block({
+		margin-bottom: 0;
+	});
+
+	&--wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.sm-block({
+			flex-wrap: wrap;
+		});
+	}
+
+	&--map {
+		.size(6);
+		.size-md(7);
+		.size-sm(11);
+		display: inline-block;
+		margin-right: 40px;
+		border-radius: 15px;
+		overflow: hidden;
+		.md-block({
+			margin-right: 30px;
+		});
+		.sm-block({
+			margin: 0 auto;
+			margin-bottom: 20px;
+		});
+	}
+
+	&--frame {
+		width: 100%;
+		height: 300px;
+		display: block;
+		border: none;
+		.sm-block({
+			height: 270px;
+		});
+	}
+
+	&--list {
+		.size-sm(11);
+		display: inline-block;
+		text-align: left;
+	}
+
+	&--item {
+		margin-bottom: 15px;
+
+		&:hover .contacts--link,
+		&:active .contacts--link {
+			color: lighten(@accent-color, 20%);
+			
+			&__address {
+				&::before {
+					background-image: url(../img/address-active.svg);
+				}
+			}
+
+			&__phone {
+				&::before {
+					background-image: url(../img/phone-active.svg);
+				}
+			}
+
+			&__email {
+				&::before {
+					background-image: url(../img/email-active.svg);
+				}
+			}
+
+			&__inst {
+				&::before {
+					background-image: url(../img/instagram-active.svg);
+				}
+			}
+
+			&__fb {
+				&::before {
+					background-image: url(../img/facebook-active.svg);
+				}
+			}
+
+		}
+	}
+
+	&--link {
+		display: flex;
+		align-items: center;
+		.md-block({
+			font-size: 16px;
+		});
+		.sm-block({
+			justify-content: center;
+		});
+
+		&::before {
+			content: '';
+			display: inline-block;
+			margin-right: 7px;
+			width: 20px;
+			height: 20px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			.md-block({
+				width: 16px;
+				height: 16px;
+				margin-right: 5px;
+			});
+		}
+
+		&__address {
+			&::before {
+				background-image: url(../img/address.svg);
+			}
+		}
+
+		&__phone {
+			&::before {
+				background-image: url(../img/phone.svg);
+			}
+		}
+
+		&__email {
+			&::before {
+				background-image: url(../img/email.svg);
+			}
+		}
+
+		&__inst {
+			&::before {
+				background-image: url(../img/instagram.svg);
+			}
+		}
+
+		&__fb {
+			&::before {
+				background-image: url(../img/facebook.svg);
+			}
+		}
+	}
+}
