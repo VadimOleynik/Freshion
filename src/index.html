@@ -13,8 +13,8 @@
 			<nav class="main-header--nav">
 				<h3 class="visually-hidden">Меню навигации по сайту:</h3>
 				<button class="main-header--mobile main-header--mobile__active">Меню</button>
-				<ol class="main-header--list main-header--list__open">	
-					<li class="main-header--item main-header--item__active"><a class="main-header--link" href="#">Главная</a></li>
+				<ol class="main-header--list">	  
+					<li class="main-header--item"><a class="main-header--link" href="#">Главная</a></li>
 					<li class="main-header--item"><a class="main-header--link" href="#shop">Магазин</a></li>
 					<li class="main-header--item"><a class="main-header--link" href="#about-us">О нас</a></li>
 					<li class="main-header--item"><a class="main-header--link" href="#contacts">Контакты</a></li>
@@ -31,7 +31,7 @@
 		</div>
 	</header>
 	
-	<section class="shop-nav">
+	<section class="shop-nav" data-parallax="true">
 		<div class="shop-nav--container container">
 			<h1 class="shop-nav--header">Freshion<span class="visually-hidden"> - интернет-магазин аксессуаров</span></h1>
 			<h3 class="visually-hidden">Меню навигации по магазину:</h3>
@@ -255,12 +255,12 @@
 		</ul> 
 	</article>
 
-	<article class="shop--article" id="klutches">
+	<article class="shop--article" id="clutches">
 		<h3 class="visually-hidden">Клатчи</h3>
 		<ul class="shop--list">
 			<li class="shop--item product">
 				<a href="#-more" class="product--more-info ">
-					<img src="img/klutches/klutch-1-violet.png" alt="Описание первого клатча. Цвет: фиолетовый" class="product--img product--img__active" width="1851" height="1251">
+					<img src="img/clutches/clutch-1-violet.png" alt="Описание первого клатча. Цвет: фиолетовый" class="product--img product--img__active" width="1851" height="1251">
 				</a>
 				<p class="product--colors">
 					<span class="visually-hidden">Кнопки для переключения фото</span>
@@ -276,8 +276,8 @@
 
 			<li class="shop--item product">
 				<a href="#-more" class="product--more-info ">
-					<img src="img/klutches/klutch-2-blue.png" alt="Описание второго клатча. Цвет: синий" class="product--img product--img__active" width="867" height="615">
-					<img src="img/klutches/klutch-2-pink.png" alt="Описание второго клатча. Цвет: розовый" class="product--img" width="801" height="671">
+					<img src="img/clutches/clutch-2-blue.png" alt="Описание второго клатча. Цвет: синий" class="product--img product--img__active" width="867" height="615">
+					<img src="img/clutches/clutch-2-pink.png" alt="Описание второго клатча. Цвет: розовый" class="product--img" width="801" height="671">
 				</a>
 				<p class="product--colors">
 					<span class="visually-hidden">Кнопки для переключения фото</span>
@@ -294,7 +294,7 @@
 
 			<li class="shop--item product">
 				<a href="#-more" class="product--more-info ">
-					<img src="img/klutches/klutch-3-pink.png" alt="Описание третьего клатча. Цвет: розовый" class="product--img product--img__active" width="630" height="535">
+					<img src="img/clutches/clutch-3-pink.png" alt="Описание третьего клатча. Цвет: розовый" class="product--img product--img__active" width="630" height="535">
 				</a>
 				<p class="product--colors">
 					<span class="visually-hidden">Кнопки для переключения фото</span>
@@ -310,7 +310,7 @@
 
 			<li class="shop--item product">
 				<a href="#-more" class="product--more-info ">
-					<img src="img/klutches/klutch-4-black.png" alt="Описание четвертого клатча. Цвет: черный" class="product--img product--img__active" width="1000" height="522">
+					<img src="img/clutches/clutch-4-black.png" alt="Описание четвертого клатча. Цвет: черный" class="product--img product--img__active" width="1000" height="522">
 				</a>
 				<p class="product--colors">
 					<span class="visually-hidden">Кнопки для переключения фото</span>
@@ -440,6 +440,10 @@
 	</div>
 
 </section>
+
+<script src="js/toggleSlide.js"></script>
+<script src="js/parallax.js"></script>
+<script src="js/scripts.js"></script>
 
 </body>
 </html>

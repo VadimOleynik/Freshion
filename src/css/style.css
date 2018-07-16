@@ -212,9 +212,6 @@ section {
 .main-header--item {
   display: inline-block
 }
-.main-header--item__active .main-header--link {
-  color: #1f2d2e
-}
 .main-header--link {
   display: block;
   color: #1f2d2e
@@ -289,7 +286,7 @@ section {
   background: url(../img/cart.svg) center/cover no-repeat
 }
 .shop-nav {
-  background: url(../../img/nav-bg-new.jpg) center/cover no-repeat;
+  background: url(../../img/nav-bg.jpg) center/cover no-repeat;
   font-size: 28px;
   min-height: 100vh;
   margin-bottom: 40px;
@@ -715,9 +712,6 @@ section {
     right: 0;
     background-color: #465
   }
-  .main-header--item__active .main-header--link {
-    background-color: rgba(31,45,46,.4)
-  }
   .main-header--item {
     display: block;
     font-size: 23px;
@@ -899,7 +893,7 @@ section {
 (min-resolution:144dpi),
 (min-resolution:1.5dppx) {
   .shop-nav {
-    background-image: url(../../img/nav-bg-25.jpg)
+    background-image: url(../../img/nav-bg-dpi.jpg)
   }
 }
 /*# sourceMappingURL=style.css.map */
