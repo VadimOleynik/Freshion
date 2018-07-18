@@ -512,6 +512,12 @@ section {
 .bordo {
   background-color: #270c1d
 }
+.alt-nav {
+  display: none
+}
+.alt-nav__visible {
+  display: block
+}
 .alt-nav--item {
   text-align: right
 }
@@ -740,9 +746,6 @@ section {
   }
   .shop--item {
     width: calc(33.333333333333336% - 30px)
-  }
-  .alt-nav {
-    display: none
   }
   .about-us--container {
     width: calc(100% - 30px)
