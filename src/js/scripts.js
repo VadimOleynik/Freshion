@@ -17,20 +17,52 @@ window.onload = function() {
   }, false);
 
 
-console.log(shop.offsetBottom);
+  // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
+
+  var shopZone = caclZone(shop);
+  function caclZone(el) {
+  	var zone = new Object;
+  	zone.topPos = el.offsetTop;
+  	zone.botPos = shop.offsetHeight + shop.offsetTop;
+  	return zone;
+  };
 
   window.onscroll = function() {
   	parallax(needParallax, 2);
   	
   	var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-  	if (scrolled > (anchorPositions[0] - 400)) {
+
+  	if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
   		altMenu.classList.add("alt-nav__visible");
-  	}
-  	else if(scrolled < (anchorPositions[0] - 400)) {
-  		altMenu.classList.remove("alt-nav__visible");
-  	}
-  }
-  
+
+  		function switchMenuItems(array) {
+  			for (var i = 0; i < array.length; i++) {
+  				
+  				
+  			}
+  		}
+
+  		switch (true) {
+  			case (scrolled >= anchorPositions[0]  - 200 && scrolled < anchorPositions[1] - 200):
+  			console.log("рюкзаки");
+  			break;
+  			case (scrolled >= anchorPositions[1]  - 200 && scrolled < anchorPositions[2] - 200):
+  			console.log("сумки");
+  			break;
+  			case (scrolled >= anchorPositions[2]  - 200 && scrolled < anchorPositions[3] - 200):
+  			console.log("клатчи");
+  			break;
+  			case (scrolled >= anchorPositions[3] - 400):
+  			console.log("кошельки");
+  			break;  		}
+  		}
+  		else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
+  			altMenu.classList.remove("alt-nav__visible");
+  		}
+
+
+  	};
+
 
   // Плавная прокрутка 
   for (var i = 0; i < needSmooth.length; i++) {
@@ -43,12 +75,9 @@ console.log(shop.offsetBottom);
 
   // Изменение активного пункта навигации
   var anchorPositions = new Array;
-
+  console.log(anchorPositions);
   for (var i = 0; i < anchors.length; i++) {
   	anchorPositions[i] = (elmYPosition(anchors[i]));
-  }
-
-
-  
+  }	
 
 };
