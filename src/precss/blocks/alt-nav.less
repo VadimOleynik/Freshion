@@ -7,22 +7,17 @@
 
 	&--item {
 		text-align: right;
-	}
-
-	&--link {
-		margin-top: 5px;
-		font-style: italic;
 
 		&::after {
 			content: "";
 			display: inline-block;
+			vertical-align: middle;
 			width: 12px;
 			height: 12px;
-			margin-left: 15px;
+			margin-left: 10px;
 			border: 2px solid @accent-color;
 			border-radius: 50%;
 		}
-
 		&:hover {
 			.alt-nav--text {
 				display: inline-block;
@@ -36,14 +31,23 @@
 		&__active {
 			.alt-nav--text {
 				display: inline-block;
-			}
-
-			&:after {
+			} 
+			&::after {
 				background-color: @accent-color;
 			}
 		}
 	}
+
+	&--link {
+		font-style: italic;
+
+
+
+	}
+
 	&--text {
 		display: none;
+		background-color: @bg-color;
+		border-radius: 30px;
 	}
 }

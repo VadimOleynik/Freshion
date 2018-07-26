@@ -521,33 +521,35 @@ section {
 .alt-nav--item {
   text-align: right
 }
-.alt-nav--link {
-  margin-top: 5px;
-  font-style: italic
-}
-.alt-nav--link::after {
+.alt-nav--item::after {
   content: "";
   display: inline-block;
+  vertical-align: middle;
   width: 12px;
   height: 12px;
-  margin-left: 15px;
+  margin-left: 10px;
   border: 2px solid #1f2d2e;
   border-radius: 50%
 }
-.alt-nav--link:hover .alt-nav--text {
+.alt-nav--item:hover .alt-nav--text {
   display: inline-block
 }
-.alt-nav--link:hover::after {
+.alt-nav--item:hover::after {
   background-color: #1f2d2e
 }
-.alt-nav--link__active .alt-nav--text {
+.alt-nav--item__active .alt-nav--text {
   display: inline-block
 }
-.alt-nav--link__active:after {
+.alt-nav--item__active::after {
   background-color: #1f2d2e
+}
+.alt-nav--link {
+  font-style: italic
 }
 .alt-nav--text {
-  display: none
+  display: none;
+  background-color: #9ee0ca;
+  border-radius: 30px
 }
 .about-us {
   display: -webkit-box;

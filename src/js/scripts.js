@@ -5,9 +5,11 @@ window.onload = function() {
 	var menuList = document.querySelector(".main-header--list");
 	var needParallax = document.querySelectorAll('[data-parallax="true"]');
 	var needSmooth = document.querySelectorAll('[data-smooth="true"]');
+	var needToggle = document.querySelectorAll('[data-toggle-alt="true"]');
 	var anchors = document.querySelectorAll('[data-anchor="true"]');
 	var altMenu = document.querySelector(".alt-nav");
 	var shop = document.querySelector("#shop");
+
 
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
@@ -18,7 +20,6 @@ window.onload = function() {
 
 
   // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
-
   var shopZone = caclZone(shop);
   function caclZone(el) {
   	var zone = new Object;
@@ -35,33 +36,25 @@ window.onload = function() {
   	if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
   		altMenu.classList.add("alt-nav__visible");
 
-  		function switchMenuItems(array) {
-  			for (var i = 0; i < array.length; i++) {
-  				
-  				
+  		for (var i = 0; i < needToggle.length; i++) {
+  			needToggle[i].classList.remove("alt-nav--item__active");
+  		}
+  		for (var i = 0; i < anchorPositions.length; i++) {
+  			if (scrolled >= anchorPositions[i] - 400 && scrolled < anchorPositions[i+1] - 400) {
+  				needToggle[i].classList.add("alt-nav--item__active");
+  			}
+  			else if (scrolled >= anchorPositions[anchorPositions.length - 1] - 400) {
+  				needToggle[anchorPositions.length - 1].classList.add("alt-nav--item__active");
   			}
   		}
+  	}
 
-  		switch (true) {
-  			case (scrolled >= anchorPositions[0]  - 200 && scrolled < anchorPositions[1] - 200):
-  			console.log("рюкзаки");
-  			break;
-  			case (scrolled >= anchorPositions[1]  - 200 && scrolled < anchorPositions[2] - 200):
-  			console.log("сумки");
-  			break;
-  			case (scrolled >= anchorPositions[2]  - 200 && scrolled < anchorPositions[3] - 200):
-  			console.log("клатчи");
-  			break;
-  			case (scrolled >= anchorPositions[3] - 400):
-  			console.log("кошельки");
-  			break;  		}
-  		}
-  		else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
-  			altMenu.classList.remove("alt-nav__visible");
-  		}
+  	else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
+  		altMenu.classList.remove("alt-nav__visible");
+  	}
 
 
-  	};
+  };
 
 
   // Плавная прокрутка 
@@ -75,7 +68,6 @@ window.onload = function() {
 
   // Изменение активного пункта навигации
   var anchorPositions = new Array;
-  console.log(anchorPositions);
   for (var i = 0; i < anchors.length; i++) {
   	anchorPositions[i] = (elmYPosition(anchors[i]));
   }	
