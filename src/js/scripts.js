@@ -9,7 +9,9 @@ window.onload = function() {
 	var anchors = document.querySelectorAll('[data-anchor="true"]');
 	var altMenu = document.querySelector(".alt-nav");
 	var shop = document.querySelector("#shop");
-
+	var colorSwitchBtns = document.querySelectorAll(".product--color");
+	var imgsOfProducts = document.querySelectorAll(".product--img");
+	var smallScreen = 767;
 
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
@@ -17,7 +19,6 @@ window.onload = function() {
   	var menuListOpen = document.querySelector(".main-header--list__open");
   	toggleSlide(menuList);
   }, false);
-
 
   // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
   var shopZone = caclZone(shop);
@@ -28,34 +29,33 @@ window.onload = function() {
   	return zone;
   };
 
-  window.onscroll = function() {
-  	parallax(needParallax, 2);
-  	
-  	var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  if(window.innerWidth > smallScreen) {
+  	window.onscroll = function() {
+  		parallax(needParallax, 2);
 
-  	if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
-  		altMenu.classList.add("alt-nav__visible");
+  		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
-  		for (var i = 0; i < needToggle.length; i++) {
-  			needToggle[i].classList.remove("alt-nav--item__active");
+  		if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos -400) {
+  			altMenu.classList.add("alt-nav__visible");
+
+  			for (var i = 0; i < needToggle.length; i++) {
+  				needToggle[i].classList.remove("alt-nav--item__active");
+  			}
+  			for (var i = 0; i < anchorPositions.length; i++) {
+  				if (scrolled >= anchorPositions[i] - 400 && scrolled < anchorPositions[i+1] - 400) {
+  					needToggle[i].classList.add("alt-nav--item__active");
+  				}
+  				else if (scrolled >= anchorPositions[anchorPositions.length - 1] - 400) {
+  					needToggle[anchorPositions.length - 1].classList.add("alt-nav--item__active");
+  				}
+  			}
   		}
-  		for (var i = 0; i < anchorPositions.length; i++) {
-  			if (scrolled >= anchorPositions[i] - 400 && scrolled < anchorPositions[i+1] - 400) {
-  				needToggle[i].classList.add("alt-nav--item__active");
-  			}
-  			else if (scrolled >= anchorPositions[anchorPositions.length - 1] - 400) {
-  				needToggle[anchorPositions.length - 1].classList.add("alt-nav--item__active");
-  			}
+
+  		else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
+  			altMenu.classList.remove("alt-nav__visible");
   		}
   	}
-
-  	else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
-  		altMenu.classList.remove("alt-nav__visible");
-  	}
-
-
   };
-
 
   // Плавная прокрутка 
   for (var i = 0; i < needSmooth.length; i++) {
@@ -72,4 +72,19 @@ window.onload = function() {
   	anchorPositions[i] = (elmYPosition(anchors[i]));
   }	
 
+	// Переключение цветов товара 
+  var activeImg;
+  for (var i = 0; i < colorSwitchBtns.length; i++) {
+    colorSwitchBtns[i].addEventListener("click", function(event) {
+     event.preventDefault();	
+     const index = [...colorSwitchBtns].indexOf(this);
+     activeImg = imgsOfProducts[index].closest(".product--more-info").querySelectorAll(".product--img__active");
+     for (var i = 0; i < activeImg.length; i++) {
+      activeImg[i].fadeOut().classList.remove("product--img__active");
+    }
+    imgsOfProducts[index].classList.add("product--img__active");
+  }, false);
+  }
+
 };
+

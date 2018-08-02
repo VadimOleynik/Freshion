@@ -337,11 +337,6 @@ section {
 .shop {
   text-align: center
 }
-.shop--alt-nav {
-  position: fixed;
-  top: 50%;
-  right: 2%
-}
 .shop--article {
   margin-top: 50px
 }
@@ -379,6 +374,7 @@ section {
 }
 .product--img {
   display: none;
+  opacity: 0;
   max-height: 200px;
   width: auto;
   -webkit-transition: -webkit-transform .4s ease-in-out;
@@ -392,7 +388,8 @@ section {
   transform: scale(1.5)
 }
 .product--img__active {
-  display: inline-block
+  display: inline-block;
+  opacity: 1
 }
 .product--more-info {
   display: -webkit-box;
@@ -513,6 +510,9 @@ section {
   background-color: #270c1d
 }
 .alt-nav {
+  position: fixed;
+  top: 50%;
+  right: 2%;
   display: none
 }
 .alt-nav__visible {
@@ -521,7 +521,22 @@ section {
 .alt-nav--item {
   text-align: right
 }
-.alt-nav--item::after {
+.alt-nav--item:hover .alt-nav--text {
+  display: inline-block
+}
+.alt-nav--item:hover .alt-nav--link::after {
+  background-color: #1f2d2e
+}
+.alt-nav--item__active .alt-nav--text {
+  display: inline-block
+}
+.alt-nav--item__active .alt-nav--link::after {
+  background-color: #1f2d2e
+}
+.alt-nav--link {
+  font-style: italic
+}
+.alt-nav--link::after {
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -531,25 +546,8 @@ section {
   border: 2px solid #1f2d2e;
   border-radius: 50%
 }
-.alt-nav--item:hover .alt-nav--text {
-  display: inline-block
-}
-.alt-nav--item:hover::after {
-  background-color: #1f2d2e
-}
-.alt-nav--item__active .alt-nav--text {
-  display: inline-block
-}
-.alt-nav--item__active::after {
-  background-color: #1f2d2e
-}
-.alt-nav--link {
-  font-style: italic
-}
 .alt-nav--text {
-  display: none;
-  background-color: #9ee0ca;
-  border-radius: 30px
+  display: none
 }
 .about-us {
   display: -webkit-box;
@@ -702,6 +700,11 @@ section {
 .contacts--link__fb::before {
   background-image: url(../img/facebook.svg)
 }
+@media screen and (max-width:1400px) {
+  .alt-nav--item__active .alt-nav--text {
+    display: none
+  }
+}
 @media screen and (max-width:992px) {
   .header {
     margin-bottom: 35px
@@ -801,6 +804,9 @@ section {
   .product--color {
     width: 22px;
     height: 22px
+  }
+  .alt-nav {
+    display: none
   }
   .about-us--info {
     margin-bottom: 120px
