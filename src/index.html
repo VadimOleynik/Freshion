@@ -45,6 +45,9 @@
 	</section>
 
 	<section class="shop" id="shop">
+		
+		<h2 class="shop--header header">Магазин</h2>
+
 		<article class="shop--alt-nav alt-nav">
 			<h3 class="visually-hidden">Дополнительное меню навигации по магазину:</h3>
 			<ol class="alt-nav--list">
@@ -56,8 +59,6 @@
 		</article> 
 
 		<div class="container">
-			<h2 class="shop--header header">Магазин</h2>
-
 			<article class="shop--article shop--article__backpacks" id="backpacks" data-anchor="true">
 				<h3 class="visually-hidden">Рюкзаки</h3>
 
@@ -118,7 +119,7 @@
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active blue">Синий</button>
-							<button class="product--color product--color__active green">Зеленый</button>
+							<button class="product--color green">Зеленый</button>
 						</p>
 						<a href="#-more" class="product--more-info">
 							<p class="product--about">Рюкзак из экокожи</p>
@@ -131,12 +132,12 @@
 					<li class="shop--item product">
 						<a href="#-more" class="product--more-info">
 							<img src="img/backpacks/backpack-5-green.png" alt="Описание пятого рюкзака. Цвет: темно-зеленый" class="product--img product--img__active" width="1024" height="1024">
-							<img src="img/backpacks/backpack-5-red.png" alt="Описание пятого рюкзака. Цвет: красный" class="product--img" width="600" height="600">
+							<img src="img/backpacks/backpack-5-red.png" alt="Описание пятого рюкзака. Цвет: красный" class="product--img" style="display: inline-block" width="600" height="600">
 						</a>
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active green">Темно-зеленый</button>
-							<button class="product--color product--color__active red">Красный</button>
+							<button class="product--color red">Красный</button>
 						</p>
 						<a href="#-more" class="product--more-info">
 							<p class="product--about">Рюкзак из экокожи</p>
@@ -437,8 +438,51 @@
 					<a href="https://www.facebook.com/sumki/" class="contacts--link contacts--link__fb" target="_blank">sumki</a>
 				</li>
 			</ul>
-		</div>
 
+		</div>
+	</section>
+
+	<section class="orders">
+		<button class="orders--hide">Свернуть корзину</button>
+
+		<h2 class="orders--header">Корзина</h2>
+
+		<form class="orders--form">
+			<ul class="orders--list">
+				<li class="orders--item order">
+					<p class="order--name">Сумка пушистая</p>
+					<img src="img/bags/bag-4-biege.png" alt="Фото товара" class="order--img">
+					<input type="number" min="1" max="10" class="order--amount" value="1">
+					<p class="order--price">2500 <span class="orders--currency">грн.</span></p>
+					<button class="order--delete">Удалить товар</button>
+				</li>
+				<li class="orders--item order">
+					<p class="order--name">Рюкзак замшевый</p>
+					<img src="img/backpacks/backpack-5-red.png" alt="Фото товара" class="order--img">
+					<input type="number" min="1" max="10" class="order--amount" value="2">
+					<p class="order--price">500 <span class="orders--currency">грн.</span></p>
+					<button class="order--delete">Удалить товар</button>
+				</li>
+			</ul>
+
+			<p class="orders--price price">
+				<span class="price--text">Сумма</span>
+				<span class="price--amount">3500</span>
+			</p>
+
+			<p class="orders--name">
+				<label class="orders--label" for="name">Ваше имя:</label>
+				<input class="orders--input" type="text" id="name">
+			</p>
+			<p class="orders--number">
+				<label class="orders--label" for="number">Ваш номер телефона:</label>
+				<input class="orders--input" type="text" id="number">
+			</p>
+			<p class="orders--name not-necessary">
+				<label class="orders--label" for="cod">Промокод:</label>
+				<input class="orders--input" type="text" id="cod">
+			</p>
+		</form>
 	</section>
 
 	<script src="js/toggleSlide.js"></script>

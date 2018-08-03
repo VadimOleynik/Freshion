@@ -69,10 +69,10 @@
 		padding: 0;
 		border: 0;
 		box-sizing: border-box;
-		width: 18px;
-		height: 18px;
+		width: 19px;
+		height: 19px;
 		border-radius: 50%;
-		border: 1px solid @accent-color;
+		border: 2px solid @bg-color;
 		background-color: red;
 		margin-bottom: 10px;
 		transition: border 0.2s ease-in-out;
@@ -88,10 +88,12 @@
 
 		&:hover,
 		&:active {
+			box-sizing: border-box;
 			border: 2px solid #faee01;
 		}
 
 		&__active {
+			box-sizing: border-box;
 			border: 2px solid #faee01;
 		}
 	}

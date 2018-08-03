@@ -74,15 +74,23 @@ window.onload = function() {
 
 	// Переключение цветов товара 
   var activeImg;
+/*  var removeImgCLass = function(el) {
+    el.classList.remove("product--img__active");
+  };
+  var addImgCLass = function(el) {
+    el.classList.add("product--img__active");
+  };*/
   for (var i = 0; i < colorSwitchBtns.length; i++) {
     colorSwitchBtns[i].addEventListener("click", function(event) {
      event.preventDefault();	
      const index = [...colorSwitchBtns].indexOf(this);
      activeImg = imgsOfProducts[index].closest(".product--more-info").querySelectorAll(".product--img__active");
      for (var i = 0; i < activeImg.length; i++) {
-      activeImg[i].fadeOut().classList.remove("product--img__active");
+      fade(activeImg[i], imgsOfProducts[index], "product--img__active");
+      
     }
-    imgsOfProducts[index].classList.add("product--img__active");
+    /*fadeIn(, "product--img__active");*/
+    
   }, false);
   }
 
