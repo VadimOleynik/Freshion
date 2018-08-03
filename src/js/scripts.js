@@ -31,7 +31,7 @@ window.onload = function() {
 
   if(window.innerWidth > smallScreen) {
   	window.onscroll = function() {
-  		parallax(needParallax, 2);
+  		parallax(needParallax, 10);
 
   		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
