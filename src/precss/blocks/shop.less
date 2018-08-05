@@ -29,7 +29,7 @@
 	flex-direction: column;
 
 	&--img {
-		display: none;
+		position: absolute;
 		opacity: 0;
 		max-height: 200px;
 		width: auto;
@@ -43,8 +43,9 @@
 		}
 
 		&__active {
-			display: inline-block;
+			position: static;
 			opacity: 1;
+			z-index: 1;
 		}
 	}
 
@@ -54,6 +55,10 @@
 		align-items: center;
 		justify-content: center;
 		flex-grow: 1;
+
+		&__img {
+			min-height: 200px;
+		}
 	}
 
 	&--about {

@@ -86,11 +86,10 @@ window.onload = function() {
      const index = [...colorSwitchBtns].indexOf(this);
      activeImg = imgsOfProducts[index].closest(".product--more-info").querySelectorAll(".product--img__active");
      for (var i = 0; i < activeImg.length; i++) {
-      fade(activeImg[i], imgsOfProducts[index], "product--img__active");
+      fadeOut(activeImg[i], "product--img__active");
       
     }
-    /*fadeIn(, "product--img__active");*/
-    
+    fadeIn(imgsOfProducts[index], "product--img__active");
   }, false);
   }
 
