@@ -450,38 +450,60 @@
 		<form class="orders--form">
 			<ul class="orders--list">
 				<li class="orders--item order">
-					<p class="order--name">Сумка пушистая</p>
 					<img src="img/bags/bag-4-biege.png" alt="Фото товара" class="order--img">
-					<input type="number" min="1" max="10" class="order--amount" value="1">
-					<p class="order--price">2500 <span class="orders--currency">грн.</span></p>
-					<button class="order--delete">Удалить товар</button>
+					<div class="order--info">
+						<p class="order--name">Сумка пушистая</p>
+
+						<label class="order--label">
+							Количество:
+							<input type="number" min="1" max="10" class="order--amount" value="1">
+						</label>
+						<p class="order--price">2500 <span class="orders--currency">грн.</span></p>
+						<button class="order--delete">Удалить товар</button>
+					</div>
 				</li>
 				<li class="orders--item order">
-					<p class="order--name">Рюкзак замшевый</p>
 					<img src="img/backpacks/backpack-5-red.png" alt="Фото товара" class="order--img">
-					<input type="number" min="1" max="10" class="order--amount" value="2">
-					<p class="order--price">500 <span class="orders--currency">грн.</span></p>
-					<button class="order--delete">Удалить товар</button>
+					<div class="order--info">
+						<p class="order--name">Рюкзак замшевый</p>
+						
+						<label class="order--label">
+							Количество:
+							<input type="number" min="1" max="10" class="order--amount" value="2">
+						</label>
+						<p class="order--price">500 <span class="orders--currency">грн.</span></p>
+						<button class="order--delete">Удалить товар</button>
+					</div>
 				</li>
 			</ul>
 
-			<p class="orders--price price">
-				<span class="price--text">Сумма</span>
-				<span class="price--amount">3500</span>
+			<p class="orders--field not-necessary">
+				<label class="orders--label" for="cod">Промокод:</label>
+				<input class="orders--input orders--input__cod" type="text" id="cod">
 			</p>
 
-			<p class="orders--name">
+			<p class="orders--field price">
+				<span class="price--text">Сумма:</span>
+				<span class="price--amount">3500</span>
+				<span class="price--currency">грн.</span>
+			</p>
+
+			<p class="orders--field">
 				<label class="orders--label" for="name">Ваше имя:</label>
-				<input class="orders--input" type="text" id="name">
+				<input class="orders--input orders--input__name" type="text" id="name">
 			</p>
-			<p class="orders--number">
-				<label class="orders--label" for="number">Ваш номер телефона:</label>
-				<input class="orders--input" type="text" id="number">
+
+			<p class="orders--field">
+				<label class="orders--label" for="surname">Ваша фамилия:</label>
+				<input class="orders--input orders--input__surname" type="text" id="surname">
 			</p>
-			<p class="orders--name not-necessary">
-				<label class="orders--label" for="cod">Промокод:</label>
-				<input class="orders--input" type="text" id="cod">
+
+			<p class="orders--field">
+				<label class="orders--label" for="number">Ваш номер:</label>
+				<input class="orders--input orders--input__number" type="text" id="number">
 			</p>
+
+			<button class="orders--submit">Заказать</button>
 		</form>
 	</section>
 

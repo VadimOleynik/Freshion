@@ -700,6 +700,7 @@ section {
   background-image: url(../img/facebook.svg)
 }
 .orders {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   right: 0;
@@ -707,6 +708,8 @@ section {
   max-height: 100%;
   min-height: 100%;
   background-color: #eafdf8;
+  font-size: 18px;
+  text-align: center;
   overflow-y: auto;
   z-index: 2
 }
@@ -720,7 +723,16 @@ section {
   background-color: rgba(0,0,0,.5)
 }
 .orders--hide {
-  display: none
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  border: none;
+  background: url(../../img/arrow.svg) center no-repeat;
+  padding: 0;
+  font-size: 0;
+  width: 25px;
+  height: 25px;
+  background-size: contain
 }
 .orders--header {
   padding: 20px 0;
@@ -730,8 +742,85 @@ section {
   text-align: center;
   margin-bottom: 20px
 }
+.orders--list {
+  margin-bottom: 15px
+}
+.orders--item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+.orders--input {
+  width: 80px;
+  padding: 1px 0;
+  border: 1px solid #1f2d2e;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 17px
+}
+.orders--input__name,
+.orders--input__surname {
+  width: 130px
+}
+.orders--input__number {
+  width: 140px
+}
+.orders--field {
+  margin-bottom: 10px
+}
+.orders--submit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 7px;
+  background-color: #1f2d2e;
+  color: #eafdf8;
+  font-size: 20px;
+  padding: 3px 7px
+}
 .order--img {
   max-width: 100px
+}
+.order--amount {
+  background-color: #eafdf8;
+  width: 32px;
+  padding: 2px 0 2px 5px;
+  border: none;
+  border-radius: 5px;
+  outline: 0
+}
+.order--amount::-webkit-inner-spin-button,
+.order--amount::-webkit-outer-spin-button {
+  opacity: 1
+}
+.order--info {
+  margin-right: 10px;
+  text-align: left
+}
+.order--delete {
+  font-size: 0;
+  border: none;
+  background: url(../../img/delete.svg) center no-repeat;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-size: contain
+}
+.price {
+  margin-bottom: 20px;
+  font-size: 22px
 }
 @media screen and (max-width:1400px) {
   .alt-nav--item__active .alt-nav--text {
