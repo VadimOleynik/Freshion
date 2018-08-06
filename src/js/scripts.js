@@ -6,7 +6,7 @@ window.onload = function() {
 	var needParallax = document.querySelectorAll('[data-parallax="true"]');
 	var needSmooth = document.querySelectorAll('[data-smooth="true"]');
 	var needToggle = document.querySelectorAll('[data-toggle-alt="true"]');
-	var anchors = document.querySelectorAll('[data-anchor="true"]');
+	var shopAnchors = document.querySelectorAll('[data-anchor="true"]');
 	var altMenu = document.querySelector(".alt-nav");
 	var shop = document.querySelector("#shop");
 	var colorSwitchBtns = document.querySelectorAll(".product--color");
@@ -22,6 +22,7 @@ window.onload = function() {
 
   // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
   var shopZone = caclZone(shop);
+  var anchorPositions = getPosition(shopAnchors);
   function caclZone(el) {
   	var zone = new Object;
   	zone.topPos = el.offsetTop;
@@ -37,7 +38,6 @@ window.onload = function() {
 
   		if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos -400) {
   			altMenu.classList.add("alt-nav__visible");
-
   			for (var i = 0; i < needToggle.length; i++) {
   				needToggle[i].classList.remove("alt-nav--item__active");
   			}
@@ -66,30 +66,24 @@ window.onload = function() {
   	}, false);
   }
 
-  // Изменение активного пункта навигации
-  var anchorPositions = new Array;
-  for (var i = 0; i < anchors.length; i++) {
-  	anchorPositions[i] = (elmYPosition(anchors[i]));
-  }	
-
 	// Переключение цветов товара 
   var activeImg;
-/*  var removeImgCLass = function(el) {
-    el.classList.remove("product--img__active");
-  };
-  var addImgCLass = function(el) {
-    el.classList.add("product--img__active");
-  };*/
   for (var i = 0; i < colorSwitchBtns.length; i++) {
     colorSwitchBtns[i].addEventListener("click", function(event) {
      event.preventDefault();	
      const index = [...colorSwitchBtns].indexOf(this);
-     activeImg = imgsOfProducts[index].closest(".product--more-info").querySelectorAll(".product--img__active");
-     for (var i = 0; i < activeImg.length; i++) {
-      fadeOut(activeImg[i], "product--img__active");
-      
+     activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+
+     if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
+      for (var i = 0; i < activeImg.length; i++) {
+        fadeOut(activeImg[i], "product--img__active");
+      }
+      fadeIn(imgsOfProducts[index], "product--img__active");
     }
-    fadeIn(imgsOfProducts[index], "product--img__active");
+    else {
+      return false;
+    }
+
   }, false);
   }
 
