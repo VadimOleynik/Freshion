@@ -15,6 +15,15 @@
 	&--container {
 		display: flex;
 		justify-content: center;
+		.md-block({
+			padding: 0;
+		});
+		.sm-block({
+			padding: 0;
+		});
+		.xs-block({
+			padding: 0;
+		});
 	}
 
 	&--nav {
@@ -25,8 +34,7 @@
 
 		.md-block({
 			width: auto;
-			margin-left: auto;
-			order: 1;
+			margin-right: auto;
 		});
 	}
 
@@ -36,12 +44,28 @@
 		justify-content: space-around;
 
 		.md-block({
-			display: none;
+			display: block;
 			position: absolute;
 			top: 100%;
-			right: 0;
+			left: 0;
 			background-color: @header-bg;
+			overflow: hidden;
+			transition: all 1.5s ease;
 		});
+
+		&__show {
+			.md-block({
+				max-height: 100vh;
+			});
+		}
+
+		&__hide {
+			.md-block({
+				max-height: 0;
+			});
+		}
+
+
 	}
 
 	&--item {
@@ -111,7 +135,7 @@
 		.col();
 	}
 
-	&--issue {
+	&--orders {
 		display: flex;
 
 		&:hover,

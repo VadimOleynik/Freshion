@@ -149,23 +149,22 @@ section {
 }
 .button {
   display: inline-block;
-  padding: 3px 20px;
-  font-family: 'Open Sans',sans-serif;
-  font-size: 25px;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #9ee0ca;
-  background-color: #1f2d2e;
-  border-radius: 10px;
-  border: 2px solid #252525
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #00a971;
+  box-shadow: 0 -3px #009060 inset;
+  -webkit-transition: .2s;
+  transition: .2s
 }
 .button:hover {
-  background-color: #aee5be;
-  border-color: #1f2d2e;
-  color: #1f2d2e
+  background-color: #009060
 }
 .button:active {
-  background-color: #10a46b
+  background-color: #00764f;
+  box-shadow: 0 -3px #005d3e inset
 }
 .header {
   font-size: 48px;
@@ -242,19 +241,19 @@ section {
   margin-left: 15px;
   margin-right: 15px
 }
-.main-header--issue {
+.main-header--orders {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex
 }
-.main-header--issue:active .main-header--buy::before,
-.main-header--issue:focus .main-header--buy::before,
-.main-header--issue:hover .main-header--buy::before {
+.main-header--orders:active .main-header--buy::before,
+.main-header--orders:focus .main-header--buy::before,
+.main-header--orders:hover .main-header--buy::before {
   background-image: url(../img/cart-active.svg)
 }
-.main-header--issue:active .main-header--amount,
-.main-header--issue:focus .main-header--amount,
-.main-header--issue:hover .main-header--amount {
+.main-header--orders:active .main-header--amount,
+.main-header--orders:focus .main-header--amount,
+.main-header--orders:hover .main-header--amount {
   color: #d2f9f9;
   border-color: #d2f9f9;
   background-color: rgba(210,249,249,.2)
@@ -441,11 +440,10 @@ section {
   margin-bottom: 10px
 }
 .product--price {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: block;
   margin-top: auto;
   font-size: 27px;
-  text-transform: uppercase;
   font-style: italic;
   color: #a6603a
 }
@@ -707,7 +705,6 @@ section {
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  right: 0;
   width: 30%;
   max-height: 100%;
   min-height: 100%;
@@ -715,16 +712,32 @@ section {
   font-size: 18px;
   text-align: center;
   overflow-y: auto;
-  z-index: 2
+  z-index: 2;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease
 }
-.orders::before {
-  content: '';
+.orders__show {
+  right: 0
+}
+.orders__hide {
+  right: -30%
+}
+.orders--overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 70%;
+  width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.5)
+  background-color: #000;
+  z-index: 1
+}
+.orders--overlay__show {
+  display: block;
+  opacity: .5
+}
+.orders--overlay__hide {
+  display: none;
+  opacity: 0
 }
 .orders--hide {
   position: absolute;
@@ -762,18 +775,18 @@ section {
 }
 .orders--input {
   width: 80px;
-  padding: 1px 0;
+  padding: 2px 3px;
   border: 1px solid #1f2d2e;
   border-radius: 5px;
   text-align: center;
-  font-size: 17px
+  font-size: 16px
 }
 .orders--input__name,
 .orders--input__surname {
   width: 130px
 }
-.orders--input__number {
-  width: 140px
+.orders--input__phone {
+  width: 160px
 }
 .orders--field {
   margin-bottom: 10px
@@ -786,7 +799,7 @@ section {
   background-color: #1f2d2e;
   color: #eafdf8;
   font-size: 20px;
-  padding: 3px 7px
+  padding: 4px 12px
 }
 .order--img {
   max-width: 100px
@@ -850,19 +863,28 @@ section {
   .header {
     margin-bottom: 35px
   }
+  .main-header--container {
+    padding: 0
+  }
   .main-header--nav {
     width: auto;
-    margin-left: auto;
-    -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1
+    margin-right: auto
   }
   .main-header--list {
-    display: none;
+    display: block;
     position: absolute;
     top: 100%;
-    right: 0;
-    background-color: #465
+    left: 0;
+    background-color: #465;
+    overflow: hidden;
+    -webkit-transition: all 1.5s ease;
+    transition: all 1.5s ease
+  }
+  .main-header--list__show {
+    max-height: 100vh
+  }
+  .main-header--list__hide {
+    max-height: 0
   }
   .main-header--item {
     display: block;
@@ -921,6 +943,9 @@ section {
   .header {
     margin-bottom: 15px;
     letter-spacing: 4px
+  }
+  .main-header--container {
+    padding: 0
   }
   .main-header--amount {
     margin-left: 3px;
@@ -993,6 +1018,9 @@ section {
   }
   .main-header {
     padding: 2px 0
+  }
+  .main-header--container {
+    padding: 0
   }
   .main-header--buy::before {
     width: 37px;

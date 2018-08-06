@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Freshion</title> 
-	<link rel="stylesheet" href="css/style.css"> 
+	<link rel="stylesheet" href="css/style.css">  
 </head> 
 <body>
 
@@ -12,8 +12,8 @@
 		<div class="main-header--container container">
 			<nav class="main-header--nav">
 				<h3 class="visually-hidden">Меню навигации по сайту:</h3>
-				<button class="main-header--mobile main-header--mobile__active">Меню</button>
-				<ol class="main-header--list">	  
+				<button class="main-header--mobile main-header--mobile__active">Мобильно меню</button>
+				<ol class="main-header--list main-header--list__hide">	  
 					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#">Главная</a></li>
 					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#shop">Магазин</a></li>
 					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#about-us">О нас</a></li>
@@ -23,7 +23,7 @@
 			<h3 class="visually-hidden">Меню покупок:</h3>
 			<p class="main-header--purchase">
 				<span class="visually-hidden">Выбраных товаров:</span>
-				<a class="main-header--issue" href="#">
+				<a class="main-header--orders" href="#">
 					<span class="main-header--amount">2</span>
 					<span class="main-header--buy">Перейти к оформлению заказа</span>
 				</a>
@@ -442,7 +442,9 @@
 		</div>
 	</section>
 
-	<section class="orders hidden">
+	<div class="orders--overlay orders--overlay__hide"></div>
+	<section class="orders orders__hide">
+
 		<button class="orders--hide">Свернуть корзину</button>
 
 		<h2 class="orders--header">Корзина</h2>
@@ -499,19 +501,19 @@
 			</p>
 
 			<p class="orders--field">
-				<label class="orders--label" for="number">Ваш номер:</label>
-				<input class="orders--input orders--input__number" type="text" id="number">
+				<label class="orders--label" for="phone">Ваш номер:</label>
+				<input class="orders--input orders--input__phone" type="tel" id="phone" name="phone" value="+380 (__) ___-__-__" pattern="^\+375 \((17|29|33|44)\) [0-9]{3}-[0-9]{2}-[0-9]{2}$" required">
 			</p>
 
 			<button class="orders--submit">Заказать</button>
 		</form>
 	</section>
 
-	<script src="js/toggleSlide.js"></script>
 	<script src="js/parallax.js"></script>
 	<script src="js/getPosition.js"></script>
 	<script src="js/smoothScroll.js"></script>
 	<script src="js/fade.js"></script>
+	<script src="js/phoneMask.js"></script>
 	<script src="js/scripts.js"></script>
 
 </body>

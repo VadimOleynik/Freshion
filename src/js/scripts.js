@@ -11,13 +11,17 @@ window.onload = function() {
 	var shop = document.querySelector("#shop");
 	var colorSwitchBtns = document.querySelectorAll(".product--color");
 	var imgsOfProducts = document.querySelectorAll(".product--img");
+  var orders = document.querySelector(".orders");
+  var orderBtnShow = document.querySelector(".main-header--orders");
+  var orderBtnHide = document.querySelector(".orders--hide");
+  var orderOverlay = document.querySelector(".orders--overlay");
 	var smallScreen = 767;
 
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
   	event.preventDefault();
-  	var menuListOpen = document.querySelector(".main-header--list__open");
-  	toggleSlide(menuList);
+    menuList.classList.toggle("main-header--list__show");
+    menuList.classList.toggle("main-header--list__hide");
   }, false);
 
   // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
@@ -86,6 +90,23 @@ window.onload = function() {
 
   }, false);
   }
+
+  // Корзина
+  orderBtnShow.addEventListener("click", function(event) {
+    event.preventDefault();
+    orders.classList.remove("orders__hide")
+    orders.classList.add("orders__show");
+    orderOverlay.classList.remove("orders--overlay__hide")
+    orderOverlay.classList.add("orders--overlay__show");
+  }, false);
+
+  orderBtnHide.addEventListener("click", function(event) {
+    event.preventDefault();
+    orders.classList.remove("orders__show")
+    orders.classList.add("orders__hide");
+    orderOverlay.classList.remove("orders--overlay__show")
+    orderOverlay.classList.add("orders--overlay__hide");  
+  }, false);
 
 };
 

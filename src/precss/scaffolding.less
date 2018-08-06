@@ -62,15 +62,15 @@ section {
 
 .button {
   display: inline-block;
-  padding: 3px 20px ;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 25px;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: @bg-color;
-  background-color: @accent-color;
-  border-radius: 10px;
-  border: 2px solid #252525;
+
+  font-weight: 700; 
+  color: white;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #00a971; //00c781
+  box-shadow: 0 -3px darken(#00a971, 5%) inset;
+  transition: 0.2s;
   
   .xs-block({
     padding: 1px 10px;
@@ -78,13 +78,12 @@ section {
   });
 
   &:hover {
-    background-color: #aee5be;
-    border-color: @accent-color;
-    color: @accent-color;
+    background-color: darken(#00a971, 5%);
   }
 
   &:active {
-    background-color: darken(#15d289, 10%);
+    background-color: darken(#00a971, 10%);
+    box-shadow: 0 -3px darken(#00a971, 15%) inset;
   }
 }
 
