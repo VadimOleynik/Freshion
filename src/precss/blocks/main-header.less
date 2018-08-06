@@ -78,6 +78,24 @@
 			border-bottom: none;
 		});
 
+		&__active .main-header--link{
+			color: @secondary-accent-color;
+		}
+
+		&:hover .main-header--link,
+		&:focus .main-header--link {
+			color: @secondary-accent-color;
+			.md-block({
+				background-color: fade(@header-text, 40%);
+			});	
+		}
+		&:active .main-header--link {
+			color: @secondary-accent-color;
+			.md-block({
+				background-color: fade(@header-text, 55%);
+			});
+		}
+
 		&:last-child {
 			.md-block({
 				border-bottom: 2px solid fade(@secondary-accent-color, 70%);
@@ -92,20 +110,6 @@
 		.md-block({
 			padding: 20px 30px;
 		});
-
-		&:hover,
-		&:focus {
-			color: @secondary-accent-color;
-			.md-block({
-				background-color: fade(@header-text, 40%);
-			});	
-		}
-		&:active {
-			color: @secondary-accent-color;
-			.md-block({
-				background-color: fade(@header-text, 55%);
-			});
-		}
 	}
 	&--mobile {
 		padding: 0;

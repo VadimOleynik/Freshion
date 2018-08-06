@@ -153,18 +153,51 @@ section {
   color: #fff;
   text-decoration: none;
   padding: 8px 20px;
-  border-radius: 5px;
-  background-color: #00a971;
-  box-shadow: 0 -3px #009060 inset;
+  border-radius: 6px;
+  background-color: #1f6c45;
+  box-shadow: 0 -3px #195838 inset;
   -webkit-transition: .2s;
   transition: .2s
 }
 .button:hover {
-  background-color: #009060
+  background-color: #195838
 }
 .button:active {
-  background-color: #00764f;
-  box-shadow: 0 -3px #005d3e inset
+  background-color: #14442c;
+  box-shadow: 0 -3px #0e311f inset
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 2;
+  opacity: .5
+}
+.overlay__show {
+  display: block;
+  opacity: .5
+}
+.overlay__hide {
+  display: none;
+  opacity: 0
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  z-index: 4
+}
+.modal__hide {
+  display: none
+}
+.modal__show {
+  display: block
 }
 .header {
   font-size: 48px;
@@ -207,14 +240,15 @@ section {
 .main-header--item {
   display: inline-block
 }
+.main-header--item:active .main-header--link,
+.main-header--item:focus .main-header--link,
+.main-header--item:hover .main-header--link,
+.main-header--item__active .main-header--link {
+  color: #d2f9f9
+}
 .main-header--link {
   display: block;
   color: #1f2d2e
-}
-.main-header--link:active,
-.main-header--link:focus,
-.main-header--link:hover {
-  color: #d2f9f9
 }
 .main-header--mobile {
   padding: 0;
@@ -705,7 +739,7 @@ section {
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  width: 30%;
+  width: 40%;
   max-height: 100%;
   min-height: 100%;
   background-color: #eafdf8;
@@ -720,26 +754,9 @@ section {
   right: 0
 }
 .orders__hide {
-  right: -30%
+  right: -40%
 }
-.orders--overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  z-index: 1
-}
-.orders--overlay__show {
-  display: block;
-  opacity: .5
-}
-.orders--overlay__hide {
-  display: none;
-  opacity: 0
-}
-.orders--hide {
+.orders--close {
   position: absolute;
   top: 25px;
   left: 10px;
@@ -749,7 +766,19 @@ section {
   font-size: 0;
   width: 25px;
   height: 25px;
-  background-size: contain
+  background-size: contain;
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+  -webkit-transition: -webkit-transform .8s ease;
+  transition: -webkit-transform .8s ease;
+  transition: transform .8s ease;
+  transition: transform .8s ease,-webkit-transform .8s ease
+}
+.orders--close__rotate {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg)
 }
 .orders--header {
   padding: 20px 0;
@@ -763,7 +792,6 @@ section {
   margin-bottom: 15px
 }
 .orders--item {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -778,8 +806,7 @@ section {
   padding: 2px 3px;
   border: 1px solid #1f2d2e;
   border-radius: 5px;
-  text-align: center;
-  font-size: 16px
+  text-align: center
 }
 .orders--input__name,
 .orders--input__surname {
@@ -799,7 +826,13 @@ section {
   background-color: #1f2d2e;
   color: #eafdf8;
   font-size: 20px;
-  padding: 4px 12px
+  padding: 6px 15px
+}
+.orders--submit:hover {
+  background-color: #2d4243
+}
+.orders--submit:active {
+  background-color: #111819
 }
 .order--img {
   max-width: 100px
@@ -817,6 +850,7 @@ section {
   opacity: 1
 }
 .order--info {
+  position: relative;
   margin-right: 10px;
   text-align: left
 }
@@ -827,7 +861,7 @@ section {
   padding: 0;
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: -30px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -841,6 +875,25 @@ section {
 }
 .hidden {
   display: none
+}
+.thanks-for-order {
+  padding: 30px;
+  background-color: #d7e0ca;
+  text-align: center;
+  line-height: 1.6;
+  border-radius: 10px
+}
+.thanks-for-order--btn {
+  font-size: 0;
+  border: none;
+  background: url(../../img/delete.svg) center no-repeat;
+  padding: 0;
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  width: 17px;
+  height: 17px;
+  background-size: contain
 }
 @media screen and (max-width:1400px) {
   .alt-nav--item__active .alt-nav--text {
@@ -893,18 +946,18 @@ section {
     border: 2px solid rgba(210,249,249,.7);
     border-bottom: none
   }
+  .main-header--item:focus .main-header--link,
+  .main-header--item:hover .main-header--link {
+    background-color: rgba(31,45,46,.4)
+  }
+  .main-header--item:active .main-header--link {
+    background-color: rgba(31,45,46,.55)
+  }
   .main-header--item:last-child {
     border-bottom: 2px solid rgba(210,249,249,.7)
   }
   .main-header--link {
     padding: 20px 30px
-  }
-  .main-header--link:focus,
-  .main-header--link:hover {
-    background-color: rgba(31,45,46,.4)
-  }
-  .main-header--link:active {
-    background-color: rgba(31,45,46,.55)
   }
   .main-header--mobile {
     display: block

@@ -14,10 +14,10 @@
 				<h3 class="visually-hidden">Меню навигации по сайту:</h3>
 				<button class="main-header--mobile main-header--mobile__active">Мобильно меню</button>
 				<ol class="main-header--list main-header--list__hide">	  
-					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#">Главная</a></li>
-					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#shop">Магазин</a></li>
-					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#about-us">О нас</a></li>
-					<li class="main-header--item" data-toggle="true"><a class="main-header--link" href="#contacts">Контакты</a></li>
+					<li class="main-header--item"><a class="main-header--link" href="#main" data-toggle-main="true" data-smooth="true">Главная</a></li>
+					<li class="main-header--item"><a class="main-header--link" href="#shop" data-toggle-main="true" data-smooth="true">Магазин</a></li>
+					<li class="main-header--item"><a class="main-header--link" href="#about-us" data-toggle-main="true" data-smooth="true">О нас</a></li>
+					<li class="main-header--item"><a class="main-header--link" href="#contacts" data-toggle-main="true" data-smooth="true">Контакты</a></li>
 				</ol>
 			</nav>
 			<h3 class="visually-hidden">Меню покупок:</h3>
@@ -31,7 +31,7 @@
 		</div>
 	</header>
 	
-	<section class="shop-nav" data-parallax="true">
+	<section class="shop-nav" id="main" data-parallax="true" data-anchor-main="true">
 		<div class="shop-nav--container container">
 			<h1 class="shop-nav--header">Freshion<span class="visually-hidden"> - интернет-магазин аксессуаров</span></h1>
 			<h3 class="visually-hidden">Меню навигации по магазину:</h3>
@@ -44,7 +44,7 @@
 		</div>
 	</section>
 
-	<section class="shop" id="shop">
+	<section class="shop" id="shop" data-anchor-main="true">
 		
 		<h2 class="shop--header header">Магазин</h2>
 
@@ -59,7 +59,7 @@
 		</article> 
 
 		<div class="container">
-			<article class="shop--article shop--article__backpacks" id="backpacks" data-anchor="true">
+			<article class="shop--article shop--article__backpacks" id="backpacks" data-anchor-shop="true">
 				<h3 class="visually-hidden">Рюкзаки</h3>
 
 				<ul class="shop--list">
@@ -149,7 +149,7 @@
 				</ul> 
 			</article>
 
-			<article class="shop--article" id="bags" data-anchor="true">
+			<article class="shop--article" id="bags" data-anchor-shop="true">
 				<h3 class="visually-hidden">Сумки</h3>
 				<ul class="shop--list">
 					<li class="shop--item product">
@@ -256,7 +256,7 @@
 				</ul> 
 			</article>
 
-			<article class="shop--article" id="clutches" data-anchor="true">
+			<article class="shop--article" id="clutches" data-anchor-shop="true">
 				<h3 class="visually-hidden">Клатчи</h3>
 				<ul class="shop--list">
 					<li class="shop--item product">
@@ -327,7 +327,7 @@
 				</ul> 
 			</article>
 
-			<article class="shop--article" id="wallets" data-anchor="true">
+			<article class="shop--article" id="wallets" data-anchor-shop="true">
 				<h3 class="visually-hidden">Кошельки</h3>
 				<ul class="shop--list">
 					<li class="shop--item product">
@@ -390,7 +390,7 @@
 		</div>
 	</section>
 
-	<section class="about-us">
+	<section class="about-us" id="about-us" data-anchor-main="true">
 		<div class="about-us--container">
 			<h2 class="about-us--header header">О нас</h2>
 
@@ -407,7 +407,7 @@
 		</div>
 	</section>
 
-	<section class="contacts">
+	<section class="contacts" id="contacts" data-anchor-main="true">
 		<h2 class="contacts--header header">Контакты</h2>
 
 		<div class="contacts--wrap">
@@ -442,10 +442,10 @@
 		</div>
 	</section>
 
-	<div class="orders--overlay orders--overlay__hide"></div>
+	<div class="orders--overlay overlay overlay__hide"></div>
 	<section class="orders orders__hide">
 
-		<button class="orders--hide">Свернуть корзину</button>
+		<button class="orders--close">Свернуть корзину</button>
 
 		<h2 class="orders--header">Корзина</h2>
 
@@ -492,12 +492,12 @@
 
 			<p class="orders--field">
 				<label class="orders--label" for="name">Ваше имя:</label>
-				<input class="orders--input orders--input__name" type="text" id="name">
+				<input class="orders--input orders--input__name" type="text" id="name" name="name" required>
 			</p>
 
 			<p class="orders--field">
 				<label class="orders--label" for="surname">Ваша фамилия:</label>
-				<input class="orders--input orders--input__surname" type="text" id="surname">
+				<input class="orders--input orders--input__surname" type="text" id="surname" name="surname" required>
 			</p>
 
 			<p class="orders--field">
@@ -508,6 +508,12 @@
 			<button class="orders--submit">Заказать</button>
 		</form>
 	</section>
+		
+	<div class="thanks-for-order--overlay overlay overlay__hide"></div>
+	<section class="thanks-for-order modal modal__hide">
+		<p class="thanks-for-order--text">Спасибо за заказ. Наш оператор свяжется с Вами в ближайшее время.</p>
+		<button class="thanks-for-order--btn">Закрыть окно</button>
+	</section> 
 
 	<script src="js/parallax.js"></script>
 	<script src="js/getPosition.js"></script>

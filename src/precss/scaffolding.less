@@ -62,14 +62,13 @@ section {
 
 .button {
   display: inline-block;
-
   font-weight: 700; 
   color: white;
   text-decoration: none;
   padding: 8px 20px;
-  border-radius: 5px;
-  background-color: #00a971; //00c781
-  box-shadow: 0 -3px darken(#00a971, 5%) inset;
+  border-radius: 6px;
+  background-color: #1f6c45; //00c781
+  box-shadow: 0 -3px darken(#1f6c45, 5%) inset; 
   transition: 0.2s;
   
   .xs-block({
@@ -78,12 +77,49 @@ section {
   });
 
   &:hover {
-    background-color: darken(#00a971, 5%);
+    background-color: darken(#1f6c45, 5%);
   }
 
   &:active {
-    background-color: darken(#00a971, 10%);
-    box-shadow: 0 -3px darken(#00a971, 15%) inset;
+    background-color: darken(#1f6c45, 10%);
+    box-shadow: 0 -3px darken(#1f6c45, 15%) inset;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 2;
+  opacity: 0.5;
+
+  &__show {
+      display: block;
+      opacity: 0.5;
+    }
+
+    &__hide {
+      display: none;
+      opacity: 0;
+    }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+
+  &__hide {
+    display: none;
+  }
+
+  &__show {
+    display: block;
   }
 }
 

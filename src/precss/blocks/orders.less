@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	position: fixed;
 	top: 0;
-	width: 30%;
+	width: 40%;
 	max-height: 100%;
 	min-height: 100%;
 	background-color: #eafdf8;
@@ -17,30 +17,10 @@
 	}
 
 	&__hide {
-		right: -30%;
+		right: -40%;
 	}
-
-	&--overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: black;
-		z-index: 1;
-
-		&__show {
-			display: block;
-			opacity: 0.5;
-		}
-
-		&__hide {
-			display: none;
-			opacity: 0;
-		}
-	} 
 	
-	&--hide {
+	&--close {
 		position: absolute;
 		top: 25px;
 		left: 10px;
@@ -52,6 +32,12 @@
 		height: 25px;
 		background: url(../../img/arrow.svg) center no-repeat;
 		background-size: contain;
+		transform: rotate(0deg);
+		transition: transform 0.8s ease;
+
+		&__rotate {
+			transform: rotate(180deg);
+		}
 	}
 
 	&--header {
@@ -68,7 +54,6 @@
 	}
 
 	&--item {
-		position: relative;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -81,7 +66,6 @@
 		border: 1px solid @accent-color;
 		border-radius: 5px;
 		text-align: center;
-		font-size: 16px;
 
 		&__name {
 			width: 130px;
@@ -108,7 +92,14 @@
 		background-color: @accent-color;
 		color: #eafdf8;
 		font-size: 20px;
-		padding: 4px 12px;
+		padding: 6px 15px;
+
+		&:hover {
+			background-color: lighten(@accent-color, 7%);
+		}
+		&:active {
+			background-color: darken(@accent-color, 7%);
+		}
 	}
 }
 
@@ -133,6 +124,7 @@
 	}
 
 	&--info {	
+		position: relative;
 		margin-right: 10px;
 		text-align: left;
 	}
@@ -144,7 +136,7 @@
 		padding: 0;
 		position: absolute;
 		top: 50%;
-		right: 10px;
+		right: -30px;
 		transform: translateY(-50%);
 		width: 12px;
 		height: 12px;
