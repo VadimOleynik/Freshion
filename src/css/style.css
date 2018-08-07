@@ -810,10 +810,10 @@ section {
 }
 .orders--input__name,
 .orders--input__surname {
-  width: 130px
+  width: 150px
 }
 .orders--input__phone {
-  width: 160px
+  width: 190px
 }
 .orders--field {
   margin-bottom: 10px
