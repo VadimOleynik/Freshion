@@ -34,6 +34,7 @@ window.onload = function() {
   var shopZone = caclZone(shop);
   var mainAnchorPositions = getPosition(mainAnchors);
   var shopAnchorPositions = getPosition(shopAnchors);
+  console.log(mainAnchorPositions); 
 
   function caclZone(el) {
   	var zone = new Object;
@@ -48,19 +49,19 @@ window.onload = function() {
 
   		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
+      for (var i = 0; i < needToggleMain.length; i++) {
+        needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
+      }
       for (var i = 0; i < mainAnchorPositions.length; i++) {
-        for (var i = 0; i < needToggleMain.length; i++) {
-          needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
-        }
-        if (scrolled >= mainAnchorPositions[i] && scrolled < mainAnchorPositions[i+1]) {
+        if (scrolled >= mainAnchorPositions[i] - 200 && scrolled < mainAnchorPositions[i+1] - 200) {
           needToggleMain[i].closest(".main-header--item").classList.add("main-header--item__active");
         }
-        else if (scrolled >= shopAnchorPositions[shopAnchorPositions.length - 1]) {
+        else if (scrolled >= mainAnchorPositions[mainAnchorPositions.length - 1] - 200) {
           needToggleMain[mainAnchorPositions.length - 1].closest(".main-header--item").classList.add("main-header--item__active");
         }
       }
 
-      if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos -400) {
+      if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
        altMenu.classList.add("alt-nav__visible");
        for (var i = 0; i < needToggleAlt.length; i++) {
         needToggleAlt[i].classList.remove("alt-nav--item__active");
@@ -84,7 +85,6 @@ window.onload = function() {
   // Плавная прокрутка 
   for (var i = 0; i < needSmooth.length; i++) {
   	needSmooth[i].addEventListener("click", function(event) {
-      console.log(this);
       event.preventDefault();
       var el = document.querySelector(this.getAttribute("href"));
       smoothScroll(el, 10, 60);
