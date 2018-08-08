@@ -122,21 +122,42 @@ window.onload = function() {
   //Добавление товаров в корзину
   var productsToOrder = 0;
   var productName;
-  var productPhoto;
   var productPrice;
-  var thisProductNumber;
-  ordersAmount.innerHTML = productsToOrder.toString();
+  var productPhotoLink;
+  var productPhotoAlt;
+  var newItemHTML = "";
+  /*var t = document.querySelector('#orders--temnplate');
+  var clone = document.importNode(t.content, true);
+  var orderName = clone.querySelector(".order--name");
+  var orderPrice = clone.querySelector(".order--price");
+  var orderPhoto = clone.querySelector(".order--img");*/
+
   for (var i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener("click", function(event) {
       event.preventDefault();
       productsToOrder++;
       ordersAmount.innerHTML = productsToOrder.toString();
       productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
-      productPrice = parseInt(this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,"")); //Оставить только цифры из строки
-      productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
-      console.log(productName,productPrice,productPhoto);
+      productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
+      productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
+      productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
 
-      /*thisProductNumber = this.closest(".shop--item").getAttribute("data-product-cod");*/
+      newItemHTML = 
+      `<img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
+      <div class="order--info">
+      <p class="order--name">${productName}</p>
+      <label class="order--label">
+      Количество:
+      <input type="number" min="1" max="10" class="order--amount" value="1">
+      </label>
+      <p class="order--price">${productPrice} <span class="orders--currency">грн.</span></p>
+      <button class="order--delete">Удалить товар</button>
+      </div>`;
+      var newItem = document.createElement("li");
+      newItem.className += " orders--item order";
+      newItem.innerHTML = newItemHTML;
+      console.log(newItem);
+      ordersList.appendChild(newItem);
     }, false);
   }
 

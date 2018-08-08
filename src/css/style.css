@@ -739,7 +739,7 @@ section {
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  width: 40%;
+  width: 45%;
   max-height: 100%;
   min-height: 100%;
   background-color: #eafdf8;
@@ -754,7 +754,7 @@ section {
   right: 0
 }
 .orders__hide {
-  right: -40%
+  right: -45%
 }
 .orders--close {
   position: absolute;
@@ -799,7 +799,9 @@ section {
   flex-wrap: wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 5px
 }
 .orders--input {
   width: 80px;
@@ -835,7 +837,7 @@ section {
   background-color: #111819
 }
 .order--img {
-  max-width: 100px
+  max-width: 90px
 }
 .order--amount {
   background-color: #eafdf8;
