@@ -14,7 +14,7 @@ window.onload = function() {
   var altMenu = document.querySelector(".alt-nav");
 
   var shop = document.querySelector("#shop");
-  var products = document.querySelectorAll("[data-product-cod]");
+  var products = document.querySelectorAll(".product");
   var productsBtn = document.querySelectorAll(".product--buy");
   var colorSwitchBtns = document.querySelectorAll(".product--color");
   var imgsOfProducts = document.querySelectorAll(".product--img");
@@ -25,6 +25,7 @@ window.onload = function() {
   var ordersAmount = document.querySelector(".main-header--amount");
   var orderBtnHide = document.querySelector(".orders--close");
   var orderOverlay = document.querySelector(".orders--overlay");
+  var orderDelete = document.querySelector(".order--deletes");
   var orderSubmit = document.querySelector(".orders--submit");
 
   var thanksModal = document.querySelector(".thanks-for-order");
@@ -126,17 +127,12 @@ window.onload = function() {
   var productPhotoLink;
   var productPhotoAlt;
   var newItemHTML = "";
-  /*var t = document.querySelector('#orders--temnplate');
-  var clone = document.importNode(t.content, true);
-  var orderName = clone.querySelector(".order--name");
-  var orderPrice = clone.querySelector(".order--price");
-  var orderPhoto = clone.querySelector(".order--img");*/
 
   for (var i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener("click", function(event) {
       event.preventDefault();
       productsToOrder++;
-      ordersAmount.innerHTML = productsToOrder.toString();
+      reWriteHTML(ordersAmount, productsToOrder);
       productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
       productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
       productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
@@ -156,7 +152,6 @@ window.onload = function() {
       var newItem = document.createElement("li");
       newItem.className += " orders--item order";
       newItem.innerHTML = newItemHTML;
-      console.log(newItem);
       ordersList.appendChild(newItem);
     }, false);
   }
@@ -177,7 +172,6 @@ window.onload = function() {
     removeAndAddClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
   }, false);
 
-
   // Модальное окно "Спасибо за заказ"
   orderSubmit.addEventListener("click", function(event) {
     event.preventDefault();
@@ -196,7 +190,6 @@ window.onload = function() {
     clearOrders(ordersList);
   }, false);
 
-
   function removeAndAddClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
     for (var i = 0; i < elemsToAddClass.length; i++) {
       elemsToAddClass[i].classList.add(classToAdd[i]);
@@ -211,6 +204,26 @@ window.onload = function() {
       ordersEl.removeChild(ordersEl.firstChild);
     }
   }
+
+  // Удаление товаров с корзины 
+  document.addEventListener('click',function(e){
+    event.preventDefault();
+    if(e.target && e.target.classList[0] == "order--delete"){
+      var thisOrder =  e.target.closest(".order");
+      var callback = function(thisOrder) {
+        thisOrder.parentNode.removeChild(thisOrder);
+        productsToOrder --;
+        reWriteHTML(ordersAmount, productsToOrder);
+      };
+      fadeOut(thisOrder, "", 40, callback);
+    }
+  });
+
+  // Перезапись содержимого элемента
+  function reWriteHTML(el, newHTMl) {
+    el.innerHTML = newHTMl.toString();
+  }
+
 
 };
 
