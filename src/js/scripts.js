@@ -99,13 +99,18 @@ window.onload = function() {
     }, false);
   }
 
-	// Переключение цветов товара 
-  var activeImg;
+	// Переключение цветов товара
   for (var i = 0; i < colorSwitchBtns.length; i++) {
     colorSwitchBtns[i].addEventListener("click", function(event) {
      event.preventDefault();	
      const index = [...colorSwitchBtns].indexOf(this);
-     activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+     var activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+     var activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
+
+     for (var i = 0; i < activeBtn.length; i++) {
+       activeBtn[i].classList.remove("product--color__active");
+     }
+     colorSwitchBtns[index].classList.add("product--color__active"); // Смена актывных кнопок
 
      if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
       for (var i = 0; i < activeImg.length; i++) {
@@ -116,11 +121,10 @@ window.onload = function() {
     else {
       return false;
     }
-
   }, false);
   }
 
-  //Добавление товаров в корзину
+  // Добавление товаров в корзину
   var productsToOrder = 0;
   var productName;
   var productPrice;
@@ -215,7 +219,7 @@ window.onload = function() {
         productsToOrder --;
         reWriteHTML(ordersAmount, productsToOrder);
       };
-      fadeOut(thisOrder, "", 40, callback);
+      fadeOut(thisOrder, "", 40, callback, thisOrder);
     }
   });
 
