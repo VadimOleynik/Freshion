@@ -12,6 +12,7 @@ window.onload = function() {
   var mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
   var shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
   var altMenu = document.querySelector(".alt-nav");
+  var details = document.querySelector(".details");
 
   var shop = document.querySelector("#shop");
   var products = document.querySelectorAll(".product");
@@ -30,10 +31,13 @@ window.onload = function() {
   var orderSubmit = document.querySelector(".orders--submit");
 
   var thanksModal = document.querySelector(".thanks-for-order");
-  var thanksModalCloseBtn = document.querySelector(".thanks-for-order--btn");
+  var thanksModalCloseBtn = document.querySelector(".modal--btn");
   var thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
 
-
+  /*details.addEventListener("click", function(event) {
+    event.preventDefault();
+  }, false);
+*/
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
   	event.preventDefault();
@@ -257,6 +261,7 @@ window.onload = function() {
   // Удаление товаров с корзины 
   document.addEventListener('click',function(e){
     if(e.target && e.target.classList[0] == "order--delete"){
+      e.preventDefault();
       var thisOrder =  e.target.closest(".order");
       var callback = function(thisOrder) {
         thisOrder.parentNode.removeChild(thisOrder);

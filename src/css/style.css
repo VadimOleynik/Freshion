@@ -191,6 +191,8 @@ section {
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+  background-color: #d7e0ca;
+  border-radius: 10px;
   z-index: 4
 }
 .modal__hide {
@@ -198,6 +200,18 @@ section {
 }
 .modal__show {
   display: block
+}
+.modal--btn {
+  font-size: 0;
+  border: none;
+  background: url(../../img/delete.svg) center no-repeat;
+  padding: 0;
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  width: 17px;
+  height: 17px;
+  background-size: contain
 }
 .header {
   font-size: 48px;
@@ -492,6 +506,9 @@ section {
   -ms-flex-item-align: center;
   align-self: center
 }
+.product--summary {
+  display: none
+}
 .red {
   background-color: #822722
 }
@@ -548,6 +565,28 @@ section {
 }
 .bordo {
   background-color: #270c1d
+}
+.details {
+  width: 90%;
+  padding: 15px
+}
+.details--name {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px
+}
+.details--img {
+  max-width: 180px;
+  margin: 0 20px;
+  float: left
+}
+.details--info {
+  margin-bottom: 10px
+}
+.details--header {
+  text-align: center;
+  font-size: 23px;
+  margin-bottom: 5px
 }
 .alt-nav {
   position: fixed;
@@ -835,7 +874,8 @@ section {
   background-color: #1f2d2e;
   color: #eafdf8;
   font-size: 20px;
-  padding: 6px 15px
+  padding: 6px 15px;
+  cursor: pointer
 }
 .orders--submit:hover {
   background-color: #2d4243
@@ -888,22 +928,8 @@ section {
 }
 .thanks-for-order {
   padding: 30px;
-  background-color: #d7e0ca;
   text-align: center;
-  line-height: 1.6;
-  border-radius: 10px
-}
-.thanks-for-order--btn {
-  font-size: 0;
-  border: none;
-  background: url(../../img/delete.svg) center no-repeat;
-  padding: 0;
-  position: absolute;
-  top: -10px;
-  right: -20px;
-  width: 17px;
-  height: 17px;
-  background-size: contain
+  line-height: 1.6
 }
 @media screen and (max-width:1400px) {
   .alt-nav--item__active .alt-nav--text {

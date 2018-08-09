@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Freshion</title> 
-	<link rel="stylesheet" href="css/style.css">  
+	<link rel="stylesheet" href="css/style.css">
 </head> 
 <body>
 
@@ -77,6 +77,27 @@
 							<b class="product--price">Цена: 650<span class="visually-hidden"> гривен</span></b>
 						</a>
 						<a href="#-buy" class="product--buy button">Купить</a>
+						
+						<div class="overlay"></div>
+						<details class="product--details details modal" open>
+
+							<summary class="product--summary">Подробная информация о выбраном товаре</summary>
+							<h4 class="details--name">Женский рюкзак из экокожи</h4>
+
+							<img class="details--img" src="img/backpacks/backpack-1-pink.png" alt="Описание первого рюкзака из экокожи">
+
+							<div class="details--wrap">
+								<h5 class="details--header">О товаре</h5>
+								<p class="details--info">Рюкзак сделан из высококачественной экокожи. Подойдет как под спортивный стиль одежды, так и под более деловой и официальный. Рюкзак можно стирать только в холодной воде. Подойдет как под спортивный стиль одежды, так и под более деловой и официальный. Рюкзак можно стирать только в холодной воде.</p>
+								<p class="details--size">Размер: 25&#215;30<span class="visually-hidden"> сантиметров</span></p>
+								<b class="details--price">Цена: 650<span class="visually-hidden"> гривен</span></b>
+								
+								<h5 class="details--header">Условия возврата товара</h5>
+								<p class="details--return">Мы отправлем данный товар наложенным платежем, чтобы Вы могли лично проверить качесто покупки. Также, мы гарантируем замену товара или возврат средств в течении 14 дней, если Вы сохранили чек.</p>
+							</div>
+
+							<button class="modal--btn">Закрыть окно</button>
+						</details>
 					</li>
 
 					<li class="shop--item product">
@@ -132,7 +153,7 @@
 					<li class="shop--item product">
 						<a href="#-more" class="product--more-info product--more-info__img">
 							<img src="img/backpacks/backpack-5-green.png" alt="Описание пятого рюкзака. Цвет: темно-зеленый" class="product--img product--img__active" width="1024" height="1024" data-product-cod="6">
-							<img src="img/backpacks/backpack-5-red.png" alt="Описание пятого рюкзака. Цвет: красный" class="product--img" style="display: inline-block" width="600" height="600" data-product-cod="7">
+							<img src="img/backpacks/backpack-5-red.png" alt="Описание пятого рюкзака. Цвет: красный" class="product--img" width="600" height="600" data-product-cod="7">
 						</a>
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
@@ -479,14 +500,14 @@
 				<input class="orders--input orders--input__phone" type="tel" id="phone" name="phone" value="+380 (__) ___-__-__" pattern="^\+380 \((17|29|33|44)\) [0-9]{3}-[0-9]{2}-[0-9]{2}$" required">
 			</p>
 
-			<button class="orders--submit">Заказать</button>
+			<input type="submit" class="orders--submit" value ="Заказать">
 		</form>
 	</section>
-		
+
 	<div class="thanks-for-order--overlay overlay overlay__hide"></div>
 	<section class="thanks-for-order modal modal__hide">
 		<p class="thanks-for-order--text">Спасибо за заказ. Наш оператор свяжется с Вами в ближайшее время.</p>
-		<button class="thanks-for-order--btn">Закрыть окно</button>
+		<button class="modal--btn">Закрыть окно</button>
 	</section> 
 
 	<script src="js/parallax.js"></script>

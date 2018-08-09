@@ -97,14 +97,14 @@ section {
   opacity: 0.5;
 
   &__show {
-      display: block;
-      opacity: 0.5;
-    }
+    display: block;
+    opacity: 0.5;
+  }
 
-    &__hide {
-      display: none;
-      opacity: 0;
-    }
+  &__hide {
+    display: none;
+    opacity: 0;
+  }
 }
 
 .modal {
@@ -112,14 +112,29 @@ section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: @modal-bg;
+  border-radius: 10px;
   z-index: 4;
-
   &__hide {
     display: none;
   }
 
   &__show {
     display: block;
+  }
+
+  &--btn {
+    font-size: 0;
+    border: none;
+    background: none;
+    padding: 0;
+    position: absolute;
+    top: -10px;
+    right: -20px;
+    width: 17px;
+    height: 17px;
+    background: url(../../img/delete.svg) center no-repeat;
+    background-size: contain;
   }
 }
 
