@@ -241,7 +241,6 @@ section {
   display: inline-block
 }
 .main-header--item:active .main-header--link,
-.main-header--item:focus .main-header--link,
 .main-header--item:hover .main-header--link,
 .main-header--item__active .main-header--link {
   color: #d2f9f9
@@ -249,6 +248,9 @@ section {
 .main-header--link {
   display: block;
   color: #1f2d2e
+}
+.main-header--link:focus {
+  color: #d2f9f9
 }
 .main-header--mobile {
   padding: 0;
@@ -459,7 +461,12 @@ section {
   transition: border .2s ease-in-out
 }
 .product--color:active,
-.product--color:hover,
+.product--color:focus,
+.product--color:hover {
+  outline: 0;
+  box-sizing: border-box;
+  border: 2px solid #faee01
+}
 .product--color__active {
   box-sizing: border-box;
   border: 2px solid #faee01
@@ -949,7 +956,6 @@ section {
     border: 2px solid rgba(210,249,249,.7);
     border-bottom: none
   }
-  .main-header--item:focus .main-header--link,
   .main-header--item:hover .main-header--link {
     background-color: rgba(31,45,46,.4)
   }
@@ -958,6 +964,9 @@ section {
   }
   .main-header--item:last-child {
     border-bottom: 2px solid rgba(210,249,249,.7)
+  }
+  .main-header--link:focus {
+    background-color: rgba(31,45,46,.4)
   }
   .main-header--link {
     padding: 20px 30px

@@ -24,6 +24,7 @@ window.onload = function() {
   var orderBtnShow = document.querySelector(".main-header--orders");
   var ordersAmount = document.querySelector(".main-header--amount");
   var orderBtnHide = document.querySelector(".orders--close");
+  var orderPriceSumm = document.querySelector(".price--amount");
   var orderOverlay = document.querySelector(".orders--overlay");
   var orderDelete = document.querySelector(".order--deletes");
   var orderSubmit = document.querySelector(".orders--submit");
@@ -142,9 +143,38 @@ window.onload = function() {
       var orderPrice = new Array;
       var orderPhotoLink = new Array;
       var orderAmount = 1; 
-
-      // Увеличить количество товаров, если его добавили в корзину больше одного раза
+      var amountsOfOrders = new Array; 
+      
       if (!order.length) { // Создать первый заказ
+        createNewOrderItem();
+        orderPriceSumm.innerHTML = calcOrdersPrice([productPrice], [1]).toString();
+      }
+      else {
+        for (var j = 0; j < order.length; j++) {
+          orderName[j] = order[j].querySelector(".order--name").innerHTML;
+          orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
+          orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); // Массивы названий, цен и ссылок товаров, которые в корзине
+          amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");
+        }
+        
+        // Увеличить количество товаров, если его добавили в корзину больше одного раза
+        var nameIndex = orderName.indexOf(productName);
+        var priceIndex = orderPrice.indexOf(productPrice);
+        var photoLinkIndex = orderPhotoLink.indexOf(productPhotoLink); // Проверка совпадения параметров добавляемого товара с параметрами товаров, которые уже в корзине 
+        
+        if(nameIndex !== -1 && priceIndex !== -1 && photoLinkIndex !== -1) {
+          var number = +(order[nameIndex].querySelector(".order--amount").getAttribute("value"));
+          number++;
+          order[nameIndex].querySelector(".order--amount").setAttribute("value", number);
+          console.log (number);
+        }
+        else {
+          createNewOrderItem();
+
+          /*console.log(calcOrdersPrice(orderPrice, [1,5], 10));*/
+        }
+      }
+      function createNewOrderItem() {
         var newItemHTML = 
         `<img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
         <div class="order--info">
@@ -161,43 +191,8 @@ window.onload = function() {
         newItem.innerHTML = newItemHTML;
         ordersList.appendChild(newItem);
       }
-      else {
-        for (var j = 0; j < order.length; j++) {
-          orderName[j] = order[j].querySelector(".order--name").innerHTML;
-          orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
-          orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); // Массивы названий, цен и ссылок товаров, которые в корзине
-        }
-
-        var nameIndex = orderName.indexOf(productName);
-        var priceIndex = orderPrice.indexOf(productPrice);
-        var photoLinkIndex = orderPhotoLink.indexOf(productPhotoLink); // Проверка совпадения параметров добавляемого товара с параметрами товаров, которые уже в корзине 
-
-        if(nameIndex !== -1 && priceIndex !== -1 && photoLinkIndex !== -1) {
-          orderAmount++;
-          order[nameIndex].querySelector(".order--amount").setAttribute("value", orderAmount);
-        }
-        else {
-          var newItemHTML = 
-          `<img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
-          <div class="order--info">
-          <p class="order--name">${productName}</p>
-          <label class="order--label">
-          Количество:
-          <input type="number" min="1" max="10" class="order--amount" value="1">
-          </label>
-          <p class="order--price">${productPrice} <span class="orders--currency">грн.</span></p>
-          <button class="order--delete">Удалить товар</button>
-          </div>`;
-          var newItem = document.createElement("li");
-          newItem.className += " orders--item order";
-          newItem.innerHTML = newItemHTML;
-          ordersList.appendChild(newItem);
-        }
-      }
-
     }, false);
   }
-
 
   // Открытие корзины
   orderBtnShow.addEventListener("click", function(event) {
@@ -217,7 +212,6 @@ window.onload = function() {
 
   // Модальное окно "Спасибо за заказ"
   orderSubmit.addEventListener("click", function(event) {
-    event.preventDefault();
     removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
   }, false);
 
@@ -248,9 +242,20 @@ window.onload = function() {
     }
   }
 
+
+  // Подсчет суммы заказа
+  function calcOrdersPrice(prices, amounts, promocod) {
+    var promocod = promocod || 0;
+    var summ = 0;
+    for (var i = 0; i < prices.length; i++) {
+      summ += prices[i] * amounts[i];
+    }
+    return summ - (summ / 100 * promocod);
+  }
+
+
   // Удаление товаров с корзины 
   document.addEventListener('click',function(e){
-    event.preventDefault();
     if(e.target && e.target.classList[0] == "order--delete"){
       var thisOrder =  e.target.closest(".order");
       var callback = function(thisOrder) {

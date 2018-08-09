@@ -82,8 +82,7 @@
 			color: @secondary-accent-color;
 		}
 
-		&:hover .main-header--link,
-		&:focus .main-header--link {
+		&:hover .main-header--link {
 			color: @secondary-accent-color;
 			.md-block({
 				background-color: fade(@header-text, 40%);
@@ -104,6 +103,12 @@
 	}
 
 	&--link {
+		&:focus {
+			color: @secondary-accent-color;
+			.md-block({
+				background-color: fade(@header-text, 40%);
+			});	
+		}
 		display: block;
 		color: @header-text;
 
