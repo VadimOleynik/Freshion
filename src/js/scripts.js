@@ -22,6 +22,7 @@ window.onload = function() {
 
   var orders = document.querySelector(".orders");
   var ordersList = document.querySelector(".orders--list");
+  var ordersInput = document.querySelector(".orders--input");
   var orderBtnShow = document.querySelector(".main-header--orders");
   var ordersAmount = document.querySelector(".main-header--amount");
   var orderBtnHide = document.querySelector(".orders--close");
@@ -34,10 +35,6 @@ window.onload = function() {
   var thanksModalCloseBtn = document.querySelector(".modal--btn");
   var thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
 
-  /*details.addEventListener("click", function(event) {
-    event.preventDefault();
-  }, false);
-*/
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
   	event.preventDefault();
@@ -135,9 +132,6 @@ window.onload = function() {
   for (var i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener("click", function(event) {
       event.preventDefault();
-      productsToOrder++;
-      ordersAmount.innerHTML = productsToOrder.toString();
-
       var productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
       var productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
       var productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
@@ -146,20 +140,22 @@ window.onload = function() {
       var orderName = new Array;
       var orderPrice = new Array;
       var orderPhotoLink = new Array;
-      var orderAmount = 1; 
       var amountsOfOrders = new Array; 
       
       if (!order.length) { // Создать первый заказ
         createNewOrderItem();
         orderPriceSumm.innerHTML = calcOrdersPrice([productPrice], [1]).toString();
+        ordersAmount.innerHTML = 1;
       }
       else {
         for (var j = 0; j < order.length; j++) {
           orderName[j] = order[j].querySelector(".order--name").innerHTML;
           orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
-          orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); // Массивы названий, цен и ссылок товаров, которые в корзине
-          amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");
+          orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); 
+          amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");// Массивы названий, цен, ссылок и количеств товаров, которые в корзине
         }
+
+        ordersAmount.innerHTML = calcOrdersAmount(amountsOfOrders) + 1;
         
         // Увеличить количество товаров, если его добавили в корзину больше одного раза
         var nameIndex = orderName.indexOf(productName);
@@ -167,14 +163,12 @@ window.onload = function() {
         var photoLinkIndex = orderPhotoLink.indexOf(productPhotoLink); // Проверка совпадения параметров добавляемого товара с параметрами товаров, которые уже в корзине 
         
         if(nameIndex !== -1 && priceIndex !== -1 && photoLinkIndex !== -1) {
-          var number = +(order[nameIndex].querySelector(".order--amount").getAttribute("value"));
-          number++;
-          order[nameIndex].querySelector(".order--amount").setAttribute("value", number);
-          console.log (number);
+          var orderAmount = +(order[nameIndex].querySelector(".order--amount").value);
+          orderAmount++;
+          order[nameIndex].querySelector(".order--amount").setAttribute("value", orderAmount);
         }
         else {
           createNewOrderItem();
-
           /*console.log(calcOrdersPrice(orderPrice, [1,5], 10));*/
         }
       }
@@ -197,6 +191,15 @@ window.onload = function() {
       }
     }, false);
   }
+
+  // Изминение числа заказов при изминении поля "Количество"
+  document.addEventListener("input", function(e){
+    if(e.target && e.target.classList[0] == "order--amount"){ // e.target = this
+      e.target.setAttribute("value", e.target.value);
+      getAndSetOrdersAmount();
+    }
+  }, false);
+
 
   // Открытие корзины
   orderBtnShow.addEventListener("click", function(event) {
@@ -246,6 +249,14 @@ window.onload = function() {
     }
   }
 
+  // Подсчет количества заказов (такая формула нужна, чтобы динамически менять количество заказов, при изменении поля "Количества". Изменение количества при клике на кнопку "Купить" с этим не справится)
+  function calcOrdersAmount(amounts) {
+    var summ = 0;
+    for (var i = 0; i < amounts.length; i++) {
+      summ += +amounts[i];
+    }
+    return summ;
+  }
 
   // Подсчет суммы заказа
   function calcOrdersPrice(prices, amounts, promocod) {
@@ -259,17 +270,25 @@ window.onload = function() {
 
 
   // Удаление товаров с корзины 
-  document.addEventListener('click',function(e){
+  document.addEventListener('click', function(e){
     if(e.target && e.target.classList[0] == "order--delete"){
       e.preventDefault();
       var thisOrder =  e.target.closest(".order");
       var callback = function(thisOrder) {
         thisOrder.parentNode.removeChild(thisOrder);
-        productsToOrder --;
-        ordersAmount.innerHTML = productsToOrder.toString();
+        getAndSetOrdersAmount();
       };
       fadeOut(thisOrder, "", 40, callback, thisOrder);
     }
   });
+
+  function getAndSetOrdersAmount() {
+    var order = document.querySelectorAll(".order");
+    var amountsOfOrders = new Array;
+    for (var i = 0; i < order.length; i++) {
+      amountsOfOrders[i] = order[i].querySelector(".order--amount").getAttribute("value");
+    }
+    ordersAmount.innerHTML = calcOrdersAmount(amountsOfOrders);
+  }
 };
 
