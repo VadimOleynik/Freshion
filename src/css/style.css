@@ -568,25 +568,41 @@ section {
 }
 .details {
   width: 90%;
-  padding: 15px
+  padding: 25px 15px
 }
 .details--name {
-  font-size: 26px;
+  font-size: 30px;
   text-align: center;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  color: #a6603a
 }
 .details--img {
-  max-width: 180px;
+  max-height: 200px;
   margin: 0 20px;
   float: left
 }
-.details--info {
-  margin-bottom: 10px
+.details--wrap {
+  margin-bottom: 20px
 }
 .details--header {
   text-align: center;
   font-size: 23px;
-  margin-bottom: 5px
+  margin-bottom: 5px;
+  color: #a6603a
+}
+.details--info {
+  font-size: 18px;
+  margin-bottom: 10px
+}
+.details--size {
+  font-size: 23px;
+  margin-bottom: 10px
+}
+.details--price {
+  font-size: 23px
+}
+.details--return {
+  font-size: 18px
 }
 .alt-nav {
   position: fixed;
@@ -848,6 +864,21 @@ section {
   align-items: center;
   margin-left: 10px;
   margin-bottom: 5px
+}
+.orders--label__descending {
+  position: relative
+}
+.orders--label__descending::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -24px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: url(../../img/check-mark.svg) center/contain no-repeat
 }
 .orders--input {
   width: 80px;

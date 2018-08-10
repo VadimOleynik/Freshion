@@ -27,6 +27,7 @@ window.onload = function() {
   var ordersAmount = document.querySelector(".main-header--amount");
   var orderBtnHide = document.querySelector(".orders--close");
   var orderPriceSumm = document.querySelector(".price--amount");
+  var promocod = document.querySelector("#cod");
   var orderOverlay = document.querySelector(".orders--overlay");
   var orderDelete = document.querySelector(".order--deletes");
   var orderSubmit = document.querySelector(".orders--submit");
@@ -166,10 +167,11 @@ window.onload = function() {
           var orderAmount = +(order[nameIndex].querySelector(".order--amount").value);
           orderAmount++;
           order[nameIndex].querySelector(".order--amount").setAttribute("value", orderAmount);
+          getOrdersPriceAndAmount();
         }
         else {
           createNewOrderItem();
-          /*console.log(calcOrdersPrice(orderPrice, [1,5], 10));*/
+          getOrdersPriceAndAmount();
         }
       }
       function createNewOrderItem() {
@@ -190,13 +192,14 @@ window.onload = function() {
         ordersList.appendChild(newItem);
       }
     }, false);
-  }
+}
 
-  // Изминение числа заказов при изминении поля "Количество"
+  // Изменение числа заказов при изменении поля "Количество"
   document.addEventListener("input", function(e){
     if(e.target && e.target.classList[0] == "order--amount"){ // e.target = this
       e.target.setAttribute("value", e.target.value);
       getAndSetOrdersAmount();
+      getOrdersPriceAndAmount();
     }
   }, false);
 
@@ -232,6 +235,20 @@ window.onload = function() {
     event.preventDefault();
     removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
     clearOrders(ordersList);
+    orderPriceSumm.innerHTML = 0;
+  }, false);
+
+  // Введение промокода
+  promocod.addEventListener("input", function(event) {
+    event.preventDefault();
+    if (this.value == "1254") {
+      this.closest(".orders--label__cod").classList.add("orders--label__descending");
+      getOrdersPriceAndAmount();
+    }
+    else {
+      this.closest(".orders--label__cod").classList.remove("orders--label__descending");
+      getOrdersPriceAndAmount();
+    }
   }, false);
 
   function removeAndAddClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
@@ -262,21 +279,28 @@ window.onload = function() {
   function calcOrdersPrice(prices, amounts, promocod) {
     var promocod = promocod || 0;
     var summ = 0;
+    var order = document.querySelectorAll(".order");
+    var orderPrice = new Array;
+    var amountsOfOrders = new Array; 
+    for (var j = 0; j < order.length; j++) {
+      orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
+      amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");
+    }
     for (var i = 0; i < prices.length; i++) {
       summ += prices[i] * amounts[i];
     }
     return summ - (summ / 100 * promocod);
   }
 
-
   // Удаление товаров с корзины 
-  document.addEventListener('click', function(e){
+  document.addEventListener('click', function(e) {
     if(e.target && e.target.classList[0] == "order--delete"){
       e.preventDefault();
       var thisOrder =  e.target.closest(".order");
       var callback = function(thisOrder) {
         thisOrder.parentNode.removeChild(thisOrder);
         getAndSetOrdersAmount();
+        getOrdersPriceAndAmount();
       };
       fadeOut(thisOrder, "", 40, callback, thisOrder);
     }
@@ -289,6 +313,17 @@ window.onload = function() {
       amountsOfOrders[i] = order[i].querySelector(".order--amount").getAttribute("value");
     }
     ordersAmount.innerHTML = calcOrdersAmount(amountsOfOrders);
+  }
+
+  function getOrdersPriceAndAmount() {
+    var order = document.querySelectorAll(".order");
+    var orderPrice = new Array;
+    var amountsOfOrders = new Array; 
+    for (var j = 0; j < order.length; j++) {
+      orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
+      amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");
+    }
+    orderPriceSumm.innerHTML = calcOrdersPrice(orderPrice, amountsOfOrders);
   }
 };
 

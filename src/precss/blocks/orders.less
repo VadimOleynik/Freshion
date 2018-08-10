@@ -61,6 +61,23 @@
 		margin-bottom: 5px;
 	}
 
+	&--label {
+		&__descending {
+			position: relative;
+			&::after {
+				content: "";	
+				position: absolute;
+				top: 50%;
+				right: -24px;
+				transform: translateY(-50%);
+				width: 18px;
+				height: 18px;
+				background: url(../../img/check-mark.svg) center no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+
 	&--input {
 		width: 80px;
 		padding: 2px 3px;

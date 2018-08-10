@@ -78,8 +78,8 @@
 						</a>
 						<a href="#-buy" class="product--buy button">Купить</a>
 						
-						<!--<div class="overlay"></div>
-						 <details class="product--details details modal" open>
+	<!--					<div class="overlay"></div>
+ 						 <details class="product--details details modal" open>
 						
 							<summary class="product--summary">Подробная информация о выбраном товаре</summary>
 							<h4 class="details--name">Женский рюкзак из экокожи</h4>
@@ -90,11 +90,11 @@
 								<h5 class="details--header">О товаре</h5>
 								<p class="details--info">Рюкзак сделан из высококачественной экокожи. Подойдет как под спортивный стиль одежды, так и под более деловой и официальный. Рюкзак можно стирать только в холодной воде. Подойдет как под спортивный стиль одежды, так и под более деловой и официальный. Рюкзак можно стирать только в холодной воде.</p>
 								<p class="details--size">Размер: 25&#215;30<span class="visually-hidden"> сантиметров</span></p>
-								<b class="details--price">Цена: 650<span class="visually-hidden"> гривен</span></b>
-								
+								<b class="details--price">Цена: 650<span class="details--currency"> грн.</span></b>
+							</div>
+
 								<h5 class="details--header">Условия возврата товара</h5>
 								<p class="details--return">Мы отправлем данный товар наложенным платежем, чтобы Вы могли лично проверить качесто покупки. Также, мы гарантируем замену товара или возврат средств в течении 14 дней, если Вы сохранили чек.</p>
-							</div>
 						
 							<button class="modal--btn">Закрыть окно</button>
 						</details> -->
@@ -475,8 +475,10 @@
 			</ul>
 
 			<p class="orders--field not-necessary">
-				<label class="orders--label" for="cod">Промокод:</label>
-				<input class="orders--input orders--input__cod" type="text" id="cod">
+				<label class="orders--label orders--label__cod">
+					Промокод:
+					<input class="orders--input orders--input__cod" type="text" id="cod">
+				</label>
 			</p>
 
 			<p class="orders--field price">

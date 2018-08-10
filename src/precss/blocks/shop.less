@@ -124,7 +124,6 @@
 		display: block;
 		margin-top: auto;
 		font-size: 27px;
-		color: #028e72;
 		font-style: italic;
 		color: @price-color;
 		.xs-block({
@@ -220,27 +219,49 @@
 
 .details {
 	width: 90%;
-	padding: 15px;
+	padding: 25px 15px;
 
 	&--name {	
-		font-size: 26px;
+		font-size: 30px;
 		text-align: center;
 		margin-bottom: 20px;
+		color: @price-color;
 	}	
 
 	&--img {
-		max-width: 180px;
+		max-height: 200px;
 		margin: 0 20px;	
 		float: left;
 	}
 
-	&--info {
-		margin-bottom: 10px;
+	&--wrap {
+		margin-bottom: 20px;
 	}
 
 	&--header {
 		text-align: center;
 		font-size: 23px;
 		margin-bottom: 5px;
+		color: @price-color;	
 	}
+
+	&--info {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	&--size {
+		font-size: 23px;
+		margin-bottom: 10px;
+	}
+
+	&--price {
+		font-size: 23px;
+	}
+
+	&--return {
+		font-size: 18px;
+	}
+
+	
 }
