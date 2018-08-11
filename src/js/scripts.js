@@ -26,6 +26,7 @@ window.onload = function() {
   var ordersInput = document.querySelectorAll(".orders--input__required");
   var orderBtnShow = document.querySelector(".main-header--orders");
   var ordersAmount = document.querySelector(".main-header--amount");
+  var cart = document.querySelector(".main-header--buy"); 
   var orderBtnHide = document.querySelector(".orders--close");
   var orderPriceSumm = document.querySelector(".price--amount");
   var promocod = document.querySelector("#cod");
@@ -130,14 +131,14 @@ window.onload = function() {
   }, false);
   }
 
-  // Добавление товаров в корзину
+  // Добавление товаров в корзину 
   var productsToOrder = 0;
-
   for (var i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener("click", function(event) {
-      event.preventDefault();
+      event.preventDefault(); 
       var productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
       var productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
+      var productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
       var productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
       var productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
       var order = document.querySelectorAll(".order");
@@ -146,11 +147,15 @@ window.onload = function() {
       var orderPhotoLink = new Array;
       var amountsOfOrders = new Array; 
       ordersEmpty.hidden = true;
+
+      cart.classList.add("main-header--buy__rotate");
       
       if (!order.length) { // Создать первый заказ
         createNewOrderItem();
         orderPriceSumm.innerHTML = productPrice;
+        setTimeout(function() {
         ordersAmount.innerHTML = 1;
+      }, 500)
       }
       else {
         for (var j = 0; j < order.length; j++) {
@@ -197,6 +202,16 @@ window.onload = function() {
       }
     }, false);
   }
+
+  // Удаление класса у корзины после окончания анимации. Два синтаксиса для разных браузеров
+  cart.addEventListener("webkitAnimationEnd", function(event) {
+    cart.classList.remove("main-header--buy__rotate");
+  }, false);
+  cart.addEventListener("animationend",  function(event) {
+    cart.classList.remove("main-header--buy__rotate");
+  }, false);
+
+
 
   // Изменение числа заказов при изменении поля "Количество"
   document.addEventListener("input", function(e){
@@ -285,7 +300,10 @@ window.onload = function() {
       if (needIter) {
         amountSumm++;
       }
-      ordersAmount.innerHTML = amountSumm.toString();
+      setTimeout(function() {
+        ordersAmount.innerHTML = amountSumm.toString();
+      }, 500)
+      
       for (var i = 0; i < orderPrice.length; i++) {
         priceSumm += orderPrice[i] * amountsOfOrders[i];
       }
@@ -329,7 +347,7 @@ window.onload = function() {
 
 
   function formValid(form) {
-    var inputs = form.querySelector("orders--input__required");
+    var inputs = form.querySelector(".orders--input__required");
     var name = form.querySelector("#name");
     var surname = form.querySelector("#surname");
     var phone = form.querySelector("#phone");

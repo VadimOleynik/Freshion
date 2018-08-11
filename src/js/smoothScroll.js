@@ -20,6 +20,16 @@ function currentYPosition() {
   	} return y;
   }
 
+  function elmXPosition(elm, extraOffset) {
+    var extraOffset = extraOffset || 0;
+    var x = elm.offsetLeft - extraOffset;
+    var node = elm;
+    while (node.offsetParent && node.offsetParent != document.body) {
+      node = node.offsetParent;
+      x += node.offsetLeft;
+    } return x;
+  }
+
 
   function smoothScroll(elm, speed, extraOffset) {
   	var speed = speed || 10;

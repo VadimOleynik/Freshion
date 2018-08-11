@@ -330,6 +330,30 @@ section {
   height: 38px;
   background: url(../img/cart.svg) center/cover no-repeat
 }
+.main-header--buy__rotate::before {
+  -webkit-animation: 1s rotate;
+  animation: 1s rotate
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
 .shop-nav {
   background: url(../../img/nav-bg.jpg) center/cover no-repeat;
   font-size: 28px;

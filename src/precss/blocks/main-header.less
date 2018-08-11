@@ -201,5 +201,19 @@
 				height: 35px;
 			});
 		}
+
+		&__rotate {
+			&::before {
+				animation: rotate 1s ease;
+			}
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		}
 	}
 }
