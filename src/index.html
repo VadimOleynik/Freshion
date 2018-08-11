@@ -470,11 +470,11 @@
 
 		<h2 class="orders--header">Корзина</h2>
 
-		<form class="orders--form">
+		<form class="orders--form" id="orders--form">
 			<ul class="orders--list">
 			</ul>
 
-			<p class="orders--field not-necessary">
+			<p class="orders--field">
 				<label class="orders--label orders--label__cod">
 					Промокод:
 					<input class="orders--input orders--input__cod" type="text" id="cod">
@@ -489,21 +489,24 @@
 
 			<p class="orders--field">
 				<label class="orders--label" for="name">Ваше имя:</label>
-				<input class="orders--input orders--input__name" type="text" id="name" name="name" required>
+				<input class="orders--input orders--input__name orders--input__required" type="text" id="name" name="name" pattern="^[а-яФА-Я]+$" required>
 			</p>
 
 			<p class="orders--field">
 				<label class="orders--label" for="surname">Ваша фамилия:</label>
-				<input class="orders--input orders--input__surname" type="text" id="surname" name="surname" required>
+				<input class="orders--input orders--input__surname orders--input__required" type="text" id="surname" name="surname" pattern="^[а-яФА-Я]+$" required>
 			</p>
 
 			<p class="orders--field">
 				<label class="orders--label" for="phone">Ваш номер:</label>
-				<input class="orders--input orders--input__phone" type="tel" id="phone" name="phone" value="+380 (__) ___-__-__" pattern="^\+380 \((17|29|33|44)\) [0-9]{3}-[0-9]{2}-[0-9]{2}$" required">
+				<input class="orders--input orders--input__phone orders--input__required" type="tel" id="phone" name="phone" value="+380 (__) ___-__-__" pattern="^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$" required>
 			</p>
 
 			<input type="submit" class="orders--submit" value ="Заказать">
 		</form>
+
+		<span class="orders--empty" hidden>Ваша корзина пуста</span>
+		<span class="orders--error" hidden>Неверно заполненная форма</span>
 	</section>
 
 	<div class="thanks-for-order--overlay overlay overlay__hide"></div>

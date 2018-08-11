@@ -914,6 +914,10 @@ section {
 .orders--submit:active {
   background-color: #111819
 }
+.orders--empty,
+.orders--error {
+  color: red
+}
 .order--img {
   max-width: 90px
 }

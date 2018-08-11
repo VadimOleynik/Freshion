@@ -21,8 +21,9 @@ window.onload = function() {
   var imgsOfProducts = document.querySelectorAll(".product--img");
 
   var orders = document.querySelector(".orders");
+  var ordersForm = document.querySelector("#orders--form");
   var ordersList = document.querySelector(".orders--list");
-  var ordersInput = document.querySelector(".orders--input");
+  var ordersInput = document.querySelectorAll(".orders--input__required");
   var orderBtnShow = document.querySelector(".main-header--orders");
   var ordersAmount = document.querySelector(".main-header--amount");
   var orderBtnHide = document.querySelector(".orders--close");
@@ -31,6 +32,8 @@ window.onload = function() {
   var orderOverlay = document.querySelector(".orders--overlay");
   var orderDelete = document.querySelector(".order--deletes");
   var orderSubmit = document.querySelector(".orders--submit");
+  var ordersEmpty = document.querySelector(".orders--empty");
+  var ordersError = document.querySelector(".orders--error");
 
   var thanksModal = document.querySelector(".thanks-for-order");
   var thanksModalCloseBtn = document.querySelector(".modal--btn");
@@ -142,6 +145,7 @@ window.onload = function() {
       var orderPrice = new Array;
       var orderPhotoLink = new Array;
       var amountsOfOrders = new Array; 
+      ordersEmpty.hidden = true;
       
       if (!order.length) { // Создать первый заказ
         createNewOrderItem();
@@ -219,24 +223,6 @@ window.onload = function() {
     removeAndAddClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
   }, false);
 
-  // Модальное окно "Спасибо за заказ"
-  orderSubmit.addEventListener("click", function(event) {
-    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
-  }, false);
-
-  thanksModalCloseBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
-    clearOrders(ordersList);
-  }, false);
-
-  thanksModalOverlay.addEventListener("click", function(event) {
-    event.preventDefault();
-    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
-    clearOrders(ordersList);
-    orderPriceSumm.innerHTML = 0;
-  }, false);
-
   // Введение промокода
   promocod.addEventListener("input", function(event) {
     event.preventDefault();
@@ -263,16 +249,7 @@ window.onload = function() {
     while(ordersEl.firstChild) {
       ordersEl.removeChild(ordersEl.firstChild);
     }
-  }
-
-  // Подсчет количества заказов (такая формула нужна, чтобы динамически менять количество заказов, при изменении поля "Количества". Изменение количества при клике на кнопку "Купить" с этим не справится)
-  function calcOrdersAmount(amounts) {
-    var summ = 0;
-    for (var i = 0; i < amounts.length; i++) {
-      summ += +amounts[i];
-    }
-    return summ;
-  }
+  } 
 
   // Удаление товаров с корзины 
   document.addEventListener('click', function(e) {
@@ -315,6 +292,66 @@ window.onload = function() {
       orderPriceSumm.innerHTML = (priceSumm - (priceSumm / 100 * discount)).toString();
     }
   };
+
+  // Действия при отправке формы (дополнительная валидация данных, вывод модального окна)
+  ordersForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    if(!ordersList.querySelector(".orders--item")) {
+      ordersEmpty.hidden = false;
+      return false;
+    }
+    formValid(ordersForm);
+    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
+  }, false);
+
+  thanksModalCloseBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
+    clearOrders(ordersList);
+    ordersForm.reset();
+  }, false);
+
+  thanksModalOverlay.addEventListener("click", function(event) {
+    event.preventDefault();
+    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
+    clearOrders(ordersList);
+    ordersForm.reset();
+    orderPriceSumm.innerHTML = 0;
+  }, false);
+
+  // Скрытие надписи об ошибке, при начале заполнения формы
+  for (var i = 0; i < ordersInput.length; i++) {
+    ordersInput[i].addEventListener("input", function(event) {
+      event.preventDefault();
+      ordersError.hidden = true;
+    }, false);
+  }
+
+
+  function formValid(form) {
+    var inputs = form.querySelector("orders--input__required");
+    var name = form.querySelector("#name");
+    var surname = form.querySelector("#surname");
+    var phone = form.querySelector("#phone");
+
+    for (var i = 0; i < inputs.length; i++) {
+      if(!inputs[i].value) {
+        ordersError.hidden = false;
+      }
+    }
+
+    if (!name.value.match(/^[а-яФА-Я]+$/)) {
+      ordersError.hidden = false;
+    }
+
+    if (!surname.value.match(/^[а-яФА-Я]+$/)) {
+      ordersError.hidden = false;
+    }
+
+    if (!phone.value.match(/^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/)) {
+      ordersError.hidden = false;
+    }
+  }
 
 };
 
