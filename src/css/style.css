@@ -953,8 +953,11 @@ section {
 .orders--error {
   color: red
 }
+.order--more-info {
+  display: inline-block
+}
 .order--img {
-  max-width: 90px
+  max-width: 100px
 }
 .order--amount {
   background-color: #eafdf8;

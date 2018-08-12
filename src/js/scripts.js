@@ -12,13 +12,16 @@ window.onload = function() {
   var mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
   var shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
   var altMenu = document.querySelector(".alt-nav");
-  var details = document.querySelector(".details");
-
+  
   var shop = document.querySelector("#shop");
   var products = document.querySelectorAll(".product");
+  var moreInfo = document.querySelectorAll(".product--more-info");
+  var moreInfoModal = document.querySelectorAll(".product--details");
+  var moreInfoOverlay = document.querySelectorAll(".product--details");
   var productsBtn = document.querySelectorAll(".product--buy");
   var colorSwitchBtns = document.querySelectorAll(".product--color");
   var imgsOfProducts = document.querySelectorAll(".product--img");
+  var imgDetails = document.querySelectorAll(".details--img");
 
   var orders = document.querySelector(".orders");
   var ordersForm = document.querySelector("#orders--form");
@@ -35,6 +38,10 @@ window.onload = function() {
   var orderSubmit = document.querySelector(".orders--submit");
   var ordersEmpty = document.querySelector(".orders--empty");
   var ordersError = document.querySelector(".orders--error");
+
+  var modal = document.querySelectorAll(".modal");
+  var overlay = document.querySelectorAll(".overlay");
+  var modalCloseBtn = document.querySelectorAll(".modal--btn");
 
   var thanksModal = document.querySelector(".thanks-for-order");
   var thanksModalCloseBtn = document.querySelector(".modal--btn");
@@ -131,6 +138,45 @@ window.onload = function() {
   }, false);
   }
 
+  // Модальное окно с подробной информацией о товаре 
+  for (var i = 0; i < moreInfo.length; i++) {
+    moreInfo[i].addEventListener("click", function(event) {
+      var atr = this.getAttribute("href");
+      var modal = document.querySelector(atr);
+      var overlay = modal.previousElementSibling;
+      addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
+      
+      var img = this.closest(".product").querySelector(".product--img__active");
+      const index = [...imgsOfProducts].indexOf(img);
+
+      for (var i = 0; i < imgDetails.length; i++) {
+       imgDetails[i].classList.remove("details--img__active");
+     }
+
+     console.log(imgDetails);
+
+     imgDetails[index].classList.add("details--img__active");
+    }, false);
+  }
+
+  // Скрытие модальных окон
+  for (var i = 0; i < overlay.length; i++) {
+    overlay[i].addEventListener("click", function(event) {
+      event.preventDefault();
+      var modal = this.nextElementSibling;
+      addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
+    }, false);
+  }
+
+  for (var i = 0; i < modalCloseBtn.length; i++) {
+    modalCloseBtn[i].addEventListener("click", function(event) {
+      event.preventDefault();
+      var modal = this.closest(".modal");
+      var overlay = modal.previousElementSibling;
+      addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
+    }, false);
+  }
+
   // Добавление товаров в корзину 
   var productsToOrder = 0;
   for (var i = 0; i < productsBtn.length; i++) {
@@ -154,8 +200,8 @@ window.onload = function() {
         createNewOrderItem();
         orderPriceSumm.innerHTML = productPrice;
         setTimeout(function() {
-        ordersAmount.innerHTML = 1;
-      }, 500)
+          ordersAmount.innerHTML = 1;
+        }, 500)
       }
       else {
         for (var j = 0; j < order.length; j++) {
@@ -185,7 +231,9 @@ window.onload = function() {
       }
       function createNewOrderItem() {
         var newItemHTML = 
-        `<img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
+        ` <a class="order--more-info" href=""> 
+        <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
+        </a>
         <div class="order--info">
         <p class="order--name">${productName}</p>
         <label class="order--label">
@@ -211,8 +259,6 @@ window.onload = function() {
     cart.classList.remove("main-header--buy__rotate");
   }, false);
 
-
-
   // Изменение числа заказов при изменении поля "Количество"
   document.addEventListener("input", function(e){
     if(e.target && e.target.classList[0] == "order--amount"){ // e.target = this
@@ -221,21 +267,20 @@ window.onload = function() {
     }
   }, false);
 
-
-  // Открытие корзины
+  // Открытие корзины и закрытие корзины
   orderBtnShow.addEventListener("click", function(event) {
     event.preventDefault();
-    removeAndAddClass([orders, orderOverlay], ["orders__show", "overlay__show"], [orders, orderOverlay, orderBtnHide], ["orders__hide", "overlay__hide", "orders--close__rotate"]);    
+    addAndRemoveClass([orders, orderOverlay], ["orders__show", "overlay__show"], [orders, orderOverlay, orderBtnHide], ["orders__hide", "overlay__hide", "orders--close__rotate"]);    
   }, false);
 
   orderBtnHide.addEventListener("click", function(event) {
     event.preventDefault();
-    removeAndAddClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+    addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
   }, false);
 
   orderOverlay.addEventListener("click", function(event) {
     event.preventDefault();
-    removeAndAddClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+    addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
   }, false);
 
   // Введение промокода
@@ -251,7 +296,7 @@ window.onload = function() {
     }
   }, false);
 
-  function removeAndAddClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
+  function addAndRemoveClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
     for (var i = 0; i < elemsToAddClass.length; i++) {
       elemsToAddClass[i].classList.add(classToAdd[i]);
     }
@@ -278,6 +323,7 @@ window.onload = function() {
       fadeOut(thisOrder, "", 40, callback, thisOrder);
     }
   });
+
 
   // Проверка текущих значений количества и цен заказов в корзине и запись этих значений в нужные переменные
   function getOrdersValues(amount, price, needIter, discount) {
@@ -311,6 +357,7 @@ window.onload = function() {
     }
   };
 
+
   // Действия при отправке формы (дополнительная валидация данных, вывод модального окна)
   ordersForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -319,19 +366,18 @@ window.onload = function() {
       return false;
     }
     formValid(ordersForm);
-    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
+    addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
   }, false);
 
   thanksModalCloseBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
     clearOrders(ordersList);
     ordersForm.reset();
   }, false);
 
+  // Действия при закрытии модального окна
   thanksModalOverlay.addEventListener("click", function(event) {
     event.preventDefault();
-    removeAndAddClass([thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"], [thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"]);
     clearOrders(ordersList);
     ordersForm.reset();
     orderPriceSumm.innerHTML = 0;
