@@ -149,10 +149,12 @@ section {
 }
 .button {
   display: inline-block;
+  padding: 8px 20px;
+  border: none;
+  font: inherit;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  padding: 8px 20px;
   border-radius: 6px;
   background-color: #1f6c45;
   box-shadow: 0 -3px #195838 inset;
@@ -603,9 +605,16 @@ section {
 .details--img {
   max-height: 200px;
   margin: 0 20px;
-  float: left
+  float: left;
+  display: none
+}
+.details--img__active {
+  display: block
 }
 .details--wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 20px
 }
 .details--header {
@@ -620,10 +629,12 @@ section {
 }
 .details--size {
   font-size: 23px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  color: #719242
 }
 .details--price {
-  font-size: 23px
+  font-size: 23px;
+  color: #719242
 }
 .details--return {
   font-size: 18px

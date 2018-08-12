@@ -232,9 +232,15 @@
 		max-height: 200px;
 		margin: 0 20px;	
 		float: left;
+		display: none;
+
+		&__active {
+			display: block;
+		}
 	}
 
 	&--wrap {
+		display: flex;
 		margin-bottom: 20px;
 	}
 
@@ -242,7 +248,7 @@
 		text-align: center;
 		font-size: 23px;
 		margin-bottom: 5px;
-		color: @price-color;	
+		color: @price-color;
 	}
 
 	&--info {
@@ -253,10 +259,12 @@
 	&--size {
 		font-size: 23px;
 		margin-bottom: 10px;
+		color: #719242;
 	}
 
 	&--price {
 		font-size: 23px;
+		color: #719242;
 	}
 
 	&--return {
