@@ -175,7 +175,7 @@ section {
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  z-index: 2;
+  z-index: 4;
   opacity: .5
 }
 .overlay__show {
@@ -195,7 +195,7 @@ section {
   transform: translate(-50%,-50%);
   background-color: #d7e0ca;
   border-radius: 10px;
-  z-index: 4
+  z-index: 5
 }
 .modal__hide {
   display: none
@@ -843,7 +843,7 @@ section {
   font-size: 18px;
   text-align: center;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 3;
   -webkit-transition: all 1s ease;
   transition: all 1s ease
 }
@@ -852,6 +852,9 @@ section {
 }
 .orders__hide {
   right: -45%
+}
+.orders--overlay {
+  z-index: 2
 }
 .orders--close {
   position: absolute;

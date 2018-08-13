@@ -152,11 +152,8 @@ window.onload = function() {
       for (var i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--img__active");
      }
-
-     console.log(imgDetails);
-
      imgDetails[index].classList.add("details--img__active");
-    }, false);
+   }, false);
   }
 
   // Скрытие модальных окон
@@ -164,16 +161,21 @@ window.onload = function() {
     overlay[i].addEventListener("click", function(event) {
       event.preventDefault();
       var modal = this.nextElementSibling;
-      addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
+      if (modal.classList.contains("modal")) {
+        addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
+      }
+      else {
+        return false;
+      }
     }, false);
   }
-
   for (var i = 0; i < modalCloseBtn.length; i++) {
     modalCloseBtn[i].addEventListener("click", function(event) {
       event.preventDefault();
       var modal = this.closest(".modal");
       var overlay = modal.previousElementSibling;
-      addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
+      if(modal)
+        addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
     }, false);
   }
 
@@ -187,6 +189,7 @@ window.onload = function() {
       var productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
       var productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
       var productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
+      var productInfo = this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href");
       var order = document.querySelectorAll(".order");
       var orderName = new Array;
       var orderPrice = new Array;
@@ -231,7 +234,7 @@ window.onload = function() {
       }
       function createNewOrderItem() {
         var newItemHTML = 
-        ` <a class="order--more-info" href=""> 
+        ` <a class="order--more-info" href="${productInfo}"> 
         <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
         </a>
         <div class="order--info">
@@ -295,6 +298,30 @@ window.onload = function() {
       getOrdersValues(true, true, false, 0);
     }
   }, false);
+
+  // Открытие окна подробной информации о товаре с корзины
+   document.addEventListener("click", function(e) {
+    if(e.target && e.target.classList[0] == "order--img"){
+      e.preventDefault();
+      var thisOrder =  e.target.closest(".order");
+      var imgSrc = e.target.getAttribute("src");
+      var atr = e.target.closest(".order--more-info").getAttribute("href");
+      var modal = document.querySelector(atr);
+      var overlay = modal.previousElementSibling;
+      addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
+
+      var productImgSrc = new Array;
+      for (var i = 0; i < imgsOfProducts.length; i++) {
+        productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
+      }
+      const index = [...productImgSrc].indexOf(imgSrc);
+
+      for (var i = 0; i < imgDetails.length; i++) {
+       imgDetails[i].classList.remove("details--img__active");
+     }
+     imgDetails[index].classList.add("details--img__active");
+    }
+  });
 
   function addAndRemoveClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
     for (var i = 0; i < elemsToAddClass.length; i++) {
