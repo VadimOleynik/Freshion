@@ -502,11 +502,7 @@ section {
 }
 .product--color:active,
 .product--color:focus,
-.product--color:hover {
-  outline: 0;
-  box-sizing: border-box;
-  border: 2px solid #faee01
-}
+.product--color:hover,
 .product--color__active {
   box-sizing: border-box;
   border: 2px solid #faee01
@@ -536,7 +532,10 @@ section {
   display: none
 }
 .red {
-  background-color: #822722
+  background-color: #c2272a
+}
+.light-red {
+  background-color: #d41132
 }
 .beige {
   background-color: #f6f3a5
@@ -550,11 +549,17 @@ section {
 .pink {
   background-color: #e38a8a
 }
+.dark-pink {
+  background-color: #ff264f
+}
 .sky-blue {
   background-color: #6ebac5
 }
 .gray {
   background-color: #b0b0b0
+}
+.dark-gray {
+  background-color: #605f5d
 }
 .burgundy {
   background-color: #601419
@@ -574,6 +579,9 @@ section {
 .green {
   background-color: #006954
 }
+.light-green {
+  background-color: #79d176
+}
 .white {
   background-color: #faeedc
 }
@@ -581,16 +589,16 @@ section {
   background-color: #b79f82
 }
 .mustard {
-  background-color: #fda859
+  background-color: #d44316
 }
 .violet {
   background-color: #bda7b3
 }
 .dark-violet {
-  background-color: #523f45
+  background-color: #4e417f
 }
 .bordo {
-  background-color: #270c1d
+  background-color: #54172a
 }
 .details {
   width: 90%;
