@@ -538,7 +538,10 @@ section {
   background-color: #d41132
 }
 .beige {
-  background-color: #f6f3a5
+  background-color: #f3cfb3
+}
+.eggplant {
+  background-color: #603b50
 }
 .blue {
   background-color: #002157
@@ -599,6 +602,12 @@ section {
 }
 .bordo {
   background-color: #54172a
+}
+.golden {
+  background-color: #c7ad80
+}
+.silver {
+  background-color: #6b6462
 }
 .details {
   width: 90%;
