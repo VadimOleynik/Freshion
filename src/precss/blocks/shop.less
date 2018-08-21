@@ -2,11 +2,16 @@
 	text-align: center;
 
 	&--article {
-		margin-top: 50px;
+		margin-bottom: 30px;
 
 		&__backpacks {
 			margin-top: 0;
 		}
+	}
+
+	&--sub-header {
+		font-size: 33px;
+		margin-bottom: 35px;
 	}
 
 	&--list {
@@ -61,15 +66,15 @@
 		} 
 
 		&__small {
-			min-height: 150px;
+			min-height: 130px;
 
 			.product--img {
-				max-height: 100px;
+				max-height: 110px;
 			}
 		}
 
 		&__medium {
-			min-height: 200px;
+			min-height: 150px;
 
 			.product--img {
 				max-height: 150px;
@@ -95,7 +100,6 @@
 		border-radius: 50%;
 		border: 2px solid @bg-color;
 		background-color: red;
-		margin-bottom: 10px;
 		transition: border 0.2s ease-in-out;
 
 		.sm-block({
@@ -110,6 +114,7 @@
 		&:hover,
 		&:active,
 		&:focus {	
+			outline: none;
 			box-sizing: border-box;
 			border: 2px solid #faee01;
 		}
@@ -121,6 +126,7 @@
 	}
 
 	&--about {
+		margin-top: 10px;
 		margin-bottom: 5px;
 		.xs-block({
 			font-size: 16px;

@@ -179,6 +179,15 @@ window.onload = function() {
     }, false);
   }
 
+  window.onkeydown = function(event) {
+    for (var i = 0; i < modal.length; i++) {
+      if(event.keyCode == 27) {
+        addAndRemoveClass([modal[i], overlay[i]], ["modal__hide", "overlay__hide"], [modal[i], overlay[i]], ["modal__show", "overlay__show"]);
+      }
+    }
+    
+  }
+
   // Добавление товаров в корзину 
   var productsToOrder = 0;
   for (var i = 0; i < productsBtn.length; i++) {
@@ -300,7 +309,7 @@ window.onload = function() {
   }, false);
 
   // Открытие окна подробной информации о товаре с корзины
-   document.addEventListener("click", function(e) {
+  document.addEventListener("click", function(e) {
     if(e.target && e.target.classList[0] == "order--img"){
       e.preventDefault();
       var thisOrder =  e.target.closest(".order");
@@ -320,8 +329,8 @@ window.onload = function() {
        imgDetails[i].classList.remove("details--img__active");
      }
      imgDetails[index].classList.add("details--img__active");
-    }
-  });
+   }
+ });
 
   function addAndRemoveClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
     for (var i = 0; i < elemsToAddClass.length; i++) {
