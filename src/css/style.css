@@ -486,7 +486,8 @@ section {
   flex-grow: 1
 }
 .product--more-info__img {
-  min-height: 200px
+  min-height: 200px;
+  margin-bottom: 10px
 }
 .product--more-info__small {
   min-height: 130px
@@ -495,7 +496,8 @@ section {
   max-height: 110px
 }
 .product--more-info__medium {
-  min-height: 150px
+  min-height: 150px;
+  margin-bottom: 7px
 }
 .product--more-info__medium .product--img {
   max-height: 150px

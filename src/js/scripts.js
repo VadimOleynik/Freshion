@@ -1,51 +1,54 @@
-'use strict';
+"use strict";
 window.onload = function() {
 
-	var mobMenuBtn = document.querySelector(".main-header--mobile");
-	var menuList = document.querySelector(".main-header--list");
-  var smallScreen = 767;
+	const mobMenuBtn = document.querySelector(".main-header--mobile");
+	const menuList = document.querySelector(".main-header--list");
+  const smallScreen = 767;
 
-  var needParallax = document.querySelectorAll('[data-parallax="true"]');
-  var needSmooth = document.querySelectorAll('[data-smooth="true"]');
-  var needToggleMain = document.querySelectorAll('[data-toggle-main="true"]');
-  var needToggleAlt = document.querySelectorAll('[data-toggle-alt="true"]');
-  var mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
-  var shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
-  var altMenu = document.querySelector(".alt-nav");
+  const needParallax = document.querySelectorAll('[data-parallax="true"]');
+  const needSmooth = document.querySelectorAll('[data-smooth="true"]');
+  const needToggleMain = document.querySelectorAll('[data-toggle-main="true"]');
+  const needToggleAlt = document.querySelectorAll('[data-toggle-alt="true"]');
+  const mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
+  const shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
+  const altMenu = document.querySelector(".alt-nav");
   
-  var shop = document.querySelector("#shop");
-  var products = document.querySelectorAll(".product");
-  var moreInfo = document.querySelectorAll(".product--more-info");
-  var moreInfoModal = document.querySelectorAll(".product--details");
-  var moreInfoOverlay = document.querySelectorAll(".product--details");
-  var productsBtn = document.querySelectorAll(".product--buy");
-  var colorSwitchBtns = document.querySelectorAll(".product--color");
-  var imgsOfProducts = document.querySelectorAll(".product--img");
-  var imgDetails = document.querySelectorAll(".details--img");
+  const shop = document.querySelector("#shop");
+  const products = document.querySelectorAll(".product");
+  const moreInfo = document.querySelectorAll(".product--more-info");
+  const moreInfoModal = document.querySelectorAll(".product--details");
+  const moreInfoOverlay = document.querySelectorAll(".product--details");
+  const productsBtn = document.querySelectorAll(".product--buy");
+  const colorSwitchBtns = document.querySelectorAll(".product--color");
+  const imgsOfProducts = document.querySelectorAll(".product--img");
+  const imgDetails = document.querySelectorAll(".details--img");
 
-  var orders = document.querySelector(".orders");
-  var ordersForm = document.querySelector("#orders--form");
-  var ordersList = document.querySelector(".orders--list");
-  var ordersInput = document.querySelectorAll(".orders--input__required");
-  var orderBtnShow = document.querySelector(".main-header--orders");
-  var ordersAmount = document.querySelector(".main-header--amount");
-  var cart = document.querySelector(".main-header--buy"); 
-  var orderBtnHide = document.querySelector(".orders--close");
-  var orderPriceSumm = document.querySelector(".price--amount");
-  var promocod = document.querySelector("#cod");
-  var orderOverlay = document.querySelector(".orders--overlay");
-  var orderDelete = document.querySelector(".order--deletes");
-  var orderSubmit = document.querySelector(".orders--submit");
-  var ordersEmpty = document.querySelector(".orders--empty");
-  var ordersError = document.querySelector(".orders--error");
+  const orders = document.querySelector(".orders");
+  const ordersForm = document.querySelector("#orders--form");
+  const ordersList = document.querySelector(".orders--list");
+  const ordersInput = document.querySelectorAll(".orders--input__required");
+  const orderBtnShow = document.querySelector(".main-header--orders");
+  const ordersAmount = document.querySelector(".main-header--amount");
+  const cart = document.querySelector(".main-header--buy"); 
+  const orderBtnHide = document.querySelector(".orders--close");
+  const orderPriceSumm = document.querySelector(".price--amount");
+  const promocod = document.querySelector("#cod");
+  const orderOverlay = document.querySelector(".orders--overlay");
+  const orderDelete = document.querySelector(".order--deletes");
+  const orderSubmit = document.querySelector(".orders--submit");
+  const ordersEmpty = document.querySelector(".orders--empty");
+  const ordersError = document.querySelector(".orders--error");
 
-  var modal = document.querySelectorAll(".modal");
-  var overlay = document.querySelectorAll(".overlay");
-  var modalCloseBtn = document.querySelectorAll(".modal--btn");
+  const modal = document.querySelectorAll(".modal");
+  const overlay = document.querySelectorAll(".overlay");
+  const modalCloseBtn = document.querySelectorAll(".modal--btn");
 
-  var thanksModal = document.querySelector(".thanks-for-order");
-  var thanksModalCloseBtn = document.querySelector(".modal--btn");
-  var thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
+  const thanksModal = document.querySelector(".thanks-for-order");
+  const thanksModalCloseBtn = document.querySelector(".modal--btn");
+  const thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
+
+  console.log(modal);
+  console.log(overlay);
 
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
@@ -55,12 +58,12 @@ window.onload = function() {
   }, false);
 
   // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
-  var shopZone = caclZone(shop);
-  var mainAnchorPositions = getPosition(mainAnchors);
-  var shopAnchorPositions = getPosition(shopAnchors);
+  const shopZone = caclZone(shop);
+  const mainAnchorPositions = getPosition(mainAnchors);
+  const shopAnchorPositions = getPosition(shopAnchors);
 
   function caclZone(el) {
-  	var zone = new Object;
+  	let zone = new Object;
   	zone.topPos = el.offsetTop;
   	zone.botPos = shop.offsetHeight + shop.offsetTop;
   	return zone;
@@ -70,12 +73,12 @@ window.onload = function() {
   	window.onscroll = function() {
   		parallax(needParallax, 10);
 
-  		var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  		const scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
-      for (var i = 0; i < needToggleMain.length; i++) {
+      for (let i = 0; i < needToggleMain.length; i++) {
         needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
       }
-      for (var i = 0; i < mainAnchorPositions.length; i++) {
+      for (let i = 0; i < mainAnchorPositions.length; i++) {
         if (scrolled >= mainAnchorPositions[i] - 200 && scrolled < mainAnchorPositions[i+1] - 200) {
           needToggleMain[i].closest(".main-header--item").classList.add("main-header--item__active");
         }
@@ -86,10 +89,10 @@ window.onload = function() {
 
       if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
        altMenu.classList.add("alt-nav__visible");
-       for (var i = 0; i < needToggleAlt.length; i++) {
+       for (let i = 0; i < needToggleAlt.length; i++) {
         needToggleAlt[i].classList.remove("alt-nav--item__active");
       }
-      for (var i = 0; i < shopAnchorPositions.length; i++) {
+      for (let i = 0; i < shopAnchorPositions.length; i++) {
         if (scrolled >= shopAnchorPositions[i] - 400 && scrolled < shopAnchorPositions[i+1] - 400) {
          needToggleAlt[i].classList.add("alt-nav--item__active");
        }
@@ -105,29 +108,29 @@ window.onload = function() {
 };
 
   // Плавная прокрутка 
-  for (var i = 0; i < needSmooth.length; i++) {
+  for (let i = 0; i < needSmooth.length; i++) {
   	needSmooth[i].addEventListener("click", function(event) {
       event.preventDefault();
-      var el = document.querySelector(this.getAttribute("href"));
+      const el = document.querySelector(this.getAttribute("href"));
       smoothScroll(el, 10, 60);
     }, false);
   }
 
 	// Переключение цветов товара
-  for (var i = 0; i < colorSwitchBtns.length; i++) {
+  for (let i = 0; i < colorSwitchBtns.length; i++) {
     colorSwitchBtns[i].addEventListener("click", function(event) {
      event.preventDefault();	
      const index = [...colorSwitchBtns].indexOf(this);
-     var activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
-     var activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
+     const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+     const activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
 
-     for (var i = 0; i < activeBtn.length; i++) {
+     for (let i = 0; i < activeBtn.length; i++) {
        activeBtn[i].classList.remove("product--color__active");
      }
      colorSwitchBtns[index].classList.add("product--color__active"); // Смена актывных кнопок
 
      if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
-      for (var i = 0; i < activeImg.length; i++) {
+      for (let i = 0; i < activeImg.length; i++) {
         fadeOut(activeImg[i], "product--img__active");
       }
       fadeIn(imgsOfProducts[index], "product--img__active");
@@ -139,17 +142,17 @@ window.onload = function() {
   }
 
   // Модальное окно с подробной информацией о товаре 
-  for (var i = 0; i < moreInfo.length; i++) {
+  for (let i = 0; i < moreInfo.length; i++) {
     moreInfo[i].addEventListener("click", function(event) {
-      var atr = this.getAttribute("href");
-      var modal = document.querySelector(atr);
-      var overlay = modal.previousElementSibling;
+      const atr = this.getAttribute("href");
+      const modal = document.querySelector(atr);
+      const overlay = modal.previousElementSibling;
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       
-      var img = this.closest(".product").querySelector(".product--img__active");
+      const img = this.closest(".product").querySelector(".product--img__active");
       const index = [...imgsOfProducts].indexOf(img);
 
-      for (var i = 0; i < imgDetails.length; i++) {
+      for (let i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--img__active");
      }
      imgDetails[index].classList.add("details--img__active");
@@ -157,10 +160,10 @@ window.onload = function() {
   }
 
   // Скрытие модальных окон
-  for (var i = 0; i < overlay.length; i++) {
+  for (let i = 0; i < overlay.length; i++) {
     overlay[i].addEventListener("click", function(event) {
       event.preventDefault();
-      var modal = this.nextElementSibling;
+      const modal = this.nextElementSibling;
       if (modal.classList.contains("modal")) {
         addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
       }
@@ -169,18 +172,18 @@ window.onload = function() {
       }
     }, false);
   }
-  for (var i = 0; i < modalCloseBtn.length; i++) {
+  for (let i = 0; i < modalCloseBtn.length; i++) {
     modalCloseBtn[i].addEventListener("click", function(event) {
       event.preventDefault();
-      var modal = this.closest(".modal");
-      var overlay = modal.previousElementSibling;
+      const modal = this.closest(".modal");
+      const overlay = modal.previousElementSibling;
       if(modal)
         addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
     }, false);
   }
 
   window.onkeydown = function(event) {
-    for (var i = 0; i < modal.length; i++) {
+    for (let i = 0; i < modal.length; i++) {
       if(event.keyCode == 27) {
         addAndRemoveClass([modal[i], overlay[i]], ["modal__hide", "overlay__hide"], [modal[i], overlay[i]], ["modal__show", "overlay__show"]);
       }
@@ -189,21 +192,20 @@ window.onload = function() {
   }
 
   // Добавление товаров в корзину 
-  var productsToOrder = 0;
-  for (var i = 0; i < productsBtn.length; i++) {
+  for (let i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener("click", function(event) {
       event.preventDefault(); 
-      var productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
-      var productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
-      var productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
-      var productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
-      var productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
-      var productInfo = this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href");
-      var order = document.querySelectorAll(".order");
-      var orderName = new Array;
-      var orderPrice = new Array;
-      var orderPhotoLink = new Array;
-      var amountsOfOrders = new Array; 
+      const productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
+      const productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
+      const productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
+      const productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
+      const productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
+      const productInfo = this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href");
+      const order = document.querySelectorAll(".order");
+      const orderName = new Array;
+      const orderPrice = new Array;
+      const orderPhotoLink = new Array;
+      const amountsOfOrders = new Array; 
       ordersEmpty.hidden = true;
 
       cart.classList.add("main-header--buy__rotate");
@@ -216,7 +218,7 @@ window.onload = function() {
         }, 500)
       }
       else {
-        for (var j = 0; j < order.length; j++) {
+        for (let j = 0; j < order.length; j++) {
           orderName[j] = order[j].querySelector(".order--name").innerHTML;
           orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
           orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); 
@@ -226,12 +228,12 @@ window.onload = function() {
         getOrdersValues(true, true, true, 0);
         
         // Увеличить количество товаров, если его добавили в корзину больше одного раза
-        var nameIndex = orderName.indexOf(productName);
-        var priceIndex = orderPrice.indexOf(productPrice);
-        var photoLinkIndex = orderPhotoLink.indexOf(productPhotoLink); // Проверка совпадения параметров добавляемого товара с параметрами товаров, которые уже в корзине 
+        const nameIndex = orderName.indexOf(productName);
+        const priceIndex = orderPrice.indexOf(productPrice);
+        const photoLinkIndex = orderPhotoLink.indexOf(productPhotoLink); // Проверка совпадения параметров добавляемого товара с параметрами товаров, которые уже в корзине 
         
         if(nameIndex !== -1 && priceIndex !== -1 && photoLinkIndex !== -1) {
-          var orderAmount = +(order[nameIndex].querySelector(".order--amount").value);
+          let orderAmount = +(order[nameIndex].querySelector(".order--amount").value);
           orderAmount++;
           order[nameIndex].querySelector(".order--amount").setAttribute("value", orderAmount);
           getOrdersValues(true, true, false, 0);
@@ -242,7 +244,7 @@ window.onload = function() {
         }
       }
       function createNewOrderItem() {
-        var newItemHTML = 
+        const newItemHTML = 
         ` <a class="order--more-info" href="${productInfo}"> 
         <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
         </a>
@@ -255,7 +257,7 @@ window.onload = function() {
         <p class="order--price">${productPrice} <span class="orders--currency">грн.</span></p>
         <button class="order--delete">Удалить товар</button>
         </div>`;
-        var newItem = document.createElement("li");
+        const newItem = document.createElement("li");
         newItem.className += " orders--item order";
         newItem.innerHTML = newItemHTML;
         ordersList.appendChild(newItem);
@@ -312,20 +314,20 @@ window.onload = function() {
   document.addEventListener("click", function(e) {
     if(e.target && e.target.classList[0] == "order--img"){
       e.preventDefault();
-      var thisOrder =  e.target.closest(".order");
-      var imgSrc = e.target.getAttribute("src");
-      var atr = e.target.closest(".order--more-info").getAttribute("href");
-      var modal = document.querySelector(atr);
-      var overlay = modal.previousElementSibling;
+      const thisOrder =  e.target.closest(".order");
+      const imgSrc = e.target.getAttribute("src");
+      const atr = e.target.closest(".order--more-info").getAttribute("href");
+      const modal = document.querySelector(atr);
+      const overlay = modal.previousElementSibling;
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
 
-      var productImgSrc = new Array;
-      for (var i = 0; i < imgsOfProducts.length; i++) {
+      const productImgSrc = new Array;
+      for (let i = 0; i < imgsOfProducts.length; i++) {
         productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
       }
       const index = [...productImgSrc].indexOf(imgSrc);
 
-      for (var i = 0; i < imgDetails.length; i++) {
+      for (let i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--img__active");
      }
      imgDetails[index].classList.add("details--img__active");
@@ -333,10 +335,10 @@ window.onload = function() {
  });
 
   function addAndRemoveClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
-    for (var i = 0; i < elemsToAddClass.length; i++) {
+    for (let i = 0; i < elemsToAddClass.length; i++) {
       elemsToAddClass[i].classList.add(classToAdd[i]);
     }
-    for (var i = 0; i < elemsToremoveClass.length; i++) {
+    for (let i = 0; i < elemsToremoveClass.length; i++) {
       elemsToremoveClass[i].classList.remove(classToRemove[i]);
     }
   }
@@ -351,8 +353,8 @@ window.onload = function() {
   document.addEventListener('click', function(e) {
     if(e.target && e.target.classList[0] == "order--delete"){
       e.preventDefault();
-      var thisOrder =  e.target.closest(".order");
-      var callback = function(thisOrder) {
+      const thisOrder =  e.target.closest(".order");
+      const callback = function(thisOrder) {
         thisOrder.parentNode.removeChild(thisOrder);
         getOrdersValues(true, true, false, 0);
       };
@@ -362,21 +364,20 @@ window.onload = function() {
 
 
   // Проверка текущих значений количества и цен заказов в корзине и запись этих значений в нужные переменные
-  function getOrdersValues(amount, price, needIter, discount) {
-    var discount = discount || 0;
-    var order = document.querySelectorAll(".order");
-    var amountsOfOrders = new Array; 
-    var orderPrice = new Array;
+  function getOrdersValues(amount, price, needIter, discount=0) {
+    const order = document.querySelectorAll(".order");
+    const amountsOfOrders = new Array; 
+    const orderPrice = new Array;
 
-    for (var i = 0; i < order.length; i++) {
+    for (let i = 0; i < order.length; i++) {
       amountsOfOrders[i] = order[i].querySelector(".order--amount").getAttribute("value");
       orderPrice[i] = order[i].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
     }
 
     if (amount && price) {
-      var amountSumm = 0;
-      var priceSumm = 0;
-      for (var i = 0; i < amountsOfOrders.length; i++) {
+      let amountSumm = 0;
+      let priceSumm = 0;
+      for (let i = 0; i < amountsOfOrders.length; i++) {
         amountSumm += +amountsOfOrders[i];
       }
       if (needIter) {
@@ -386,7 +387,7 @@ window.onload = function() {
         ordersAmount.innerHTML = amountSumm.toString();
       }, 500)
       
-      for (var i = 0; i < orderPrice.length; i++) {
+      for (let i = 0; i < orderPrice.length; i++) {
         priceSumm += orderPrice[i] * amountsOfOrders[i];
       }
       orderPriceSumm.innerHTML = (priceSumm - (priceSumm / 100 * discount)).toString();
@@ -420,7 +421,7 @@ window.onload = function() {
   }, false);
 
   // Скрытие надписи об ошибке, при начале заполнения формы
-  for (var i = 0; i < ordersInput.length; i++) {
+  for (let i = 0; i < ordersInput.length; i++) {
     ordersInput[i].addEventListener("input", function(event) {
       event.preventDefault();
       ordersError.hidden = true;
@@ -429,12 +430,12 @@ window.onload = function() {
 
 
   function formValid(form) {
-    var inputs = form.querySelector(".orders--input__required");
-    var name = form.querySelector("#name");
-    var surname = form.querySelector("#surname");
-    var phone = form.querySelector("#phone");
+    const inputs = form.querySelector(".orders--input__required");
+    const name = form.querySelector("#name");
+    const surname = form.querySelector("#surname");
+    const phone = form.querySelector("#phone");
 
-    for (var i = 0; i < inputs.length; i++) {
+    for (let i = 0; i < inputs.length; i++) {
       if(!inputs[i].value) {
         ordersError.hidden = false;
       }
