@@ -47,9 +47,6 @@ window.onload = function() {
   const thanksModalCloseBtn = document.querySelector(".modal--btn");
   const thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
 
-  console.log(modal);
-  console.log(overlay);
-
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
   	event.preventDefault();
@@ -141,7 +138,7 @@ window.onload = function() {
   }, false);
   }
 
-  // Модальное окно с подробной информацией о товаре 
+  // Открытие модального окно с подробной информацией о товаре 
   for (let i = 0; i < moreInfo.length; i++) {
     moreInfo[i].addEventListener("click", function(event) {
       const atr = this.getAttribute("href");
@@ -151,6 +148,8 @@ window.onload = function() {
       
       const img = this.closest(".product").querySelector(".product--img__active");
       const index = [...imgsOfProducts].indexOf(img);
+
+      modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
 
       for (let i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--img__active");
@@ -166,12 +165,14 @@ window.onload = function() {
       const modal = this.nextElementSibling;
       if (modal.classList.contains("modal")) {
         addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
+        modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
       }
       else {
         return false;
       }
     }, false);
   }
+
   for (let i = 0; i < modalCloseBtn.length; i++) {
     modalCloseBtn[i].addEventListener("click", function(event) {
       event.preventDefault();
@@ -179,16 +180,8 @@ window.onload = function() {
       const overlay = modal.previousElementSibling;
       if(modal)
         addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
+        modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
     }, false);
-  }
-
-  window.onkeydown = function(event) {
-    for (let i = 0; i < modal.length; i++) {
-      if(event.keyCode == 27) {
-        addAndRemoveClass([modal[i], overlay[i]], ["modal__hide", "overlay__hide"], [modal[i], overlay[i]], ["modal__show", "overlay__show"]);
-      }
-    }
-    
   }
 
   // Добавление товаров в корзину 
@@ -281,20 +274,35 @@ window.onload = function() {
     }
   }, false);
 
-  // Открытие корзины и закрытие корзины
+  // Открытие и закрытие корзины
   orderBtnShow.addEventListener("click", function(event) {
     event.preventDefault();
     addAndRemoveClass([orders, orderOverlay], ["orders__show", "overlay__show"], [orders, orderOverlay, orderBtnHide], ["orders__hide", "overlay__hide", "orders--close__rotate"]);    
+
+    const active = orders.querySelectorAll('[tabindex="-1"]');
+    for (var i = 0; i < active.length; i++) {
+      active[i].setAttribute("tabindex","1")
+    }
   }, false);
 
   orderBtnHide.addEventListener("click", function(event) {
     event.preventDefault();
     addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+    
+    const active = orders.querySelectorAll('[tabindex="1"]');
+    for (var i = 0; i < active.length; i++) {
+      active[i].setAttribute("tabindex","-1")
+    }
   }, false);
 
   orderOverlay.addEventListener("click", function(event) {
     event.preventDefault();
     addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+    
+    const active = orders.querySelectorAll('[tabindex="1"]');
+    for (var i = 0; i < active.length; i++) {
+      active[i].setAttribute("tabindex","-1")
+    }
   }, false);
 
   // Введение промокода
@@ -320,6 +328,7 @@ window.onload = function() {
       const modal = document.querySelector(atr);
       const overlay = modal.previousElementSibling;
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
+      modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
 
       const productImgSrc = new Array;
       for (let i = 0; i < imgsOfProducts.length; i++) {
@@ -404,21 +413,28 @@ window.onload = function() {
     }
     formValid(ordersForm);
     addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
+    thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
   }, false);
 
-  thanksModalCloseBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    clearOrders(ordersList);
-    ordersForm.reset();
-  }, false);
-
-  // Действия при закрытии модального окна
-  thanksModalOverlay.addEventListener("click", function(event) {
+   // Действия при закрытии модального окна "Спасибо за заказ"
+   thanksModalCloseBtn.addEventListener("click", function(event) {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
     orderPriceSumm.innerHTML = 0;
+    ordersAmount = 0;
+    thanksModal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
   }, false);
+
+   thanksModalOverlay.addEventListener("click", function(event) {
+    event.preventDefault();
+    clearOrders(ordersList);
+    ordersForm.reset();
+    orderPriceSumm.innerHTML = 0;
+    ordersAmount = 0;
+  }, false);
+
+
 
   // Скрытие надписи об ошибке, при начале заполнения формы
   for (let i = 0; i < ordersInput.length; i++) {
