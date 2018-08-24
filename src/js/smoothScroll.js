@@ -10,20 +10,18 @@ function currentYPosition() {
   }
 
 
-  function elmYPosition(elm, extraOffset) {
-    var extraOffset = extraOffset || 0;
-  	var y = elm.offsetTop - extraOffset;
-  	var node = elm;
+  function elmYPosition(elm, extraOffset=0) {
+  	let y = elm.offsetTop - extraOffset;
+  	const node = elm;
   	while (node.offsetParent && node.offsetParent != document.body) {
   		node = node.offsetParent;
   		y += node.offsetTop;
   	} return y;
   }
 
-  function elmXPosition(elm, extraOffset) {
-    var extraOffset = extraOffset || 0;
-    var x = elm.offsetLeft - extraOffset;
-    var node = elm;
+  function elmXPosition(elm, extraOffset=0) {
+    let x = elm.offsetLeft - extraOffset;
+    const node = elm;
     while (node.offsetParent && node.offsetParent != document.body) {
       node = node.offsetParent;
       x += node.offsetLeft;
@@ -31,27 +29,25 @@ function currentYPosition() {
   }
 
 
-  function smoothScroll(elm, speed, extraOffset) {
-  	var speed = speed || 10;
-  	var extraOffset = extraOffset || 0;
-  	var startY = currentYPosition();
-  	var stopY = elmYPosition(elm, extraOffset);
-  	var distance = stopY > startY ? stopY - startY : startY - stopY;
+  function smoothScroll(elm, speed=10, extraOffset=0) {
+  	const startY = currentYPosition();
+  	const stopY = elmYPosition(elm, extraOffset);
+  	const distance = stopY > startY ? stopY - startY : startY - stopY;
   	if (distance < 100) {
   		scrollTo(0, stopY); return;
   	}
-  	var speed = Math.round(distance / speed);
+  	speed = Math.round(distance / speed);
   	if (speed >= 20) speed = 20;
-  	var step = Math.round(distance / 25);
-  	var leapY = stopY > startY ? startY + step : startY - step;
-  	var timer = 0;
+  	const step = Math.round(distance / 25);
+  	let leapY = stopY > startY ? startY + step : startY - step;
+  	let timer = 0;
   	if (stopY > startY) {
-  		for ( var i=startY; i<stopY; i+=step ) {
+  		for ( let i=startY; i<stopY; i+=step ) {
   			setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
   			leapY += step; if (leapY > stopY) leapY = stopY; timer++;
   		} return;
   	}
-  	for ( var i=startY; i>stopY; i-=step ) {
+  	for ( let i=startY; i>stopY; i-=step ) {
   		setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
   		leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
   	}

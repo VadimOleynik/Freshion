@@ -40,7 +40,7 @@
 		width: auto;
 		transition: transform 0.4s ease-in-out; 
 		.xs-block({
-			max-height: 130px;
+			max-height: 150px;
 		});
 
 		&:hover {
@@ -64,22 +64,49 @@
 		&__img {
 			min-height: 200px;
 			margin-bottom: 10px;
+			.xs-block({
+				min-height: 150px;
+			});
 		} 
 
 		&__small {
-			min-height: 130px;
+			min-height: 110px;
+			.sm-block({
+				min-height: 100px;
+			});
+			.xs-block({
+				min-height: 75px;
+			});
 
 			.product--img {
 				max-height: 110px;
+				.sm-block({
+					max-height: 100px;
+				});
+				.xs-block({
+					max-height: 75px;
+				});
 			}
 		}
 
 		&__medium {
 			min-height: 150px;
 			margin-bottom: 7px;
+			.sm-block({
+				min-height: 135px;
+			});
+			.xs-block({
+				min-height: 120px;
+			});
 
 			.product--img {
 				max-height: 150px;
+				.sm-block({
+					max-height: 135px;
+				});
+				.xs-block({
+					max-height: 120px;
+				});
 			}
 		}
 	}

@@ -215,6 +215,9 @@ section {
   height: 17px;
   background-size: contain
 }
+.modal--btn:focus {
+  outline: #d2f9f9 solid 1px
+}
 .header {
   font-size: 48px;
   margin-bottom: 50px
@@ -294,6 +297,10 @@ section {
   margin-right: 15px
 }
 .main-header--orders {
+  background: 0 0;
+  padding: 0;
+  border: none;
+  font: inherit;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex
@@ -490,7 +497,7 @@ section {
   margin-bottom: 10px
 }
 .product--more-info__small {
-  min-height: 130px
+  min-height: 110px
 }
 .product--more-info__small .product--img {
   max-height: 110px
@@ -1168,6 +1175,7 @@ section {
     margin-bottom: 15px;
     letter-spacing: 4px
   }
+  .main-header,
   .main-header--container {
     padding: 0
   }
@@ -1194,6 +1202,18 @@ section {
   }
   .shop--item {
     width: calc(50% - 30px)
+  }
+  .product--more-info__small {
+    min-height: 100px
+  }
+  .product--more-info__small .product--img {
+    max-height: 100px
+  }
+  .product--more-info__medium {
+    min-height: 135px
+  }
+  .product--more-info__medium .product--img {
+    max-height: 135px
   }
   .product--color {
     width: 22px;
@@ -1231,17 +1251,20 @@ section {
     -ms-flex-pack: center;
     justify-content: center
   }
+  .orders {
+    width: 65%
+  }
+  .orders__hide {
+    right: -100%
+  }
 }
 @media screen and (max-width:576px) {
   .button {
-    padding: 1px 10px;
+    padding: 5px 15px;
     font-size: 22px
   }
   .header {
     margin-bottom: 25px
-  }
-  .main-header {
-    padding: 2px 0
   }
   .main-header--container {
     padding: 0
@@ -1264,7 +1287,22 @@ section {
     margin-bottom: 7px
   }
   .product--img {
-    max-height: 130px
+    max-height: 150px
+  }
+  .product--more-info__img {
+    min-height: 150px
+  }
+  .product--more-info__small {
+    min-height: 75px
+  }
+  .product--more-info__small .product--img {
+    max-height: 75px
+  }
+  .product--more-info__medium {
+    min-height: 120px
+  }
+  .product--more-info__medium .product--img {
+    max-height: 120px
   }
   .product--color {
     width: 20px;
@@ -1287,6 +1325,16 @@ section {
   .about-us--advantage {
     width: 50%;
     margin-top: 90px
+  }
+  .contacts--list,
+  .contacts--map {
+    width: calc(100% - 30px)
+  }
+  .contacts--link {
+    font-size: 15px
+  }
+  .orders {
+    width: 100%
   }
 }
 @media screen and (min-width:0px) and (max-width:340px) {

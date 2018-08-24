@@ -117,7 +117,7 @@ window.onload = function() {
   for (let i = 0; i < colorSwitchBtns.length; i++) {
     colorSwitchBtns[i].addEventListener("click", function(event) {
      event.preventDefault();	
-     const index = [...colorSwitchBtns].indexOf(this);
+     const index = [...colorSwitchBtns].indexOf(this); // Прототипом colorSwitchBtns является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array 
      const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
      const activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
 
@@ -147,7 +147,7 @@ window.onload = function() {
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       
       const img = this.closest(".product").querySelector(".product--img__active");
-      const index = [...imgsOfProducts].indexOf(img);
+      const index = [...imgsOfProducts].indexOf(img); // Прототипом imgsOfProducts является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
 
       modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
 
@@ -283,7 +283,9 @@ window.onload = function() {
     for (var i = 0; i < active.length; i++) {
       active[i].setAttribute("tabindex","1")
     }
-    promocod.focus();
+    if (window.innerWidth > smallScreen) {
+      promocod.focus();
+    }
   }, false);
 
 
@@ -336,7 +338,7 @@ window.onload = function() {
       for (let i = 0; i < imgsOfProducts.length; i++) {
         productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
       }
-      const index = [...productImgSrc].indexOf(imgSrc);
+      const index = [...productImgSrc].indexOf(imgSrc); // Прототипом productImgSrc является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
 
       for (let i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--img__active");

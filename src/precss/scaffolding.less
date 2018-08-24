@@ -75,7 +75,7 @@ section {
   transition: 0.2s;
   
   .xs-block({
-    padding: 1px 10px;
+    padding: 5px 15px;
     font-size: 22px;
   });
 
@@ -138,6 +138,10 @@ section {
     height: 17px;
     background: url(../../img/delete.svg) center no-repeat;
     background-size: contain;
+
+    &:focus {
+      outline: 1px solid @secondary-accent-color;
+    }
   }
 }
 

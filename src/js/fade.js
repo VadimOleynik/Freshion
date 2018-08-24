@@ -1,8 +1,6 @@
-function fadeOut(element, className, time, callback, callbackParam) {
-  var time = time || 40;
-  var callback = callback || function() {};
-  var op = 1; 
-  var timer = setInterval(function () {
+function fadeOut(element, className, time=40, callback=function() {}, callbackParam) {
+  let op = 1; 
+  const timer = setInterval(function () {
     if (op <= 0.1){
      callback(callbackParam);
      if (className) {
@@ -17,11 +15,9 @@ function fadeOut(element, className, time, callback, callbackParam) {
 }
 
 
-function fadeIn(element, className, time, callback, callbackParam) {
-  var time = time || 40;
-  var callback = callback || function() {};
-  var op = 0.01; 
-  var timer = setInterval(function () {
+function fadeIn(element, className, time=40, callback=function() {}, callbackParam) {
+  let op = 0.01; 
+  const timer = setInterval(function () {
     if (op >= 1){
       callback(callbackParam);
       if (className) {
