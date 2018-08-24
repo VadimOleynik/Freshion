@@ -283,7 +283,9 @@ window.onload = function() {
     for (var i = 0; i < active.length; i++) {
       active[i].setAttribute("tabindex","1")
     }
+    promocod.focus();
   }, false);
+
 
   orderBtnHide.addEventListener("click", function(event) {
     event.preventDefault();

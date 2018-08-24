@@ -923,10 +923,19 @@ section {
   transition: transform .8s ease;
   transition: transform .8s ease,-webkit-transform .8s ease
 }
+.orders--close:focus {
+  outline: #d2f9f9 solid 1px
+}
+.orders--close:active {
+  outline: 0
+}
 .orders--close__rotate {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg)
+}
+.orders--close__rotate:focus {
+  outline: 0
 }
 .orders--header {
   padding: 20px 0;
