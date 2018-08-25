@@ -5,7 +5,7 @@
 	width: 100%;
 	padding: 5px 0;
 	background-color: @header-bg;
-	color: @header-text;
+	color: @accent-color;
 	z-index: 2;
 
 	.sm-block({
@@ -85,13 +85,13 @@
 		&:hover .main-header--link {
 			color: @secondary-accent-color;
 			.md-block({
-				background-color: fade(@header-text, 40%);
+				background-color: fade(@accent-color, 40%);
 			});	
 		}
 		&:active .main-header--link {
 			color: @secondary-accent-color;
 			.md-block({
-				background-color: fade(@header-text, 55%);
+				background-color: fade(@accent-color, 55%);
 			});
 		}
 
@@ -106,11 +106,11 @@
 		&:focus {
 			color: @secondary-accent-color;
 			.md-block({
-				background-color: fade(@header-text, 40%);
+				background-color: fade(@accent-color, 40%);
 			});	
 		}
 		display: block;
-		color: @header-text;
+		color: @accent-color;
 
 		.md-block({
 			padding: 20px 30px;
@@ -173,8 +173,8 @@
 		padding: 3px 9px;
 		order: 1;
 		background-color: #344f45;
-		color: @header-text;
-		border: 2px solid #20312b;
+		color: @accent-color;
+		border: 2px solid @accent-color;
 		border-radius: 50%;
 
 		.sm-block({

@@ -70,8 +70,8 @@ section {
   text-decoration: none;
   padding: 8px 20px;
   border-radius: 6px;
-  background-color: #1f6c45;
-  box-shadow: 0 -3px darken(#1f6c45, 5%) inset; 
+  background-color: @btn-bg;
+  box-shadow: 0 -3px darken(@btn-bg, 5%) inset; 
   transition: 0.2s;
   
   .xs-block({
@@ -80,12 +80,12 @@ section {
   });
 
   &:hover {
-    background-color: darken(#1f6c45, 5%);
+    background-color: darken(@btn-bg, 5%);
   }
 
   &:active {
-    background-color: darken(#1f6c45, 10%);
-    box-shadow: 0 -3px darken(#1f6c45, 15%) inset;
+    background-color: darken(@btn-bg, 10%);
+    box-shadow: 0 -3px darken(@btn-bg, 15%) inset;
   }
 }
 
@@ -118,6 +118,7 @@ section {
   background-color: @modal-bg;
   border-radius: 10px;
   z-index: 5;
+  
   &__hide {
     display: none;
   }
@@ -136,12 +137,18 @@ section {
     right: -20px;
     width: 17px;
     height: 17px;
-    background: url(../../img/delete.svg) center no-repeat;
+    background: url(../img/delete.svg) center no-repeat;
     background-size: contain;
 
     &:focus {
       outline: 1px solid @secondary-accent-color;
     }
+
+    &:hover,
+    &active {
+      outline: none;
+    }
+
   }
 }
 
