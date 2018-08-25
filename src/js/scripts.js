@@ -8,6 +8,7 @@ window.onload = function() {
   const needParallax = document.querySelectorAll('[data-parallax="true"]');
   const needSmooth = document.querySelectorAll('[data-smooth="true"]');
   const needToggleMain = document.querySelectorAll('[data-toggle-main="true"]');
+ 
   const needToggleAlt = document.querySelectorAll('[data-toggle-alt="true"]');
   const mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
   const shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
@@ -38,6 +39,9 @@ window.onload = function() {
   const orderSubmit = document.querySelector(".orders--submit");
   const ordersEmpty = document.querySelector(".orders--empty");
   const ordersError = document.querySelector(".orders--error");
+  const name = document.querySelector("#name");
+  const surname = document.querySelector("#surname");
+  const phone = document.querySelector("#phone");
 
   const modal = document.querySelectorAll(".modal");
   const overlay = document.querySelectorAll(".overlay");
@@ -180,7 +184,7 @@ window.onload = function() {
       const overlay = modal.previousElementSibling;
       if(modal)
         addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
-        modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
+      modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
     });
   }
 
@@ -408,14 +412,39 @@ window.onload = function() {
   };
 
 
-  // Действия при отправке формы (дополнительная валидация данных, вывод модального окна)
+  // Действия при отправке формы (дополнительная валидация данных, отправка данных на сервер, вывод модального окна)
   ordersForm.addEventListener("submit", function(event) {
     event.preventDefault();
     if(!ordersList.querySelector(".orders--item")) {
       ordersEmpty.hidden = false;
       return false;
     }
-    formValid(ordersForm);
+    formValid();
+
+    const orders = document.querySelectorAll(".orders--item");
+    let ordersInfo = new Array;
+
+    for (let i = 0; i < orders.length; i++) {
+      ordersInfo.push({
+        "name" : orders[i].querySelector(".order--name").innerHTML,
+        "amount" : orders[i].querySelector(".order--amount").value,
+        "price" : orders[i].querySelector(".order--price").innerHTML.replace(/\D+/g,"")
+      });
+    }
+
+    let data = JSON.stringify({
+      "name" : name.value.toString(),
+      "surname" : surname.value.toString(), 
+      "phone" : phone.value.toString(),
+      "order" : ordersInfo,
+      "promocod" : promocod.value.toString(),
+      "summ" : orderPriceSumm.innerHTML
+    });
+
+    ajax("POST", "../php/form.php", data);
+
+    console.log(data);
+
     addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
     thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
   });
@@ -449,14 +478,10 @@ window.onload = function() {
   }
 
 
-  function formValid(form) {
-    const inputs = form.querySelector(".orders--input__required");
-    const name = form.querySelector("#name");
-    const surname = form.querySelector("#surname");
-    const phone = form.querySelector("#phone");
+  function formValid() {
 
-    for (let i = 0; i < inputs.length; i++) {
-      if(!inputs[i].value) {
+    for (let i = 0; i < ordersInput.length; i++) {
+      if(!ordersInput[i].value) {
         ordersError.hidden = false;
       }
     }
