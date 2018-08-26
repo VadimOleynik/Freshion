@@ -206,13 +206,13 @@ section {
 .modal--btn {
   font-size: 0;
   border: none;
-  background: url(../img/delete.svg) center no-repeat;
+  background: url(../img/cancel.svg) center no-repeat;
   padding: 0;
   position: absolute;
-  top: -10px;
-  right: -20px;
-  width: 17px;
-  height: 17px;
+  top: -20px;
+  right: -25px;
+  width: 25px;
+  height: 25px;
   background-size: contain
 }
 .modal--btn:focus {
@@ -500,18 +500,18 @@ section {
   min-height: 200px;
   margin-bottom: 10px
 }
-.product--more-info__small {
-  min-height: 110px
-}
-.product--more-info__small .product--img {
-  max-height: 110px
-}
 .product--more-info__medium {
   min-height: 150px;
   margin-bottom: 7px
 }
 .product--more-info__medium .product--img {
   max-height: 150px
+}
+.product--more-info__small {
+  min-height: 110px
+}
+.product--more-info__small .product--img {
+  max-height: 110px
 }
 .product--colors {
   margin-bottom: auto
@@ -659,32 +659,48 @@ section {
   font-size: 30px;
   text-align: center;
   margin-bottom: 20px;
-  color: #a6603a
+  color: #1e3222
 }
 .details--img {
-  max-width: 250px;
-  margin: 0 20px;
+  max-height: 250px;
+  width: auto;
+  margin: 0 auto;
   display: none;
   -webkit-box-ordinal-group: 0;
   -ms-flex-order: -1;
   order: -1;
   grid-row: span 5
 }
+.details--img__small {
+  max-height: 140px
+}
 .details--img__active {
   display: block
 }
 .details--wrap {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 250px 1fr;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center
+}
+.details--wrap__medium {
+  grid-template-columns: 280px 1fr
+}
+.details--wrap__medium .details--img {
+  max-height: 180px
+}
+.details--wrap__small {
+  grid-template-columns: 300px 1fr
+}
+.details--wrap__small .details--img {
+  max-height: 140px
 }
 .details--header {
   text-align: center;
   font-size: 23px;
   margin-bottom: 5px;
-  color: #a6603a
+  color: #1e3222
 }
 .details--info {
   font-size: 18px;
@@ -692,12 +708,37 @@ section {
 }
 .details--size {
   font-size: 23px;
-  margin-bottom: 10px;
-  color: #00983e
+  margin-bottom: 30px;
+  color: #1e3222
 }
 .details--price {
-  font-size: 23px;
-  color: #4da922
+  font-size: 30px;
+  color: #4da922;
+  position: relative
+}
+.details--price::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  width: 140px;
+  height: 2px;
+  background-color: #4da922
+}
+.details--price::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  width: 140px;
+  height: 2px;
+  background-color: #4da922
 }
 .alt-nav {
   position: fixed;
@@ -1060,8 +1101,8 @@ section {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
   background-size: contain
 }
 .price {
@@ -1208,17 +1249,17 @@ section {
   .shop--item {
     width: calc(50% - 30px)
   }
-  .product--more-info__small {
-    min-height: 100px
-  }
-  .product--more-info__small .product--img {
-    max-height: 100px
-  }
   .product--more-info__medium {
     min-height: 135px
   }
   .product--more-info__medium .product--img {
     max-height: 135px
+  }
+  .product--more-info__small {
+    min-height: 100px
+  }
+  .product--more-info__small .product--img {
+    max-height: 100px
   }
   .product--color {
     width: 22px;
@@ -1297,17 +1338,17 @@ section {
   .product--more-info__img {
     min-height: 150px
   }
-  .product--more-info__small {
-    min-height: 75px
-  }
-  .product--more-info__small .product--img {
-    max-height: 75px
-  }
   .product--more-info__medium {
     min-height: 120px
   }
   .product--more-info__medium .product--img {
     max-height: 120px
+  }
+  .product--more-info__small {
+    min-height: 75px
+  }
+  .product--more-info__small .product--img {
+    max-height: 75px
   }
   .product--color {
     width: 20px;

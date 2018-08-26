@@ -69,26 +69,6 @@
 			});
 		} 
 
-		&__small {
-			min-height: 110px;
-			.sm-block({
-				min-height: 100px;
-			});
-			.xs-block({
-				min-height: 75px;
-			});
-
-			.product--img {
-				max-height: 110px;
-				.sm-block({
-					max-height: 100px;
-				});
-				.xs-block({
-					max-height: 75px;
-				});
-			}
-		}
-
 		&__medium {
 			min-height: 150px;
 			margin-bottom: 7px;
@@ -106,6 +86,26 @@
 				});
 				.xs-block({
 					max-height: 120px;
+				});
+			}
+		}
+
+		&__small {
+			min-height: 110px;
+			.sm-block({
+				min-height: 100px;
+			});
+			.xs-block({
+				min-height: 75px;
+			});
+
+			.product--img {
+				max-height: 110px;
+				.sm-block({
+					max-height: 100px;
+				});
+				.xs-block({
+					max-height: 75px;
 				});
 			}
 		}
@@ -314,15 +314,20 @@
 		font-size: 30px;
 		text-align: center;
 		margin-bottom: 20px;
-		color: @price-color;
+		color: #1e3222;
 	}	
 
 	&--img {
-		max-width: 250px;
-		margin: 0 20px;
+		max-height: 250px;
+		width: auto;
+		margin: 0 auto;
 		display: none;
 		order: -1;
 		grid-row: span 5;
+
+		&__small {
+			max-height: 140px;
+		}
 
 		&__active {
 			display: block;
@@ -331,15 +336,29 @@
 
 	&--wrap {
 		display: grid;
-		grid-template-columns: 300px 1fr;
+		grid-template-columns: 250px 1fr;
 		align-items: center;
+
+		&__medium {
+			grid-template-columns: 280px 1fr;
+			.details--img {
+				max-height: 180px;
+			}
+		}
+
+		&__small {
+			grid-template-columns: 300px 1fr;
+			.details--img {
+				max-height: 140px;
+			}
+		}
 	}
 
 	&--header {
 		text-align: center;
 		font-size: 23px;
 		margin-bottom: 5px;
-		color: @price-color;
+		color: #1e3222;
 	}
 
 	&--info {
@@ -349,12 +368,35 @@
 
 	&--size {
 		font-size: 23px;
-		margin-bottom: 10px;
-		color: #00983e;
+		margin-bottom: 30px;
+		color: #1e3222;
 	}
 
 	&--price {
-		font-size: 23px;
+		font-size: 30px;
 		color: #4DA922;
+		position: relative;
+		
+		&::before {
+			content: "";
+			position: absolute;
+			top: -5px;
+			left: 50%;
+			transform: translate(-50%);
+			width: 140px;
+			height: 2px;
+			background-color: #4DA922;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -5px;
+			left: 50%;
+			transform: translate(-50%);
+			width: 140px;
+			height: 2px;
+			background-color: #4DA922;
+		}
 	}
 }

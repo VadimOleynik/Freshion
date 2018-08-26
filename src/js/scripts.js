@@ -8,7 +8,7 @@ window.onload = function() {
   const needParallax = document.querySelectorAll('[data-parallax="true"]');
   const needSmooth = document.querySelectorAll('[data-smooth="true"]');
   const needToggleMain = document.querySelectorAll('[data-toggle-main="true"]');
- 
+
   const needToggleAlt = document.querySelectorAll('[data-toggle-alt="true"]');
   const mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
   const shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
@@ -422,6 +422,7 @@ window.onload = function() {
     formValid();
 
     const orders = document.querySelectorAll(".orders--item");
+    const promoLabel = document.querySelector(".orders--label__cod");
     let ordersInfo = new Array;
 
     for (let i = 0; i < orders.length; i++) {
@@ -438,15 +439,16 @@ window.onload = function() {
       "phone" : phone.value.toString(),
       "order" : ordersInfo,
       "promocod" : promocod.value.toString(),
+      "promocod-descending" : promoLabel.classList.contains("orders--label__descending"),
       "summ" : orderPriceSumm.innerHTML
     });
 
-    ajax("POST", "../php/form.php", data);
-
-    console.log(data);
-
-    addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
-    thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
+    let serverAnswer = ajax("POST", "../php/form.php", data, function() {
+      addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
+      thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
+    }, function() {
+      console.log(false);
+    });
   });
 
    // Действия при закрытии модального окна "Спасибо за заказ"
