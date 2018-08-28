@@ -324,7 +324,7 @@
 		font-size: 30px;
 		text-align: center;
 		margin-bottom: 20px;
-		color: #1e3222;
+		color: @details-color;
 	}	
 
 	&--img {
@@ -370,7 +370,7 @@
 		text-align: center;
 		font-size: 23px;
 		margin-bottom: 5px;
-		color: #1e3222;
+		color: @details-color;
 	}
 
 	&--info {
@@ -381,12 +381,12 @@
 	&--size {
 		font-size: 23px;
 		margin-bottom: 30px;
-		color: #1e3222;
+		color: @details-color;
 	}
 
 	&--price {
 		font-size: 30px;
-		color: #4DA922;
+		color: @details-price-color;
 		position: relative;
 		
 		&::before {
@@ -397,7 +397,7 @@
 			transform: translate(-50%);
 			width: 140px;
 			height: 2px;
-			background-color: #4DA922;
+			background-color: @details-price-color;
 		}
 
 		&::after {
@@ -408,7 +408,7 @@
 			transform: translate(-50%);
 			width: 140px;
 			height: 2px;
-			background-color: #4DA922;
+			background-color: @details-price-color;
 		}
 	}
 }

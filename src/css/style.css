@@ -1,7 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Comfortaa:700|Cormorant+Garamond:700|Open+Sans&subset=cyrillic);
-.wait {
-  cursor: wait;
-}
 blockquote,
 body,
 code,
@@ -228,6 +225,9 @@ section {
 .header {
   font-size: 48px;
   margin-bottom: 50px
+}
+.wait {
+  cursor: wait
 }
 .main-header {
   position: fixed;
@@ -1304,7 +1304,7 @@ section {
     width: 65%
   }
   .orders__hide {
-    right: -100%
+    right: -65%
   }
 }
 @media screen and (max-width:576px) {
@@ -1384,6 +1384,9 @@ section {
   }
   .orders {
     width: 100%
+  }
+  .orders__hide {
+    right: -100%
   }
 }
 @media screen and (min-width:0px) and (max-width:340px) {
