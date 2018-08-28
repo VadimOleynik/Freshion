@@ -17,22 +17,22 @@ $promoMark = "";
 $summ = $data["summ"];
 
 for ($i = 0; $i < count($order); $i++) {
-	$str = $str.$order[$i]["name"].' ('.$order[$i]["amount"].')'.' - '.$order[$i]["price"].'грн'."\n";
+	$str = $str.'№'.$order[$i]["number"].' '.$order[$i]["name"].' ('.$order[$i]["amount"].') '.$order[$i]["color"].' - '.$order[$i]["price"].'грн'."\n";
 }
 
 if ($name == '' || $surname == '' || $phone == '') {
 	echo 'err_1';
 }
 
-if(!(preg_match("/^[а-яФА-Я]+$/",$name))) {
+else if(!(preg_match("/^[а-яФА-Я]+$/",$name))) {
 	echo 'err_2_1';
 }
 
-if(!(preg_match("/^[а-яФА-Я]+$/",$surname))) {
+else if(!(preg_match("/^[а-яФА-Я]+$/",$surname))) {
 	echo 'err_2_2';
 }
 
-if(!(preg_match("/^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/",$phone))) {
+else if(!(preg_match("/^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/",$phone))) {
 	echo 'err_2_3';
 }
 

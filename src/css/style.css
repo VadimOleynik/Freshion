@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Comfortaa:700|Cormorant+Garamond:700|Open+Sans&subset=cyrillic);
+.wait {
+  cursor: wait;
+}
 blockquote,
 body,
 code,

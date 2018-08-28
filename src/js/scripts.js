@@ -34,6 +34,7 @@ window.onload = function() {
   const orderBtnHide = document.querySelector(".orders--close");
   const orderPriceSumm = document.querySelector(".price--amount");
   const promocod = document.querySelector("#cod");
+  const promoLabel = document.querySelector(".orders--label__cod");
   const orderOverlay = document.querySelector(".orders--overlay");
   const orderDelete = document.querySelector(".order--deletes");
   const orderSubmit = document.querySelector(".orders--submit");
@@ -48,7 +49,7 @@ window.onload = function() {
   const modalCloseBtn = document.querySelectorAll(".modal--btn");
 
   const thanksModal = document.querySelector(".thanks-for-order");
-  const thanksModalCloseBtn = document.querySelector(".modal--btn");
+  const thanksModalCloseBtn = document.querySelector(".thanks-for-order--btn");
   const thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
 
   // Мобильное меню
@@ -198,6 +199,8 @@ window.onload = function() {
       const productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
       const productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
       const productInfo = this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href");
+      const productNumber = productInfo.replace(/\D+/g,"");
+      const productColor = this.closest(".shop--item").querySelector(".product--color__active").innerHTML;
       const order = document.querySelectorAll(".order");
       const orderName = new Array;
       const orderPrice = new Array;
@@ -242,8 +245,8 @@ window.onload = function() {
       }
       function createNewOrderItem() {
         const newItemHTML = 
-        ` <a class="order--more-info" href="${productInfo}"> 
-        <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}">
+        ` <a class="order--more-info" href="${productInfo}" data-number="${productNumber}"> 
+        <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}" data-color="${productColor}">
         </a>
         <div class="order--info">
         <p class="order--name">${productName}</p>
@@ -419,36 +422,8 @@ window.onload = function() {
       ordersEmpty.hidden = false;
       return false;
     }
-    formValid();
+    formValid(ajax);
 
-    const orders = document.querySelectorAll(".orders--item");
-    const promoLabel = document.querySelector(".orders--label__cod");
-    let ordersInfo = new Array;
-
-    for (let i = 0; i < orders.length; i++) {
-      ordersInfo.push({
-        "name" : orders[i].querySelector(".order--name").innerHTML,
-        "amount" : orders[i].querySelector(".order--amount").value,
-        "price" : orders[i].querySelector(".order--price").innerHTML.replace(/\D+/g,"")
-      });
-    }
-
-    let data = JSON.stringify({
-      "name" : name.value.toString(),
-      "surname" : surname.value.toString(), 
-      "phone" : phone.value.toString(),
-      "order" : ordersInfo,
-      "promocod" : promocod.value.toString(),
-      "promocod-descending" : promoLabel.classList.contains("orders--label__descending"),
-      "summ" : orderPriceSumm.innerHTML
-    });
-
-    let serverAnswer = ajax("POST", "../php/form.php", data, function() {
-      addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
-      thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
-    }, function() {
-      console.log(false);
-    });
   });
 
    // Действия при закрытии модального окна "Спасибо за заказ"
@@ -456,19 +431,19 @@ window.onload = function() {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
-    orderPriceSumm.innerHTML = 0;
-    ordersAmount = 0;
-    thanksModal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
+    orderPriceSumm.innerHTML = "0";
+    ordersAmount.innerHTML = "0";
+    promoLabel.classList.remove("orders--label__descending");
   });
 
    thanksModalOverlay.addEventListener("click", function(event) {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
-    orderPriceSumm.innerHTML = 0;
-    ordersAmount = 0;
+    orderPriceSumm.innerHTML = "0";
+    ordersAmount.innerHTML = "0";
+    promoLabel.classList.remove("orders--label__descending");
   });
-
 
 
   // Скрытие надписи об ошибке, при начале заполнения формы
@@ -480,8 +455,7 @@ window.onload = function() {
   }
 
 
-  function formValid() {
-
+  function formValid(callback) {
     for (let i = 0; i < ordersInput.length; i++) {
       if(!ordersInput[i].value) {
         ordersError.hidden = false;
@@ -499,6 +473,75 @@ window.onload = function() {
     if (!phone.value.match(/^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/)) {
       ordersError.hidden = false;
     }
+
+    else callback();
+  }
+
+
+  function ajax() {
+    const orders = document.querySelectorAll(".orders--item");
+    let ordersInfo = new Array;
+
+    for (let i = 0; i < orders.length; i++) {
+      ordersInfo.push({
+        "name" : orders[i].querySelector(".order--name").innerHTML,
+        "amount" : orders[i].querySelector(".order--amount").value,
+        "price" : orders[i].querySelector(".order--price").innerHTML.replace(/\D+/g,""),
+        "number" : orders[i].querySelector("[data-number]").getAttribute("data-number"),
+        "color" : orders[i].querySelector("[data-color]").getAttribute("data-color")
+      });
+    }
+
+    let data = JSON.stringify({
+      "name" : name.value.toString(),
+      "surname" : surname.value.toString(), 
+      "phone" : phone.value.toString(),
+      "order" : ordersInfo,
+      "promocod" : promocod.value.toString(),
+      "promocod-descending" : promoLabel.classList.contains("orders--label__descending"),
+      "summ" : orderPriceSumm.innerHTML
+    });
+
+    const request = new XMLHttpRequest();
+
+    request.open("POST", "../php/form.php");
+    request.setRequestHeader("Content-Type", "application/json");
+
+    request.onreadystatechange = function() {
+      document.body.classList.add("wait");
+      if (request.readyState == "4" && request.status == 200 && request.responseText == "1") {
+        document.body.classList.remove("wait");
+        addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
+        thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
+      }
+      else if(request.readyState == "4" && request.status == 200 && request.responseText !== "1") {
+        document.body.classList.remove("wait");
+        switch(request.responseText) {
+          case "err_1":
+          ordersError.innerHTML = "Заполните все поля формы";
+          ordersError.hidden = false;
+          break;
+          case "err_2_1":
+          ordersError.innerHTML = "Имя некоректно, исправьте ошибку";
+          ordersError.hidden = false;
+          break;
+          case "err_2_2":
+          ordersError.innerHTML = "Фамилия некоректна, исправьте ошибку";
+          ordersError.hidden = false;
+          break;
+          case "err_2_3":
+          ordersError.innerHTML = "Номер телефона некоректен, исправьте ошибку";
+          ordersError.hidden = false;
+          break;
+        }
+      }
+      else if (request.readyState !== "4" || request.status !== 200) {
+        document.body.classList.remove("wait");
+        ordersError.innerHTML = "Ошибка отправки данных, повторите попытку позже";
+        ordersError.hidden = false;
+      }
+    }
+    request.send(data);
   }
 
 };
