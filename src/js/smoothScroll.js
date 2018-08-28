@@ -13,15 +13,18 @@ function currentYPosition() {
   function elmYPosition(elm, extraOffset=0) {
   	let y = elm.offsetTop - extraOffset;
   	const node = elm;
+    
   	while (node.offsetParent && node.offsetParent != document.body) {
   		node = node.offsetParent;
   		y += node.offsetTop;
   	} return y;
   }
 
+
   function elmXPosition(elm, extraOffset=0) {
     let x = elm.offsetLeft - extraOffset;
     const node = elm;
+
     while (node.offsetParent && node.offsetParent != document.body) {
       node = node.offsetParent;
       x += node.offsetLeft;

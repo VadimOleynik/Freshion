@@ -15,6 +15,7 @@
 	&--container {
 		display: flex;
 		justify-content: center;
+
 		.md-block({
 			padding: 0;
 		});
@@ -70,6 +71,7 @@
 
 	&--item {
 		display: inline-block;
+
 		.md-block({
 			display: block;
 			font-size: 23px;
@@ -84,12 +86,14 @@
 
 		&:hover .main-header--link {
 			color: @secondary-accent-color;
+
 			.md-block({
 				background-color: fade(@accent-color, 40%);
 			});	
 		}
 		&:active .main-header--link {
 			color: @secondary-accent-color;
+
 			.md-block({
 				background-color: fade(@accent-color, 55%);
 			});
@@ -105,6 +109,7 @@
 	&--link {
 		&:focus {
 			color: @secondary-accent-color;
+
 			.md-block({
 				background-color: fade(@accent-color, 40%);
 			});	
@@ -116,6 +121,7 @@
 			padding: 20px 30px;
 		});
 	}
+
 	&--mobile {
 		padding: 0;
 		border: none;
@@ -132,9 +138,6 @@
 			content: "≡";
 			color: @secondary-accent-color;
 			font-size: 40px;
-		}
-		&__active {
-
 		}
 	}
 	
@@ -210,6 +213,7 @@
 			&::before {
 				animation: rotate 1s ease;
 			}
+			
 			@keyframes rotate {
 				from {
 					transform: rotate(0deg);

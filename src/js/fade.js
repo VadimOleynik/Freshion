@@ -8,6 +8,7 @@ function fadeOut(element, className, time=40, callback=function() {}, callbackPa
     }
     clearInterval(timer);
   }
+  
   element.style.opacity = op;
   element.style.filter = 'alpha(opacity=' + op * 100 + ")";
   op = op - 0.1;
@@ -25,6 +26,7 @@ function fadeIn(element, className, time=40, callback=function() {}, callbackPar
       }
       clearInterval(timer);
     }
+
     element.style.opacity = op;
     element.style.filter = 'alpha(opacity=' + op * 100 + ")";
     op = op + 0.1;

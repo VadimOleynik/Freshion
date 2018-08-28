@@ -1,6 +1,5 @@
 "use strict";
 window.onload = function() {
-
 	const mobMenuBtn = document.querySelector(".main-header--mobile");
 	const menuList = document.querySelector(".main-header--list");
   const smallScreen = 767;
@@ -52,12 +51,14 @@ window.onload = function() {
   const thanksModalCloseBtn = document.querySelector(".thanks-for-order--btn");
   const thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
 
+
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {
   	event.preventDefault();
     menuList.classList.toggle("main-header--list__show");
     menuList.classList.toggle("main-header--list__hide");
   });
+
 
   // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
   const shopZone = caclZone(shop);
@@ -74,12 +75,12 @@ window.onload = function() {
   if(window.innerWidth > smallScreen) {
   	window.onscroll = function() {
   		parallax(needParallax, 10);
-
   		const scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
       for (let i = 0; i < needToggleMain.length; i++) {
         needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
       }
+
       for (let i = 0; i < mainAnchorPositions.length; i++) {
         if (scrolled >= mainAnchorPositions[i] - 200 && scrolled < mainAnchorPositions[i+1] - 200) {
           needToggleMain[i].closest(".main-header--item").classList.add("main-header--item__active");
@@ -89,25 +90,27 @@ window.onload = function() {
         }
       }
 
-      if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
-       altMenu.classList.add("alt-nav__visible");
-       for (let i = 0; i < needToggleAlt.length; i++) {
-        needToggleAlt[i].classList.remove("alt-nav--item__active");
-      }
       for (let i = 0; i < shopAnchorPositions.length; i++) {
         if (scrolled >= shopAnchorPositions[i] - 400 && scrolled < shopAnchorPositions[i+1] - 400) {
-         needToggleAlt[i].classList.add("alt-nav--item__active");
-       }
-       else if (scrolled >= shopAnchorPositions[shopAnchorPositions.length - 1] - 400) {
-         needToggleAlt[shopAnchorPositions.length - 1].classList.add("alt-nav--item__active");
-       }
+          needToggleAlt[i].classList.add("alt-nav--item__active");
+        }
+        else if (scrolled >= shopAnchorPositions[shopAnchorPositions.length - 1] - 400) {
+          needToggleAlt[shopAnchorPositions.length - 1].classList.add("alt-nav--item__active");
+        }
+      }
+
+      if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
+        altMenu.classList.add("alt-nav__visible");
+        for (let i = 0; i < needToggleAlt.length; i++) {
+          needToggleAlt[i].classList.remove("alt-nav--item__active");
+        }
+      }
+      else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
+       altMenu.classList.remove("alt-nav__visible");
      }
    }
-   else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
-     altMenu.classList.remove("alt-nav__visible");
-   }
- }
-};
+ };
+
 
   // Плавная прокрутка 
   for (let i = 0; i < needSmooth.length; i++) {
@@ -118,30 +121,33 @@ window.onload = function() {
     });
   }
 
+
 	// Переключение цветов товара
   for (let i = 0; i < colorSwitchBtns.length; i++) {
     colorSwitchBtns[i].addEventListener("click", function(event) {
-     event.preventDefault();	
-     const index = [...colorSwitchBtns].indexOf(this); // Прототипом colorSwitchBtns является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array 
-     const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
-     const activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
+      event.preventDefault();
+      const index = [...colorSwitchBtns].indexOf(this); // Прототипом colorSwitchBtns является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array 
+      const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+      const activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
 
-     for (let i = 0; i < activeBtn.length; i++) {
-       activeBtn[i].classList.remove("product--color__active");
-     }
-     colorSwitchBtns[index].classList.add("product--color__active"); // Смена актывных кнопок
-
-     if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
-      for (let i = 0; i < activeImg.length; i++) {
-        fadeOut(activeImg[i], "product--img__active");
+      for (let i = 0; i < activeBtn.length; i++) {
+        activeBtn[i].classList.remove("product--color__active");
       }
-      fadeIn(imgsOfProducts[index], "product--img__active");
-    }
-    else {
-      return false;
-    }
-  });
+
+      colorSwitchBtns[index].classList.add("product--color__active"); // Смена актывных кнопок
+
+      if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
+        for (let i = 0; i < activeImg.length; i++) {
+          fadeOut(activeImg[i], "product--img__active");
+        }
+        fadeIn(imgsOfProducts[index], "product--img__active");
+      }
+      else {
+        return false;
+      }
+    });
   }
+
 
   // Открытие модального окно с подробной информацией о товаре 
   for (let i = 0; i < moreInfo.length; i++) {
@@ -149,25 +155,27 @@ window.onload = function() {
       const atr = this.getAttribute("href");
       const modal = document.querySelector(atr);
       const overlay = modal.previousElementSibling;
-      addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
-      
       const img = this.closest(".product").querySelector(".product--img__active");
       const index = [...imgsOfProducts].indexOf(img); // Прототипом imgsOfProducts является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
-
+      
+      addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
 
       for (let i = 0; i < imgDetails.length; i++) {
-       imgDetails[i].classList.remove("details--img__active");
-     }
-     imgDetails[index].classList.add("details--img__active");
-   });
+        imgDetails[i].classList.remove("details--img__active");
+      }
+
+      imgDetails[index].classList.add("details--img__active");
+    });
   }
+
 
   // Скрытие модальных окон
   for (let i = 0; i < overlay.length; i++) {
     overlay[i].addEventListener("click", function(event) {
       event.preventDefault();
       const modal = this.nextElementSibling;
+
       if (modal.classList.contains("modal")) {
         addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
         modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
@@ -183,11 +191,13 @@ window.onload = function() {
       event.preventDefault();
       const modal = this.closest(".modal");
       const overlay = modal.previousElementSibling;
+
       if(modal)
         addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
       modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
     });
   }
+
 
   // Добавление товаров в корзину 
   for (let i = 0; i < productsBtn.length; i++) {
@@ -206,8 +216,8 @@ window.onload = function() {
       const orderPrice = new Array;
       const orderPhotoLink = new Array;
       const amountsOfOrders = new Array; 
-      ordersEmpty.hidden = true;
 
+      ordersEmpty.hidden = true;
       cart.classList.add("main-header--buy__rotate");
       
       if (!order.length) { // Создать первый заказ
@@ -243,6 +253,7 @@ window.onload = function() {
           getOrdersValues(true, true, false, 0); 
         }
       }
+
       function createNewOrderItem() {
         const newItemHTML = 
         ` <a class="order--more-info" href="${productInfo}" data-number="${productNumber}"> 
@@ -265,13 +276,16 @@ window.onload = function() {
     });
   }
 
+
   // Удаление класса у корзины после окончания анимации. Два синтаксиса для разных браузеров
   cart.addEventListener("webkitAnimationEnd", function(event) {
     cart.classList.remove("main-header--buy__rotate");
   });
+
   cart.addEventListener("animationend",  function(event) {
     cart.classList.remove("main-header--buy__rotate");
   });
+
 
   // Изменение числа заказов при изменении поля "Количество"
   document.addEventListener("input", function(e){
@@ -281,26 +295,28 @@ window.onload = function() {
     }
   });
 
+
   // Открытие и закрытие корзины
   orderBtnShow.addEventListener("click", function(event) {
     event.preventDefault();
-    addAndRemoveClass([orders, orderOverlay], ["orders__show", "overlay__show"], [orders, orderOverlay, orderBtnHide], ["orders__hide", "overlay__hide", "orders--close__rotate"]);    
-
     const active = orders.querySelectorAll('[tabindex="-1"]');
+
+    addAndRemoveClass([orders, orderOverlay], ["orders__show", "overlay__show"], [orders, orderOverlay, orderBtnHide], ["orders__hide", "overlay__hide", "orders--close__rotate"]);    
     for (var i = 0; i < active.length; i++) {
       active[i].setAttribute("tabindex","1")
     }
+
     if (window.innerWidth > smallScreen) {
       promocod.focus();
     }
   });
 
-
   orderBtnHide.addEventListener("click", function(event) {
     event.preventDefault();
-    addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
-    
     const active = orders.querySelectorAll('[tabindex="1"]');
+
+    addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+
     for (var i = 0; i < active.length; i++) {
       active[i].setAttribute("tabindex","-1")
     }
@@ -308,26 +324,28 @@ window.onload = function() {
 
   orderOverlay.addEventListener("click", function(event) {
     event.preventDefault();
+    const active = orders.querySelectorAll('[tabindex="1"]');
+
     addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
     
-    const active = orders.querySelectorAll('[tabindex="1"]');
     for (var i = 0; i < active.length; i++) {
       active[i].setAttribute("tabindex","-1")
     }
   });
 
+
   // Введение промокода
   promocod.addEventListener("input", function(event) {
     event.preventDefault();
     let promocodsArr;
+
     getPromocods(function(responce) {
       promocodsArr = responce;
       for (let i = 0; i < promocodsArr.length; i++) {
-        console.log(false);
         event.target.closest(".orders--label__cod").classList.remove("orders--label__descending");
         getOrdersValues(true, true, false, 0);
+
         if (event.target.value == promocodsArr[i]) {
-          console.log(true);
           event.target.closest(".orders--label__cod").classList.add("orders--label__descending");
           getOrdersValues(true, true, false, 10);
           break;
@@ -335,6 +353,7 @@ window.onload = function() {
       }
     });
   });
+
 
   // Открытие окна подробной информации о товаре с корзины
   document.addEventListener("click", function(e) {
@@ -345,18 +364,20 @@ window.onload = function() {
       const atr = e.target.closest(".order--more-info").getAttribute("href");
       const modal = document.querySelector(atr);
       const overlay = modal.previousElementSibling;
+      const productImgSrc = new Array;
+      const index = [...productImgSrc].indexOf(imgSrc); // Прототипом productImgSrc является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
+
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
 
-      const productImgSrc = new Array;
       for (let i = 0; i < imgsOfProducts.length; i++) {
         productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
       }
-      const index = [...productImgSrc].indexOf(imgSrc); // Прототипом productImgSrc является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
 
       for (let i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--img__active");
      }
+
      imgDetails[index].classList.add("details--img__active");
    }
  });
@@ -365,6 +386,7 @@ window.onload = function() {
     for (let i = 0; i < elemsToAddClass.length; i++) {
       elemsToAddClass[i].classList.add(classToAdd[i]);
     }
+
     for (let i = 0; i < elemsToremoveClass.length; i++) {
       elemsToremoveClass[i].classList.remove(classToRemove[i]);
     }
@@ -376,6 +398,7 @@ window.onload = function() {
     }
   } 
 
+
   // Удаление товаров с корзины 
   document.addEventListener('click', function(e) {
     if(e.target && e.target.classList[0] == "order--delete"){
@@ -385,6 +408,7 @@ window.onload = function() {
         thisOrder.parentNode.removeChild(thisOrder);
         getOrdersValues(true, true, false, 0);
       };
+
       fadeOut(thisOrder, "", 40, callback, thisOrder);
     }
   });
@@ -404,12 +428,15 @@ window.onload = function() {
     if (amount && price) {
       let amountSumm = 0;
       let priceSumm = 0;
+
       for (let i = 0; i < amountsOfOrders.length; i++) {
         amountSumm += +amountsOfOrders[i];
       }
+
       if (needIter) {
         amountSumm++;
       }
+
       setTimeout(function() {
         ordersAmount.innerHTML = amountSumm.toString();
       }, 500)
@@ -417,6 +444,7 @@ window.onload = function() {
       for (let i = 0; i < orderPrice.length; i++) {
         priceSumm += orderPrice[i] * amountsOfOrders[i];
       }
+
       orderPriceSumm.innerHTML = (priceSumm - (priceSumm / 100 * discount)).toString();
     }
   };
@@ -430,11 +458,10 @@ window.onload = function() {
       return false;
     }
     formValid(sendData);
-
   });
 
-   // Действия при закрытии модального окна "Спасибо за заказ"
-   thanksModalCloseBtn.addEventListener("click", function(event) {
+  // Действия при закрытии модального окна "Спасибо за заказ"
+  thanksModalCloseBtn.addEventListener("click", function(event) {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
@@ -443,7 +470,7 @@ window.onload = function() {
     promoLabel.classList.remove("orders--label__descending");
   });
 
-   thanksModalOverlay.addEventListener("click", function(event) {
+  thanksModalOverlay.addEventListener("click", function(event) {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
@@ -487,6 +514,7 @@ window.onload = function() {
 
   function sendData() {
     const orders = document.querySelectorAll(".orders--item");
+    const request = new XMLHttpRequest();
     let ordersInfo = new Array;
 
     for (let i = 0; i < orders.length; i++) {
@@ -508,8 +536,6 @@ window.onload = function() {
       "promocod-descending" : promoLabel.classList.contains("orders--label__descending"),
       "summ" : orderPriceSumm.innerHTML
     });
-
-    const request = new XMLHttpRequest();
 
     request.open("POST", "../php/form.php");
     request.setRequestHeader("Content-Type", "application/json");
@@ -571,6 +597,5 @@ window.onload = function() {
     }
     request.send();
   }
-
 };
 
