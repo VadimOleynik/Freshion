@@ -319,14 +319,21 @@ window.onload = function() {
   // Введение промокода
   promocod.addEventListener("input", function(event) {
     event.preventDefault();
-    if (this.value == "1254") {
-      this.closest(".orders--label__cod").classList.add("orders--label__descending");
-      getOrdersValues(true, true, false, 10);
-    }
-    else {
-      this.closest(".orders--label__cod").classList.remove("orders--label__descending");
-      getOrdersValues(true, true, false, 0);
-    }
+    let promocodsArr;
+    getPromocods(function(responce) {
+      promocodsArr = responce;
+      for (let i = 0; i < promocodsArr.length; i++) {
+        console.log(false);
+        event.target.closest(".orders--label__cod").classList.remove("orders--label__descending");
+        getOrdersValues(true, true, false, 0);
+        if (event.target.value == promocodsArr[i]) {
+          console.log(true);
+          event.target.closest(".orders--label__cod").classList.add("orders--label__descending");
+          getOrdersValues(true, true, false, 10);
+          break;
+        }
+      }
+    });
   });
 
   // Открытие окна подробной информации о товаре с корзины
@@ -422,7 +429,7 @@ window.onload = function() {
       ordersEmpty.hidden = false;
       return false;
     }
-    formValid(ajax);
+    formValid(sendData);
 
   });
 
@@ -478,7 +485,7 @@ window.onload = function() {
   }
 
 
-  function ajax() {
+  function sendData() {
     const orders = document.querySelectorAll(".orders--item");
     let ordersInfo = new Array;
 
@@ -535,13 +542,34 @@ window.onload = function() {
           break;
         }
       }
-      else if (request.readyState !== "4" || request.status !== 200) {
+      else if (request.readyState == "4" || request.status !== 200) {
         document.body.classList.remove("wait");
         ordersError.innerHTML = "Ошибка отправки данных, повторите попытку позже";
         ordersError.hidden = false;
       }
     }
     request.send(data);
+  }
+
+
+  function getPromocods(callback) {
+    const request = new XMLHttpRequest();
+    var respArr = new Array;
+
+    request.open("POST", "../php/promocods.php");
+    request.setRequestHeader("Content-Type", "application/json");
+
+    request.onreadystatechange = function() {
+
+      if (request.readyState == "4" && request.status == 200) {
+        respArr = request.responseText.replace(/\n/ig, '').split(",");
+        callback(respArr);
+      }
+      else if (request.readyState == "4" && request.status !== 200) {
+        return false;
+      }
+    }
+    request.send();
   }
 
 };
