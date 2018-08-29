@@ -1,2 +1,8 @@
-"use strict";function getPosition(t){for(var n=new Array,r=0;r<t.length;r++)n[r]=elmYPosition(t[r]);return n}
-//# sourceMappingURL=getPosition.js.map
+function getPosition(anchors) {
+  const anchorPositions = new Array;
+  
+  for (let i = 0; i < anchors.length; i++) {
+  	anchorPositions[i] = (elmYPosition(anchors[i]));
+  }	
+  return anchorPositions;
+};

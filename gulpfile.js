@@ -1,7 +1,6 @@
 const gulp = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const server = require("browser-sync").create();
-const sourcemaps = require("gulp-sourcemaps");
 const gcmq = require("gulp-group-css-media-queries");
 const	preproc = require("gulp-less");
 const cleanCSS = require("gulp-clean-css");
@@ -26,8 +25,8 @@ const config = {
 		dest: "/js"
 	},
 	img: { 
-		src: "/img/**/*{png, jpg, svg}",
-		webp: "/img/**/*{png, jpg}",
+		src: "/img/**/*.{png,jpg,jpeg,svg}",
+		webp: "/img/**/*.{png,jpg}",
 		dest: "/img"
 	},
 	fonts: {
@@ -39,7 +38,6 @@ const config = {
 
 gulp.task("style", function() {
 	gulp.src(config.src + config.css.src)
-	.pipe(sourcemaps.init())
 	.pipe(preproc())
 	.pipe(gcmq())
 	.pipe(autoprefixer({
@@ -50,12 +48,10 @@ gulp.task("style", function() {
 		level: 2,
 		format: "beautify" 
 	}))
-	.pipe(sourcemaps.write("."))
 	.pipe(gulp.dest(config.src + config.css.dest))
 	.pipe(cleanCSS({
 		level: 2
 	}))
-	.pipe(sourcemaps.write("."))
 	.pipe(rename("style.min.css"))
 	.pipe(gulp.dest(config.dest + config.css.dest))
 	.pipe(server.stream());
@@ -64,7 +60,7 @@ gulp.task("style", function() {
 
 gulp.task("serve", function() {
 	server.init({
-		server: config.src,
+		server: config.dest,
 		notify: false,
 		open: true,
 		cors: true,
@@ -72,8 +68,15 @@ gulp.task("serve", function() {
 	});
 
 	gulp.watch(config.src + config.css.watch, ["style"]);
+	gulp.watch(config.src + config.html, ["html"]);
 	gulp.watch(config.src + config.html, server.reload);
 	gulp.watch(config.src + config.js.src, server.reload);
+});
+
+
+gulp.task("html", function() {
+	return gulp.src(config.src + config.html)
+	.pipe(gulp.dest(config.dest));
 });
 
 
@@ -99,7 +102,8 @@ gulp.task("copy", function () {
 	return gulp.src([
 		config.src + config.fonts.src,
 		config.src + config.img.src,
-		config.src + config.js.src
+		config.src + config.js.src,
+		config.src + config.html
 		], {
 			base: config.src
 		})
@@ -109,12 +113,10 @@ gulp.task("copy", function () {
 
 gulp.task("script", function () {
 	return gulp.src(config.src + config.js.src)
-	.pipe(sourcemaps.init())
 	.pipe(babel({
 		presets: ['@babel/env']
 	}))
 	.pipe(uglify())
-	.pipe(sourcemaps.write('.'))
 	.pipe(gulp.dest(config.dest + config.js.dest));
 });
 

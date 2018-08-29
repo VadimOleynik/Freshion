@@ -1,2 +1,601 @@
-"use strict";function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e)){for(var t=0,r=new Array(e.length);t<e.length;t++)r[t]=e[t];return r}}window.onload=function(){var e=document.querySelector(".main-header--mobile"),t=document.querySelector(".main-header--list"),a=document.querySelectorAll('[data-parallax="true"]'),r=document.querySelectorAll('[data-smooth="true"]'),l=document.querySelectorAll('[data-toggle-main="true"]'),i=document.querySelectorAll('[data-toggle-alt="true"]'),o=document.querySelectorAll('[data-anchor-main="true"]'),n=document.querySelectorAll('[data-anchor-shop="true"]'),c=document.querySelector(".alt-nav"),d=document.querySelector("#shop"),s=(document.querySelectorAll(".product"),document.querySelectorAll(".product--more-info")),u=(document.querySelectorAll(".product--details"),document.querySelectorAll(".product--details"),document.querySelectorAll(".product--buy")),m=document.querySelectorAll(".product--color"),v=document.querySelectorAll(".product--img"),_=document.querySelectorAll(".details--img"),h=document.querySelector(".orders"),y=document.querySelector("#orders--form"),g=document.querySelector(".orders--list"),f=document.querySelectorAll(".orders--input__required"),p=document.querySelector(".main-header--orders"),S=document.querySelector(".main-header--amount"),b=document.querySelector(".main-header--buy"),q=document.querySelector(".orders--close"),L=document.querySelector(".price--amount"),A=document.querySelector("#cod"),w=document.querySelector(".orders--label__cod"),T=document.querySelector(".orders--overlay"),x=(document.querySelector(".order--deletes"),document.querySelector(".orders--submit"),document.querySelector(".orders--empty")),H=document.querySelector(".orders--error"),E=document.querySelector("#name"),M=document.querySelector("#surname"),k=document.querySelector("#phone"),D=(document.querySelectorAll(".modal"),document.querySelectorAll(".overlay")),O=document.querySelectorAll(".modal--btn"),C=document.querySelector(".thanks-for-order"),P=document.querySelector(".thanks-for-order--btn"),j=document.querySelector(".thanks-for-order--overlay");e.addEventListener("click",function(e){e.preventDefault(),t.classList.toggle("main-header--list__show"),t.classList.toggle("main-header--list__hide")});var I,R,W=(I=d,(R=new Object).topPos=I.offsetTop,R.botPos=d.offsetHeight+d.offsetTop,R),N=getPosition(o),$=getPosition(n);767<window.innerWidth&&(window.onscroll=function(){parallax(a,10);for(var e=window.pageYOffset||document.documentElement.scrollTop,t=0;t<l.length;t++)l[t].closest(".main-header--item").classList.remove("main-header--item__active");for(var r=0;r<N.length;r++)e>=N[r]-200&&e<N[r+1]-200?l[r].closest(".main-header--item").classList.add("main-header--item__active"):e>=N[N.length-1]-200&&l[N.length-1].closest(".main-header--item").classList.add("main-header--item__active");for(var o=0;o<$.length;o++)e>=$[o]-400&&e<$[o+1]-400?i[o].classList.add("alt-nav--item__active"):e>=$[$.length-1]-400&&i[$.length-1].classList.add("alt-nav--item__active");if(e>=W.topPos-200&&e<W.botPos-400){c.classList.add("alt-nav__visible");for(var n=0;n<i.length;n++)i[n].classList.remove("alt-nav--item__active")}else(e<W.topPos-200||e>=W.botPos-400)&&c.classList.remove("alt-nav__visible")});for(var X=0;X<r.length;X++)r[X].addEventListener("click",function(e){e.preventDefault();var t=document.querySelector(this.getAttribute("href"));smoothScroll(t,10,60)});for(var J=0;J<m.length;J++)m[J].addEventListener("click",function(e){e.preventDefault();for(var t=_toConsumableArray(m).indexOf(this),r=v[t].closest(".product--more-info__img").querySelectorAll(".product--img__active"),o=m[t].closest(".product--colors").querySelectorAll(".product--color__active"),n=0;n<o.length;n++)o[n].classList.remove("product--color__active");if(m[t].classList.add("product--color__active"),!(1<v[t].closest(".product--more-info__img").querySelectorAll(".product--img").length))return!1;for(var a=0;a<r.length;a++)fadeOut(r[a],"product--img__active");fadeIn(v[t],"product--img__active")});for(var Y=0;Y<s.length;Y++)s[Y].addEventListener("click",function(e){var t=this.getAttribute("href"),r=document.querySelector(t),o=r.previousElementSibling,n=this.closest(".product").querySelector(".product--img__active"),a=_toConsumableArray(v).indexOf(n);G([r,o],["modal__show","overlay__show"],[r,o],["modal__hide","overlay__hide"]),r.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");for(var l=0;l<_.length;l++)_[l].classList.remove("details--img__active");_[a].classList.add("details--img__active")});for(var z=0;z<D.length;z++)D[z].addEventListener("click",function(e){e.preventDefault();var t=this.nextElementSibling;if(!t.classList.contains("modal"))return!1;G([t,this],["modal__hide","overlay__hide"],[t,this],["modal__show","overlay__show"]),t.querySelector('[tabindex="1"]').setAttribute("tabindex","-1")});for(var B=0;B<O.length;B++)O[B].addEventListener("click",function(e){e.preventDefault();var t=this.closest(".modal"),r=t.previousElementSibling;t&&G([t,r],["modal__hide","overlay__hide"],[t,r],["modal__show","overlay__show"]),t.querySelector('[tabindex="1"]').setAttribute("tabindex","-1")});for(var F=0;F<u.length;F++)u[F].addEventListener("click",function(e){e.preventDefault();var r=this.closest(".shop--item").querySelector(".product--about").innerHTML,o=this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""),n=(this.closest(".shop--item").querySelector(".product--img__active"),this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src")),a=this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt"),l=this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href"),i=l.replace(/\D+/g,""),c=this.closest(".shop--item").querySelector(".product--color__active").innerHTML,t=document.querySelectorAll(".order"),d=new Array,s=new Array,u=new Array,m=new Array;if(x.hidden=!0,b.classList.add("main-header--buy__rotate"),t.length){for(var v=0;v<t.length;v++)d[v]=t[v].querySelector(".order--name").innerHTML,s[v]=t[v].querySelector(".order--price").innerHTML.replace(/\D+/g,""),u[v]=t[v].querySelector(".order--img").getAttribute("src"),m[v]=t[v].querySelector(".order--amount").getAttribute("value");Q(!0,!0,!0,0);var _=d.indexOf(r),h=s.indexOf(o),y=u.indexOf(n);if(-1!==_&&-1!==h&&-1!==y){var f=+t[_].querySelector(".order--amount").value;f++,t[_].querySelector(".order--amount").setAttribute("value",f),Q(!0,!0,!1,0)}else p(),Q(!0,!0,!1,0)}else p(),L.innerHTML=o,setTimeout(function(){S.innerHTML=1},500);function p(){var e=' <a class="order--more-info" href="'.concat(l,'" data-number="').concat(i,'"> \n        <img class="order--img" src="').concat(n,'" alt="').concat(a,'" data-color="').concat(c,'">\n        </a>\n        <div class="order--info">\n        <p class="order--name">').concat(r,'</p>\n        <label class="order--label">\n        Количество:\n        <input type="number" min="1" max="10" class="order--amount" value="1">\n        </label>\n        <p class="order--price">').concat(o,' <span class="orders--currency">грн.</span></p>\n        <button class="order--delete">Удалить товар</button>\n        </div>'),t=document.createElement("li");t.className+=" orders--item order",t.innerHTML=e,g.appendChild(t)}});function G(e,t,r,o){for(var n=0;n<e.length;n++)e[n].classList.add(t[n]);for(var a=0;a<r.length;a++)r[a].classList.remove(o[a])}function K(e){for(;e.firstChild;)e.removeChild(e.firstChild)}function Q(e,t,r){for(var o=3<arguments.length&&void 0!==arguments[3]?arguments[3]:0,n=document.querySelectorAll(".order"),a=new Array,l=new Array,i=0;i<n.length;i++)a[i]=n[i].querySelector(".order--amount").getAttribute("value"),l[i]=n[i].querySelector(".order--price").innerHTML.replace(/\D+/g,"");if(e&&t){for(var c=0,d=0,s=0;s<a.length;s++)c+=+a[s];r&&c++,setTimeout(function(){S.innerHTML=c.toString()},500);for(var u=0;u<l.length;u++)d+=l[u]*a[u];L.innerHTML=(d-d/100*o).toString()}}b.addEventListener("webkitAnimationEnd",function(e){b.classList.remove("main-header--buy__rotate")}),b.addEventListener("animationend",function(e){b.classList.remove("main-header--buy__rotate")}),document.addEventListener("input",function(e){e.target&&"order--amount"==e.target.classList[0]&&(e.target.setAttribute("value",e.target.value),Q(!0,!0,!1,0))}),p.addEventListener("click",function(e){e.preventDefault();var t=h.querySelectorAll('[tabindex="-1"]');G([h,T],["orders__show","overlay__show"],[h,T,q],["orders__hide","overlay__hide","orders--close__rotate"]);for(var r=0;r<t.length;r++)t[r].setAttribute("tabindex","1");767<window.innerWidth&&A.focus()}),q.addEventListener("click",function(e){e.preventDefault();var t=h.querySelectorAll('[tabindex="1"]');G([q,h,T],["orders--close__rotate","orders__hide","overlay__hide"],[h,T],["orders__show","overlay__show"]);for(var r=0;r<t.length;r++)t[r].setAttribute("tabindex","-1")}),T.addEventListener("click",function(e){e.preventDefault();var t=h.querySelectorAll('[tabindex="1"]');G([q,h,T],["orders--close__rotate","orders__hide","overlay__hide"],[h,T],["orders__show","overlay__show"]);for(var r=0;r<t.length;r++)t[r].setAttribute("tabindex","-1")}),A.addEventListener("input",function(r){var o,e,t,n;r.preventDefault(),e=function(e){o=e;for(var t=0;t<o.length;t++)if(r.target.closest(".orders--label__cod").classList.remove("orders--label__descending"),Q(!0,!0,!1,0),r.target.value==o[t]){r.target.closest(".orders--label__cod").classList.add("orders--label__descending"),Q(!0,!0,!1,10);break}},t=new XMLHttpRequest,n=new Array,t.open("POST","../php/promocods.php"),t.setRequestHeader("Content-Type","application/json"),t.onreadystatechange=function(){if("4"==t.readyState&&200==t.status)n=t.responseText.replace(/\n/gi,"").split(","),e(n);else if("4"==t.readyState&&200!==t.status)return!1},t.send()}),document.addEventListener("click",function(e){if(e.target&&"order--img"==e.target.classList[0]){e.preventDefault();e.target.closest(".order");var t=e.target.getAttribute("src"),r=e.target.closest(".order--more-info").getAttribute("href"),o=document.querySelector(r),n=o.previousElementSibling,a=new Array,l=a.concat().indexOf(t);G([o,n],["modal__show","overlay__show"],[o,n],["modal__hide","overlay__hide"]),o.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");for(var i=0;i<v.length;i++)a.push(v[i].getAttribute("src"));for(var c=0;c<_.length;c++)_[c].classList.remove("details--img__active");_[l].classList.add("details--img__active")}}),document.addEventListener("click",function(e){if(e.target&&"order--delete"==e.target.classList[0]){e.preventDefault();var t=e.target.closest(".order");fadeOut(t,"",40,function(e){e.parentNode.removeChild(e),Q(!0,!0,!1,0)},t)}}),y.addEventListener("submit",function(e){if(e.preventDefault(),!g.querySelector(".orders--item"))return x.hidden=!1;!function(e){for(var t=0;t<f.length;t++)f[t].value||(H.hidden=!1);E.value.match(/^[а-яФА-Я]+$/)||(H.hidden=!1);M.value.match(/^[а-яФА-Я]+$/)||(H.hidden=!1);k.value.match(/^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/)?e():H.hidden=!1}(V)}),P.addEventListener("click",function(e){e.preventDefault(),K(g),y.reset(),L.innerHTML="0",S.innerHTML="0",w.classList.remove("orders--label__descending")}),j.addEventListener("click",function(e){e.preventDefault(),K(g),y.reset(),L.innerHTML="0",S.innerHTML="0",w.classList.remove("orders--label__descending")});for(var U=0;U<f.length;U++)f[U].addEventListener("input",function(e){e.preventDefault(),H.hidden=!0});function V(){for(var e=document.querySelectorAll(".orders--item"),t=new XMLHttpRequest,r=new Array,o=0;o<e.length;o++)r.push({name:e[o].querySelector(".order--name").innerHTML,amount:e[o].querySelector(".order--amount").value,price:e[o].querySelector(".order--price").innerHTML.replace(/\D+/g,""),number:e[o].querySelector("[data-number]").getAttribute("data-number"),color:e[o].querySelector("[data-color]").getAttribute("data-color")});var n=JSON.stringify({name:E.value.toString(),surname:M.value.toString(),phone:k.value.toString(),order:r,promocod:A.value.toString(),"promocod-descending":w.classList.contains("orders--label__descending"),summ:L.innerHTML});t.open("POST","../php/form.php"),t.setRequestHeader("Content-Type","application/json"),t.onreadystatechange=function(){if(document.body.classList.add("wait"),"4"==t.readyState&&200==t.status&&"1"==t.responseText)document.body.classList.remove("wait"),G([C,j],["modal__show","overlay__show"],[C,j],["modal__hide","overlay__hide"]),C.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");else if("4"==t.readyState&&200==t.status&&"1"!==t.responseText)switch(document.body.classList.remove("wait"),t.responseText){case"err_1":H.innerHTML="Заполните все поля формы",H.hidden=!1;break;case"err_2_1":H.innerHTML="Имя некоректно, исправьте ошибку",H.hidden=!1;break;case"err_2_2":H.innerHTML="Фамилия некоректна, исправьте ошибку",H.hidden=!1;break;case"err_2_3":H.innerHTML="Номер телефона некоректен, исправьте ошибку",H.hidden=!1}else"4"!=t.readyState&&200===t.status||(document.body.classList.remove("wait"),H.innerHTML="Ошибка отправки данных, повторите попытку позже",H.hidden=!1)},t.send(n)}};
-//# sourceMappingURL=scripts.js.map
+"use strict";
+window.onload = function() {
+	const mobMenuBtn = document.querySelector(".main-header--mobile");
+	const menuList = document.querySelector(".main-header--list");
+  const smallScreen = 767;
+
+  const needParallax = document.querySelectorAll('[data-parallax="true"]');
+  const needSmooth = document.querySelectorAll('[data-smooth="true"]');
+  const needToggleMain = document.querySelectorAll('[data-toggle-main="true"]');
+
+  const needToggleAlt = document.querySelectorAll('[data-toggle-alt="true"]');
+  const mainAnchors = document.querySelectorAll('[data-anchor-main="true"]');
+  const shopAnchors = document.querySelectorAll('[data-anchor-shop="true"]');
+  const altMenu = document.querySelector(".alt-nav");
+  
+  const shop = document.querySelector("#shop");
+  const products = document.querySelectorAll(".product");
+  const moreInfo = document.querySelectorAll(".product--more-info");
+  const moreInfoModal = document.querySelectorAll(".product--details");
+  const moreInfoOverlay = document.querySelectorAll(".product--details");
+  const productsBtn = document.querySelectorAll(".product--buy");
+  const colorSwitchBtns = document.querySelectorAll(".product--color");
+  const imgsOfProducts = document.querySelectorAll(".product--img");
+  const imgDetails = document.querySelectorAll(".details--img");
+
+  const orders = document.querySelector(".orders");
+  const ordersForm = document.querySelector("#orders--form");
+  const ordersList = document.querySelector(".orders--list");
+  const ordersInput = document.querySelectorAll(".orders--input__required");
+  const orderBtnShow = document.querySelector(".main-header--orders");
+  const ordersAmount = document.querySelector(".main-header--amount");
+  const cart = document.querySelector(".main-header--buy"); 
+  const orderBtnHide = document.querySelector(".orders--close");
+  const orderPriceSumm = document.querySelector(".price--amount");
+  const promocod = document.querySelector("#cod");
+  const promoLabel = document.querySelector(".orders--label__cod");
+  const orderOverlay = document.querySelector(".orders--overlay");
+  const orderDelete = document.querySelector(".order--deletes");
+  const orderSubmit = document.querySelector(".orders--submit");
+  const ordersEmpty = document.querySelector(".orders--empty");
+  const ordersError = document.querySelector(".orders--error");
+  const name = document.querySelector("#name");
+  const surname = document.querySelector("#surname");
+  const phone = document.querySelector("#phone");
+
+  const modal = document.querySelectorAll(".modal");
+  const overlay = document.querySelectorAll(".overlay");
+  const modalCloseBtn = document.querySelectorAll(".modal--btn");
+
+  const thanksModal = document.querySelector(".thanks-for-order");
+  const thanksModalCloseBtn = document.querySelector(".thanks-for-order--btn");
+  const thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
+
+
+  // Мобильное меню
+  mobMenuBtn.addEventListener("click", function(event) {
+  	event.preventDefault();
+    menuList.classList.toggle("main-header--list__show");
+    menuList.classList.toggle("main-header--list__hide");
+  });
+
+
+  // Действия при скролле (паралакс, скрытие/появление меню, переключение активных пунктов меню)
+  const shopZone = caclZone(shop);
+  const mainAnchorPositions = getPosition(mainAnchors);
+  const shopAnchorPositions = getPosition(shopAnchors);
+
+  function caclZone(el) {
+  	let zone = new Object;
+  	zone.topPos = el.offsetTop;
+  	zone.botPos = shop.offsetHeight + shop.offsetTop;
+  	return zone;
+  };
+
+  if(window.innerWidth > smallScreen) {
+  	window.onscroll = function() {
+  		parallax(needParallax, 10);
+  		const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+      for (let i = 0; i < needToggleMain.length; i++) {
+        needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
+      }
+
+      for (let i = 0; i < mainAnchorPositions.length; i++) {
+        if (scrolled >= mainAnchorPositions[i] - 200 && scrolled < mainAnchorPositions[i+1] - 200) {
+          needToggleMain[i].closest(".main-header--item").classList.add("main-header--item__active");
+        }
+        else if (scrolled >= mainAnchorPositions[mainAnchorPositions.length - 1] - 200) {
+          needToggleMain[mainAnchorPositions.length - 1].closest(".main-header--item").classList.add("main-header--item__active");
+        }
+      }
+
+      for (let i = 0; i < shopAnchorPositions.length; i++) {
+        if (scrolled >= shopAnchorPositions[i] - 400 && scrolled < shopAnchorPositions[i+1] - 400) {
+          needToggleAlt[i].classList.add("alt-nav--item__active");
+        }
+        else if (scrolled >= shopAnchorPositions[shopAnchorPositions.length - 1] - 400) {
+          needToggleAlt[shopAnchorPositions.length - 1].classList.add("alt-nav--item__active");
+        }
+      }
+
+      if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
+        altMenu.classList.add("alt-nav__visible");
+        for (let i = 0; i < needToggleAlt.length; i++) {
+          needToggleAlt[i].classList.remove("alt-nav--item__active");
+        }
+      }
+      else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
+       altMenu.classList.remove("alt-nav__visible");
+     }
+   }
+ };
+
+
+  // Плавная прокрутка 
+  for (let i = 0; i < needSmooth.length; i++) {
+  	needSmooth[i].addEventListener("click", function(event) {
+      event.preventDefault();
+      const el = document.querySelector(this.getAttribute("href"));
+      smoothScroll(el, 10, 60);
+    });
+  }
+
+
+	// Переключение цветов товара
+  for (let i = 0; i < colorSwitchBtns.length; i++) {
+    colorSwitchBtns[i].addEventListener("click", function(event) {
+      event.preventDefault();
+      const index = [...colorSwitchBtns].indexOf(this); // Прототипом colorSwitchBtns является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array 
+      const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+      const activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
+
+      for (let i = 0; i < activeBtn.length; i++) {
+        activeBtn[i].classList.remove("product--color__active");
+      }
+
+      colorSwitchBtns[index].classList.add("product--color__active"); // Смена актывных кнопок
+
+      if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
+        for (let i = 0; i < activeImg.length; i++) {
+          fadeOut(activeImg[i], "product--img__active");
+        }
+        fadeIn(imgsOfProducts[index], "product--img__active");
+      }
+      else {
+        return false;
+      }
+    });
+  }
+
+
+  // Открытие модального окно с подробной информацией о товаре 
+  for (let i = 0; i < moreInfo.length; i++) {
+    moreInfo[i].addEventListener("click", function(event) {
+      const atr = this.getAttribute("href");
+      const modal = document.querySelector(atr);
+      const overlay = modal.previousElementSibling;
+      const img = this.closest(".product").querySelector(".product--img__active");
+      const index = [...imgsOfProducts].indexOf(img); // Прототипом imgsOfProducts является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
+      
+      addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
+      modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
+
+      for (let i = 0; i < imgDetails.length; i++) {
+        imgDetails[i].classList.remove("details--img__active");
+      }
+
+      imgDetails[index].classList.add("details--img__active");
+    });
+  }
+
+
+  // Скрытие модальных окон
+  for (let i = 0; i < overlay.length; i++) {
+    overlay[i].addEventListener("click", function(event) {
+      event.preventDefault();
+      const modal = this.nextElementSibling;
+
+      if (modal.classList.contains("modal")) {
+        addAndRemoveClass([modal, this], ["modal__hide", "overlay__hide"], [modal, this], ["modal__show", "overlay__show"]);
+        modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
+      }
+      else {
+        return false;
+      }
+    });
+  }
+
+  for (let i = 0; i < modalCloseBtn.length; i++) {
+    modalCloseBtn[i].addEventListener("click", function(event) {
+      event.preventDefault();
+      const modal = this.closest(".modal");
+      const overlay = modal.previousElementSibling;
+
+      if(modal)
+        addAndRemoveClass([modal, overlay], ["modal__hide", "overlay__hide"], [modal, overlay], ["modal__show", "overlay__show"]);
+      modal.querySelector('[tabindex="1"]').setAttribute("tabindex","-1");
+    });
+  }
+
+
+  // Добавление товаров в корзину 
+  for (let i = 0; i < productsBtn.length; i++) {
+    productsBtn[i].addEventListener("click", function(event) {
+      event.preventDefault(); 
+      const productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
+      const productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
+      const productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
+      const productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
+      const productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
+      const productInfo = this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href");
+      const productNumber = productInfo.replace(/\D+/g,"");
+      const productColor = this.closest(".shop--item").querySelector(".product--color__active").innerHTML;
+      const order = document.querySelectorAll(".order");
+      const orderName = new Array;
+      const orderPrice = new Array;
+      const orderPhotoLink = new Array;
+      const amountsOfOrders = new Array; 
+
+      ordersEmpty.hidden = true;
+      cart.classList.add("main-header--buy__rotate");
+      
+      if (!order.length) { // Создать первый заказ
+        createNewOrderItem();
+        orderPriceSumm.innerHTML = productPrice;
+        setTimeout(function() {
+          ordersAmount.innerHTML = 1;
+        }, 500)
+      }
+      else {
+        for (let j = 0; j < order.length; j++) {
+          orderName[j] = order[j].querySelector(".order--name").innerHTML;
+          orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
+          orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); 
+          amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");// Массивы названий, цен, ссылок и количеств товаров, которые в корзине
+        }
+
+        getOrdersValues(true, true, true, 0);
+        
+        // Увеличить количество товаров, если его добавили в корзину больше одного раза
+        const nameIndex = orderName.indexOf(productName);
+        const priceIndex = orderPrice.indexOf(productPrice);
+        const photoLinkIndex = orderPhotoLink.indexOf(productPhotoLink); // Проверка совпадения параметров добавляемого товара с параметрами товаров, которые уже в корзине 
+        
+        if(nameIndex !== -1 && priceIndex !== -1 && photoLinkIndex !== -1) {
+          let orderAmount = +(order[nameIndex].querySelector(".order--amount").value);
+          orderAmount++;
+          order[nameIndex].querySelector(".order--amount").setAttribute("value", orderAmount);
+          getOrdersValues(true, true, false, 0);
+        }
+        else {
+          createNewOrderItem();
+          getOrdersValues(true, true, false, 0); 
+        }
+      }
+
+      function createNewOrderItem() {
+        const newItemHTML = 
+        ` <a class="order--more-info" href="${productInfo}" data-number="${productNumber}"> 
+        <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}" data-color="${productColor}">
+        </a>
+        <div class="order--info">
+        <p class="order--name">${productName}</p>
+        <label class="order--label">
+        Количество:
+        <input type="number" min="1" max="10" class="order--amount" value="1">
+        </label>
+        <p class="order--price">${productPrice} <span class="orders--currency">грн.</span></p>
+        <button class="order--delete">Удалить товар</button>
+        </div>`;
+        const newItem = document.createElement("li");
+        newItem.className += " orders--item order";
+        newItem.innerHTML = newItemHTML;
+        ordersList.appendChild(newItem);
+      }
+    });
+  }
+
+
+  // Удаление класса у корзины после окончания анимации. Два синтаксиса для разных браузеров
+  cart.addEventListener("webkitAnimationEnd", function(event) {
+    cart.classList.remove("main-header--buy__rotate");
+  });
+
+  cart.addEventListener("animationend",  function(event) {
+    cart.classList.remove("main-header--buy__rotate");
+  });
+
+
+  // Изменение числа заказов при изменении поля "Количество"
+  document.addEventListener("input", function(e){
+    if(e.target && e.target.classList[0] == "order--amount"){ // e.target = this
+      e.target.setAttribute("value", e.target.value);
+      getOrdersValues(true, true, false, 0);
+    }
+  });
+
+
+  // Открытие и закрытие корзины
+  orderBtnShow.addEventListener("click", function(event) {
+    event.preventDefault();
+    const active = orders.querySelectorAll('[tabindex="-1"]');
+
+    addAndRemoveClass([orders, orderOverlay], ["orders__show", "overlay__show"], [orders, orderOverlay, orderBtnHide], ["orders__hide", "overlay__hide", "orders--close__rotate"]);    
+    for (var i = 0; i < active.length; i++) {
+      active[i].setAttribute("tabindex","1")
+    }
+
+    if (window.innerWidth > smallScreen) {
+      promocod.focus();
+    }
+  });
+
+  orderBtnHide.addEventListener("click", function(event) {
+    event.preventDefault();
+    const active = orders.querySelectorAll('[tabindex="1"]');
+
+    addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+
+    for (var i = 0; i < active.length; i++) {
+      active[i].setAttribute("tabindex","-1")
+    }
+  });
+
+  orderOverlay.addEventListener("click", function(event) {
+    event.preventDefault();
+    const active = orders.querySelectorAll('[tabindex="1"]');
+
+    addAndRemoveClass([orderBtnHide, orders, orderOverlay], ["orders--close__rotate", "orders__hide", "overlay__hide"], [orders, orderOverlay], ["orders__show", "overlay__show"]);
+    
+    for (var i = 0; i < active.length; i++) {
+      active[i].setAttribute("tabindex","-1")
+    }
+  });
+
+
+  // Введение промокода
+  promocod.addEventListener("input", function(event) {
+    event.preventDefault();
+    let promocodsArr;
+
+    getPromocods(function(responce) {
+      promocodsArr = responce;
+      for (let i = 0; i < promocodsArr.length; i++) {
+        event.target.closest(".orders--label__cod").classList.remove("orders--label__descending");
+        getOrdersValues(true, true, false, 0);
+
+        if (event.target.value == promocodsArr[i]) {
+          event.target.closest(".orders--label__cod").classList.add("orders--label__descending");
+          getOrdersValues(true, true, false, 10);
+          break;
+        }
+      }
+    });
+  });
+
+
+  // Открытие окна подробной информации о товаре с корзины
+  document.addEventListener("click", function(e) {
+    if(e.target && e.target.classList[0] == "order--img"){
+      e.preventDefault();
+      const thisOrder =  e.target.closest(".order");
+      const imgSrc = e.target.getAttribute("src");
+      const atr = e.target.closest(".order--more-info").getAttribute("href");
+      const modal = document.querySelector(atr);
+      const overlay = modal.previousElementSibling;
+      const productImgSrc = new Array;
+      const index = [...productImgSrc].indexOf(imgSrc); // Прототипом productImgSrc является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
+
+      addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
+      modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
+
+      for (let i = 0; i < imgsOfProducts.length; i++) {
+        productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
+      }
+
+      for (let i = 0; i < imgDetails.length; i++) {
+       imgDetails[i].classList.remove("details--img__active");
+     }
+
+     imgDetails[index].classList.add("details--img__active");
+   }
+ });
+
+  function addAndRemoveClass (elemsToAddClass, classToAdd, elemsToremoveClass, classToRemove) {
+    for (let i = 0; i < elemsToAddClass.length; i++) {
+      elemsToAddClass[i].classList.add(classToAdd[i]);
+    }
+
+    for (let i = 0; i < elemsToremoveClass.length; i++) {
+      elemsToremoveClass[i].classList.remove(classToRemove[i]);
+    }
+  }
+
+  function clearOrders(ordersEl) {
+    while(ordersEl.firstChild) {
+      ordersEl.removeChild(ordersEl.firstChild);
+    }
+  } 
+
+
+  // Удаление товаров с корзины 
+  document.addEventListener('click', function(e) {
+    if(e.target && e.target.classList[0] == "order--delete"){
+      e.preventDefault();
+      const thisOrder =  e.target.closest(".order");
+      const callback = function(thisOrder) {
+        thisOrder.parentNode.removeChild(thisOrder);
+        getOrdersValues(true, true, false, 0);
+      };
+
+      fadeOut(thisOrder, "", 40, callback, thisOrder);
+    }
+  });
+
+
+  // Проверка текущих значений количества и цен заказов в корзине и запись этих значений в нужные переменные
+  function getOrdersValues(amount, price, needIter, discount=0) {
+    const order = document.querySelectorAll(".order");
+    const amountsOfOrders = new Array; 
+    const orderPrice = new Array;
+
+    for (let i = 0; i < order.length; i++) {
+      amountsOfOrders[i] = order[i].querySelector(".order--amount").getAttribute("value");
+      orderPrice[i] = order[i].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
+    }
+
+    if (amount && price) {
+      let amountSumm = 0;
+      let priceSumm = 0;
+
+      for (let i = 0; i < amountsOfOrders.length; i++) {
+        amountSumm += +amountsOfOrders[i];
+      }
+
+      if (needIter) {
+        amountSumm++;
+      }
+
+      setTimeout(function() {
+        ordersAmount.innerHTML = amountSumm.toString();
+      }, 500)
+      
+      for (let i = 0; i < orderPrice.length; i++) {
+        priceSumm += orderPrice[i] * amountsOfOrders[i];
+      }
+
+      orderPriceSumm.innerHTML = (priceSumm - (priceSumm / 100 * discount)).toString();
+    }
+  };
+
+
+  // Действия при отправке формы (дополнительная валидация данных, отправка данных на сервер, вывод модального окна)
+  ordersForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    if(!ordersList.querySelector(".orders--item")) {
+      ordersEmpty.hidden = false;
+      return false;
+    }
+    formValid(sendData);
+  });
+
+  // Действия при закрытии модального окна "Спасибо за заказ"
+  thanksModalCloseBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    clearOrders(ordersList);
+    ordersForm.reset();
+    orderPriceSumm.innerHTML = "0";
+    ordersAmount.innerHTML = "0";
+    promoLabel.classList.remove("orders--label__descending");
+  });
+
+  thanksModalOverlay.addEventListener("click", function(event) {
+    event.preventDefault();
+    clearOrders(ordersList);
+    ordersForm.reset();
+    orderPriceSumm.innerHTML = "0";
+    ordersAmount.innerHTML = "0";
+    promoLabel.classList.remove("orders--label__descending");
+  });
+
+
+  // Скрытие надписи об ошибке, при начале заполнения формы
+  for (let i = 0; i < ordersInput.length; i++) {
+    ordersInput[i].addEventListener("input", function(event) {
+      event.preventDefault();
+      ordersError.hidden = true;
+    });
+  }
+
+
+  function formValid(callback) {
+    for (let i = 0; i < ordersInput.length; i++) {
+      if(!ordersInput[i].value) {
+        ordersError.hidden = false;
+      }
+    }
+
+    if (!name.value.match(/^[а-яФА-Я]+$/)) {
+      ordersError.hidden = false;
+    }
+
+    if (!surname.value.match(/^[а-яФА-Я]+$/)) {
+      ordersError.hidden = false;
+    }
+
+    if (!phone.value.match(/^\+380 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/)) {
+      ordersError.hidden = false;
+    }
+
+    else callback();
+  }
+
+
+  function sendData() {
+    const orders = document.querySelectorAll(".orders--item");
+    const request = new XMLHttpRequest();
+    let ordersInfo = new Array;
+
+    for (let i = 0; i < orders.length; i++) {
+      ordersInfo.push({
+        "name" : orders[i].querySelector(".order--name").innerHTML,
+        "amount" : orders[i].querySelector(".order--amount").value,
+        "price" : orders[i].querySelector(".order--price").innerHTML.replace(/\D+/g,""),
+        "number" : orders[i].querySelector("[data-number]").getAttribute("data-number"),
+        "color" : orders[i].querySelector("[data-color]").getAttribute("data-color")
+      });
+    }
+
+    let data = JSON.stringify({
+      "name" : name.value.toString(),
+      "surname" : surname.value.toString(), 
+      "phone" : phone.value.toString(),
+      "order" : ordersInfo,
+      "promocod" : promocod.value.toString(),
+      "promocod-descending" : promoLabel.classList.contains("orders--label__descending"),
+      "summ" : orderPriceSumm.innerHTML
+    });
+
+    request.open("POST", "../php/form.php");
+    request.setRequestHeader("Content-Type", "application/json");
+
+    request.onreadystatechange = function() {
+      document.body.classList.add("wait");
+      if (request.readyState == "4" && request.status == 200 && request.responseText == "1") {
+        document.body.classList.remove("wait");
+        addAndRemoveClass([thanksModal, thanksModalOverlay], ["modal__show", "overlay__show"], [thanksModal, thanksModalOverlay], ["modal__hide", "overlay__hide"]);
+        thanksModal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
+      }
+      else if(request.readyState == "4" && request.status == 200 && request.responseText !== "1") {
+        document.body.classList.remove("wait");
+        switch(request.responseText) {
+          case "err_1":
+          ordersError.innerHTML = "Заполните все поля формы";
+          ordersError.hidden = false;
+          break;
+          case "err_2_1":
+          ordersError.innerHTML = "Имя некоректно, исправьте ошибку";
+          ordersError.hidden = false;
+          break;
+          case "err_2_2":
+          ordersError.innerHTML = "Фамилия некоректна, исправьте ошибку";
+          ordersError.hidden = false;
+          break;
+          case "err_2_3":
+          ordersError.innerHTML = "Номер телефона некоректен, исправьте ошибку";
+          ordersError.hidden = false;
+          break;
+        }
+      }
+      else if (request.readyState == "4" || request.status !== 200) {
+        document.body.classList.remove("wait");
+        ordersError.innerHTML = "Ошибка отправки данных, повторите попытку позже";
+        ordersError.hidden = false;
+      }
+    }
+    request.send(data);
+  }
+
+
+  function getPromocods(callback) {
+    const request = new XMLHttpRequest();
+    var respArr = new Array;
+
+    request.open("POST", "../php/promocods.php");
+    request.setRequestHeader("Content-Type", "application/json");
+
+    request.onreadystatechange = function() {
+
+      if (request.readyState == "4" && request.status == 200) {
+        respArr = request.responseText.replace(/\n/ig, '').split(",");
+        callback(respArr);
+      }
+      else if (request.readyState == "4" && request.status !== 200) {
+        return false;
+      }
+    }
+    request.send();
+  }
+};
+

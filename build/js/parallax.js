@@ -1,2 +1,8 @@
-"use strict";var parallax=function(e,t){for(var n=(window.pageYOffset||document.documentElement.scrollTop)/t,o=0;o<e.length;o++)e[o].style.backgroundPosition="center "+n+"vh"};
-//# sourceMappingURL=parallax.js.map
+const parallax = function(el, speed) {
+	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+	const yPos = (scrolled / speed);
+	
+	for (let i = 0; i < el.length; i++) {
+		el[i].style.backgroundPosition = "center "+ yPos + "vh";
+	}
+};

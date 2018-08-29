@@ -1,2 +1,57 @@
-"use strict";function _readOnlyError(o){throw new Error('"'+o+'" is read-only')}function currentYPosition(){return self.pageYOffset?self.pageYOffset:document.documentElement&&document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop?document.body.scrollTop:0}function elmYPosition(o){for(var e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,t=o.offsetTop-e,n=o;n.offsetParent&&n.offsetParent!=document.body;)_readOnlyError("node"),t+=(n=n.offsetParent).offsetTop;return t}function elmXPosition(o){for(var e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,t=o.offsetLeft-e,n=o;n.offsetParent&&n.offsetParent!=document.body;)_readOnlyError("node"),t+=(n=n.offsetParent).offsetLeft;return t}function smoothScroll(o){var e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:10,t=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0,n=currentYPosition(),r=elmYPosition(o,t),f=n<r?r-n:n-r;if(f<100)scrollTo(0,r);else{20<=(e=Math.round(f/e))&&(e=20);var l=Math.round(f/25),s=n<r?n+l:n-l,d=0;if(n<r)for(var i=n;i<r;i+=l)setTimeout("window.scrollTo(0, "+s+")",d*e),r<(s+=l)&&(s=r),d++;else for(var c=n;r<c;c-=l)setTimeout("window.scrollTo(0, "+s+")",d*e),(s-=l)<r&&(s=r),d++}}
-//# sourceMappingURL=smoothScroll.js.map
+function currentYPosition() {
+    // Firefox, Chrome, Opera, Safari
+    if (self.pageYOffset) return self.pageYOffset;
+    // Internet Explorer 6 - standards mode
+    if (document.documentElement && document.documentElement.scrollTop)
+    	return document.documentElement.scrollTop;
+    // Internet Explorer 6, 7 and 8
+    if (document.body.scrollTop) return document.body.scrollTop;
+    return 0;
+  }
+
+
+  function elmYPosition(elm, extraOffset=0) {
+  	let y = elm.offsetTop - extraOffset;
+  	const node = elm;
+    
+  	while (node.offsetParent && node.offsetParent != document.body) {
+  		node = node.offsetParent;
+  		y += node.offsetTop;
+  	} return y;
+  }
+
+
+  function elmXPosition(elm, extraOffset=0) {
+    let x = elm.offsetLeft - extraOffset;
+    const node = elm;
+
+    while (node.offsetParent && node.offsetParent != document.body) {
+      node = node.offsetParent;
+      x += node.offsetLeft;
+    } return x;
+  }
+
+
+  function smoothScroll(elm, speed=10, extraOffset=0) {
+  	const startY = currentYPosition();
+  	const stopY = elmYPosition(elm, extraOffset);
+  	const distance = stopY > startY ? stopY - startY : startY - stopY;
+  	if (distance < 100) {
+  		scrollTo(0, stopY); return;
+  	}
+  	speed = Math.round(distance / speed);
+  	if (speed >= 20) speed = 20;
+  	const step = Math.round(distance / 25);
+  	let leapY = stopY > startY ? startY + step : startY - step;
+  	let timer = 0;
+  	if (stopY > startY) {
+  		for ( let i=startY; i<stopY; i+=step ) {
+  			setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+  			leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+  		} return;
+  	}
+  	for ( let i=startY; i>stopY; i-=step ) {
+  		setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+  		leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+  	}
+  }

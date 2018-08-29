@@ -1,2 +1,34 @@
-"use strict";function fadeOut(t,e){var n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:40,l=3<arguments.length&&void 0!==arguments[3]?arguments[3]:function(){},a=4<arguments.length?arguments[4]:void 0,i=1,o=setInterval(function(){i<=.1&&(l(a),e&&t.classList.remove(e),clearInterval(o)),t.style.opacity=i,t.style.filter="alpha(opacity="+100*i+")",i-=.1},n)}function fadeIn(t,e){var n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:40,l=3<arguments.length&&void 0!==arguments[3]?arguments[3]:function(){},a=4<arguments.length?arguments[4]:void 0,i=.01,o=setInterval(function(){1<=i&&(l(a),e&&t.classList.add(e),clearInterval(o)),t.style.opacity=i,t.style.filter="alpha(opacity="+100*i+")",i+=.1},n)}
-//# sourceMappingURL=fade.js.map
+function fadeOut(element, className, time=40, callback=function() {}, callbackParam) {
+  let op = 1; 
+  const timer = setInterval(function () {
+    if (op <= 0.1){
+     callback(callbackParam);
+     if (className) {
+      element.classList.remove(className);
+    }
+    clearInterval(timer);
+  }
+  
+  element.style.opacity = op;
+  element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+  op = op - 0.1;
+}, time);
+}
+
+
+function fadeIn(element, className, time=40, callback=function() {}, callbackParam) {
+  let op = 0.01; 
+  const timer = setInterval(function () {
+    if (op >= 1){
+      callback(callbackParam);
+      if (className) {
+        element.classList.add(className);
+      }
+      clearInterval(timer);
+    }
+
+    element.style.opacity = op;
+    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+    op = op + 0.1;
+  }, time);
+}

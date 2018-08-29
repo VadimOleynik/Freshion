@@ -16,7 +16,6 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-less": "^3.5.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "gulp-webp": "^3.0.0",
     "npm": "^5.7.1",
@@ -24,7 +23,9 @@
     "smart-grid": "^2.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "start": "npm run build && gulp serve"
   },
   "author": "",
   "license": "ISC",
