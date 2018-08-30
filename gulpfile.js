@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const server = require("browser-sync").create();
 const gcmq = require("gulp-group-css-media-queries");
+const plumber = require('gulp-plumber');
 const	preproc = require("gulp-less");
 const cleanCSS = require("gulp-clean-css");
 const rename = require("gulp-rename");
@@ -38,6 +39,7 @@ const config = {
 
 gulp.task("style", function() {
 	gulp.src(config.src + config.css.src)
+	.pipe(plumber())
 	.pipe(preproc())
 	.pipe(gcmq())
 	.pipe(autoprefixer({
@@ -58,7 +60,7 @@ gulp.task("style", function() {
 });
 
 
-gulp.task("serve", function() {
+gulp.task("serve", function(done) {
 	server.init({
 		server: config.dest,
 		notify: false,
@@ -69,14 +71,14 @@ gulp.task("serve", function() {
 
 	gulp.watch(config.src + config.css.watch, ["style"]);
 	gulp.watch(config.src + config.html, ["html"]);
-	gulp.watch(config.src + config.html, server.reload);
-	gulp.watch(config.src + config.js.src, server.reload);
+	gulp.watch(config.src + config.js.src, ["script"]);
 });
 
 
 gulp.task("html", function() {
 	return gulp.src(config.src + config.html)
-	.pipe(gulp.dest(config.dest));
+	.pipe(gulp.dest(config.dest))
+	.pipe(server.stream());
 });
 
 
@@ -102,7 +104,6 @@ gulp.task("copy", function () {
 	return gulp.src([
 		config.src + config.fonts.src,
 		config.src + config.img.src,
-		config.src + config.js.src,
 		config.src + config.html
 		], {
 			base: config.src
@@ -111,13 +112,16 @@ gulp.task("copy", function () {
 });
 
 
-gulp.task("script", function () {
+gulp.task("script", function (done) {
 	return gulp.src(config.src + config.js.src)
+	.pipe(plumber())
 	.pipe(babel({
 		presets: ['@babel/env']
-	}))
+	}).on('error', console.error.bind(console)))
 	.pipe(uglify())
-	.pipe(gulp.dest(config.dest + config.js.dest));
+	.pipe(rename({suffix: '.min'}))
+	.pipe(gulp.dest(config.dest + config.js.dest))
+	.pipe(server.stream());
 });
 
 
@@ -127,5 +131,5 @@ gulp.task("clean", function () {
 
 
 gulp.task("build", function (done) {
-	run("clean", "copy", "style", done)
+	run("clean", "copy", "style", "script", done)
 });
