@@ -1,8 +1,8 @@
    window.onload = function() {
      MaskedInput({
-      elm: document.getElementById('phone'),
-      format: '+380 (__) ___-__-__',
-      separator: '+380 ()-'
+      elm: document.getElementById("phone"),
+      format: "+380 (__) ___-__-__",
+      separator: "+380 ()-"
     });
    }
 

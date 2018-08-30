@@ -2,7 +2,7 @@ const gulp = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const server = require("browser-sync").create();
 const gcmq = require("gulp-group-css-media-queries");
-const plumber = require('gulp-plumber');
+const plumber = require("gulp-plumber");
 const	preproc = require("gulp-less");
 const cleanCSS = require("gulp-clean-css");
 const rename = require("gulp-rename");
@@ -10,8 +10,8 @@ const imagemin = require("gulp-imagemin");
 const webp = require("gulp-webp");
 const run = require("run-sequence");
 const del = require("del");
-const uglify = require('gulp-uglify');
-const babel = require('gulp-babel');
+const uglify = require("gulp-uglify");
+const babel = require("gulp-babel");
 const config = {
 	src: "./src",
 	dest: "./build",
@@ -116,10 +116,10 @@ gulp.task("script", function (done) {
 	return gulp.src(config.src + config.js.src)
 	.pipe(plumber())
 	.pipe(babel({
-		presets: ['@babel/env']
-	}).on('error', console.error.bind(console)))
+		presets: ["@babel/env"]
+	}).on("error", console.error.bind(console)))
 	.pipe(uglify())
-	.pipe(rename({suffix: '.min'}))
+	.pipe(rename({suffix: ".min"}))
 	.pipe(gulp.dest(config.dest + config.js.dest))
 	.pipe(server.stream());
 });

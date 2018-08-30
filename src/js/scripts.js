@@ -401,7 +401,7 @@ window.onload = function() {
 
 
   // Удаление товаров с корзины 
-  document.addEventListener('click', function(e) {
+  document.addEventListener("click", function(e) {
     if(e.target && e.target.classList[0] == "order--delete"){
       e.preventDefault();
       const thisOrder =  e.target.closest(".order");
@@ -589,7 +589,7 @@ window.onload = function() {
     request.onreadystatechange = function() {
 
       if (request.readyState == "4" && request.status == 200) {
-        respArr = request.responseText.replace(/\n/ig, '').split(",");
+        respArr = request.responseText.replace(/\n/ig, "").split(",");
         callback(respArr);
       }
       else if (request.readyState == "4" && request.status !== 200) {

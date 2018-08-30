@@ -340,7 +340,7 @@ section {
   font-size: 0
 }
 .main-header--buy::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 40px;
   height: 38px;
@@ -394,7 +394,7 @@ section {
   padding: 30px 0
 }
 .shop-nav--header {
-  font-family: 'Cormorant Garamond',serif;
+  font-family: "Cormorant Garamond",serif;
   font-size: 65px;
   letter-spacing: 10px;
   margin-bottom: 150px
@@ -817,7 +817,7 @@ section {
   position: relative
 }
 .about-us--advantage::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: calc(160%);
   left: 50%;
@@ -912,7 +912,7 @@ section {
   align-items: center
 }
 .contacts--link::before {
-  content: '';
+  content: "";
   display: inline-block;
   margin-right: 7px;
   width: 20px;
