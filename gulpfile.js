@@ -11,6 +11,7 @@ const webp = require("gulp-webp");
 const run = require("run-sequence");
 const del = require("del");
 const uglify = require("gulp-uglify");
+const htmlmin = require("gulp-htmlmin");
 const babel = require("gulp-babel");
 const config = {
 	src: "./src",
@@ -77,6 +78,8 @@ gulp.task("serve", function(done) {
 
 gulp.task("html", function() {
 	return gulp.src(config.src + config.html)
+	.pipe(plumber())
+	.pipe(htmlmin({collapseWhitespace: true}))
 	.pipe(gulp.dest(config.dest))
 	.pipe(server.stream());
 });

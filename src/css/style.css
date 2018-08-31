@@ -371,7 +371,7 @@ section {
   }
 }
 .shop-nav {
-  background: url(../../img/nav-bg.jpg) center/cover no-repeat;
+  background: url(../img/nav-bg.jpg) center/cover no-repeat;
   font-size: 28px;
   min-height: 100vh;
   margin-bottom: 40px;
