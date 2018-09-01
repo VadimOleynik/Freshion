@@ -159,7 +159,8 @@ section {
   background-color: #1f6c45;
   box-shadow: 0 -3px #195838 inset;
   -webkit-transition: .2s;
-  transition: .2s
+  transition: .2s;
+  font-size: 18px
 }
 .button:hover {
   background-color: #195838
@@ -470,13 +471,13 @@ section {
   flex-grow: 1;
   min-height: 110px
 }
-.product__small .product--img {
-  max-height: 110px
-}
 .product__small .product--more-info__text {
   -webkit-box-flex: 0;
   -ms-flex-positive: 0;
   flex-grow: 0
+}
+.product__small .product--img {
+  max-height: 110px
 }
 .product__small .details--wrap {
   grid-template-columns: 300px 1fr
@@ -488,16 +489,16 @@ section {
   min-height: 150px;
   margin-bottom: 7px
 }
+.product__medium .product--more-info__text {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0
+}
 .product__medium .product--img {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
   max-height: 150px
-}
-.product__medium .product--more-info__text {
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0
 }
 .product__medium .details--wrap {
   grid-template-columns: 280px 1fr
@@ -580,16 +581,21 @@ section {
 }
 .product--about {
   margin-top: 10px;
-  margin-bottom: 5px
+  margin-bottom: 5px;
+  font-size: 18px
+}
+.product--firm {
+  display: block
 }
 .product--size {
   margin-top: auto;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  font-size: 18px
 }
 .product--price {
   margin-bottom: 15px;
   display: block;
-  font-size: 27px;
+  font-size: 24px;
   font-style: italic;
   color: #a6603a
 }
@@ -688,7 +694,8 @@ section {
   background-color: #bfdbd7
 }
 .details {
-  width: 90%;
+  box-sizing: border-box;
+  width: 92%;
   padding: 30px 20px
 }
 .details--name {
@@ -706,9 +713,6 @@ section {
   -ms-flex-order: -1;
   order: -1;
   grid-row: span 5
-}
-.details--img__small {
-  max-height: 140px
 }
 .details--img__active {
   display: block
@@ -1160,7 +1164,7 @@ section {
     height: 300px
   }
 }
-@media screen and (max-width:992px) {
+@media screen and (max-width:998px) {
   .header {
     margin-bottom: 35px
   }
@@ -1218,6 +1222,58 @@ section {
   .shop--item {
     width: calc(33.333333333333336% - 30px)
   }
+  .product__small .details--wrap {
+    grid-template-columns: 200px 1fr
+  }
+  .product__small .details--wrap .details--img {
+    max-height: 100px
+  }
+  .product__medium .details--wrap {
+    grid-template-columns: 200px 1fr
+  }
+  .product__medium .details--wrap .details--img {
+    max-height: 150px
+  }
+  .details {
+    width: 90%;
+    padding: 20px 10px
+  }
+  .details--name {
+    font-size: 22px;
+    margin-bottom: 15px
+  }
+  .details--img {
+    max-height: 150px
+  }
+  .details--wrap {
+    grid-template-columns: 170px 1fr
+  }
+  .details--header {
+    font-size: 20px
+  }
+  .details--info {
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 10px
+  }
+  .details--size {
+    font-size: 20px;
+    padding: 0;
+    margin-bottom: 15px
+  }
+  .details--price {
+    font-size: 26px
+  }
+  .details--price::before {
+    width: 110px;
+    height: 1px;
+    top: -3px
+  }
+  .details--price::after {
+    width: 110px;
+    height: 1px;
+    bottom: -3px
+  }
   .about-us--container,
   .contacts {
     width: calc(100% - 30px)
@@ -1242,6 +1298,12 @@ section {
   .container {
     padding-left: 15px;
     padding-right: 15px
+  }
+  .modal--btn {
+    width: 25px;
+    height: 25px;
+    right: -15px;
+    top: -25px
   }
   .header {
     margin-bottom: 15px;
@@ -1281,15 +1343,63 @@ section {
   .product__small .product--img {
     max-height: 100px
   }
+  .product__small .details--wrap {
+    grid-template-columns: 150px 1fr
+  }
+  .product__small .details--wrap .details--img {
+    max-height: 70px
+  }
   .product__medium .product--more-info__img {
     min-height: 135px
   }
   .product__medium .product--img {
     max-height: 135px
   }
+  .product__medium .details--wrap {
+    grid-template-columns: 150px 1fr
+  }
+  .product__medium .details--wrap .details--img {
+    max-height: 120px
+  }
   .product--color {
     width: 22px;
     height: 22px
+  }
+  .details {
+    width: 95%;
+    padding: 10px
+  }
+  .details--name {
+    font-size: 19px;
+    margin-bottom: 5px
+  }
+  .details--img {
+    max-height: 120px
+  }
+  .details--wrap {
+    grid-template-columns: 140px 1fr
+  }
+  .details--header {
+    font-size: 19px
+  }
+  .details--info {
+    font-size: 14px;
+    margin-bottom: 5px
+  }
+  .details--size {
+    font-size: 19px;
+    margin-bottom: 10px
+  }
+  .details--price {
+    font-size: 23px
+  }
+  .details--price::before {
+    width: 100px;
+    top: -3px
+  }
+  .details--price::after {
+    width: 100px;
+    bottom: -3px
   }
   .alt-nav {
     display: none
@@ -1329,6 +1439,11 @@ section {
   .orders__hide {
     right: -65%
   }
+  .orders--close {
+    width: 35px;
+    height: 35px;
+    top: 20px
+  }
 }
 @media screen and (max-width:576px) {
   .button {
@@ -1346,7 +1461,7 @@ section {
     height: 35px
   }
   .shop-nav--container {
-    width: calc(100% - 30px)
+    width: calc(100% - 0px)
   }
   .shop-nav--header {
     margin-bottom: 25px
@@ -1358,8 +1473,16 @@ section {
     display: block;
     margin-bottom: 7px
   }
+  .shop--container {
+    padding: 5px
+  }
   .product__small .product--more-info__img {
     min-height: 75px
+  }
+  .product__small .product--more-info__text {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
   }
   .product__small .product--img {
     max-height: 75px
@@ -1367,11 +1490,21 @@ section {
   .product__medium .product--more-info__img {
     min-height: 120px
   }
+  .product__medium .product--more-info__text {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+  }
   .product__medium .product--img {
     max-height: 120px
   }
   .product--img {
     max-height: 150px
+  }
+  .product--more-info__text {
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0
   }
   .product--more-info__img {
     min-height: 150px
@@ -1400,7 +1533,7 @@ section {
   }
   .contacts--list,
   .contacts--map {
-    width: calc(100% - 30px)
+    width: calc(100% - 0px)
   }
   .contacts--link {
     font-size: 15px
