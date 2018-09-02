@@ -132,7 +132,7 @@ img {
   height: auto
 }
 section {
-  margin-bottom: 80px
+  margin-bottom: 30px
 }
 .visually-hidden {
   position: absolute;
@@ -425,9 +425,6 @@ section {
 }
 .shop--article {
   margin-bottom: 30px
-}
-.shop--article__backpacks {
-  margin-top: 0
 }
 .shop--sub-header {
   font-size: 33px;
@@ -817,7 +814,8 @@ section {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  text-align: center
+  text-align: center;
+  margin-bottom: 80px
 }
 .about-us--container {
   box-sizing: border-box;
@@ -1219,6 +1217,9 @@ section {
   .shop-nav--container {
     width: calc(83.33333333333334% - 30px)
   }
+  .shop--article {
+    margin-bottom: 10px
+  }
   .shop--item {
     width: calc(33.333333333333336% - 30px)
   }
@@ -1292,6 +1293,11 @@ section {
     width: 16px;
     height: 16px;
     margin-right: 5px
+  }
+  .thanks-for-order {
+    font-size: 18px;
+    padding: 20px;
+    line-height: 1.5
   }
 }
 @media screen and (max-width:767px) {
@@ -1444,13 +1450,27 @@ section {
     height: 35px;
     top: 20px
   }
+  .thanks-for-order--btn {
+    width: 25px;
+    height: 25px;
+    right: -20px;
+    top: -25px
+  }
 }
 @media screen and (max-width:576px) {
   .button {
     padding: 5px 15px;
     font-size: 22px
   }
+  .modal--btn {
+    width: 25px;
+    height: 25px;
+    right: -10px;
+    top: -27px
+  }
   .header {
+    font-size: 43px;
+    letter-spacing: 3px;
     margin-bottom: 25px
   }
   .main-header--container {
@@ -1475,6 +1495,18 @@ section {
   }
   .shop--container {
     padding: 5px
+  }
+  .shop--list {
+    margin: 0;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+  }
+  .shop--item {
+    width: calc(45%);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 45px
   }
   .product__small .product--more-info__img {
     min-height: 75px
@@ -1513,13 +1545,41 @@ section {
     width: 20px;
     height: 20px
   }
-  .product--about,
+  .product--about {
+    font-size: 15px;
+    line-height: 1.35
+  }
   .product--size {
-    font-size: 16px
+    font-size: 15px;
+    margin-bottom: 5px
   }
   .product--price {
     font-size: 22px;
+    margin-bottom: 10px
+  }
+  .details {
+    padding: 20px 10px
+  }
+  .details--name {
+    margin-bottom: 10px
+  }
+  .details--img {
+    margin-bottom: 20px
+  }
+  .details--wrap {
+    display: block
+  }
+  .details--info {
+    margin-bottom: 10px
+  }
+  .details--size {
     margin-bottom: 15px
+  }
+  .details--price::before {
+    top: -4px
+  }
+  .details--price::after {
+    bottom: -4px
   }
   .about-us {
     font-size: 17px
@@ -1543,6 +1603,19 @@ section {
   }
   .orders__hide {
     right: -100%
+  }
+  .order--img {
+    max-width: 80px
+  }
+  .thanks-for-order {
+    width: 75%;
+    padding: 20px 10px
+  }
+  .thanks-for-order--btn {
+    width: 25px;
+    height: 25px;
+    right: -20px;
+    top: -25px
   }
 }
 @media screen and (min-width:0px) and (max-width:340px) {
