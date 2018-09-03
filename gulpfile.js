@@ -13,6 +13,7 @@ const del = require("del");
 const uglify = require("gulp-uglify");
 const htmlmin = require("gulp-htmlmin");
 const babel = require("gulp-babel");
+const concat = require('gulp-concat');
 const config = {
 	src: "./src",
 	dest: "./build",
@@ -121,6 +122,7 @@ gulp.task("script", function (done) {
 	.pipe(babel({
 		presets: ["@babel/env"]
 	}).on("error", console.error.bind(console)))
+	.pipe(concat("scripts.js"))
 	.pipe(uglify())
 	.pipe(rename({suffix: ".min"}))
 	.pipe(gulp.dest(config.dest + config.js.dest))

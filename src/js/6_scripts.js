@@ -2,7 +2,7 @@
 window.onload = function() {
 	const mobMenuBtn = document.querySelector(".main-header--mobile");
 	const menuList = document.querySelector(".main-header--list");
-  const smallScreen = 767;
+  const mediumScreen = 998;
 
   const needParallax = document.querySelectorAll('[data-parallax="true"]');
   const needSmooth = document.querySelectorAll('[data-smooth="true"]');
@@ -72,7 +72,7 @@ window.onload = function() {
   	return zone;
   };
 
-  if(window.innerWidth > smallScreen) {
+  if(window.innerWidth > mediumScreen) {
     window.onscroll = function() {
       parallax(needParallax, 10);
       const scrolled = window.pageYOffset || document.documentElement.scrollTop;
