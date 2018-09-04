@@ -20,7 +20,7 @@ window.onload = function() {
   const moreInfoOverlay = document.querySelectorAll(".product--details");
   const productsBtn = document.querySelectorAll(".product--buy");
   const colorSwitchBtns = document.querySelectorAll(".product--color");
-  const imgsOfProducts = document.querySelectorAll(".product--img");
+  const imgsOfProducts = document.querySelectorAll(".product--picture");
   const imgDetails = document.querySelectorAll(".details--img");
 
   const orders = document.querySelector(".orders");
@@ -128,7 +128,7 @@ window.onload = function() {
     colorSwitchBtns[i].addEventListener("click", function(event) {
       event.preventDefault();
       const index = [...colorSwitchBtns].indexOf(this); // Прототипом colorSwitchBtns является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array 
-      const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img__active");
+      const activeImg = imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--picture__active");
       const activeBtn = (colorSwitchBtns[index]).closest(".product--colors").querySelectorAll(".product--color__active");
 
       for (let i = 0; i < activeBtn.length; i++) {
@@ -137,11 +137,11 @@ window.onload = function() {
 
       colorSwitchBtns[index].classList.add("product--color__active"); // Смена актывных кнопок
 
-      if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--img").length > 1) { // Не анимировать, если только одно фото
+      if (imgsOfProducts[index].closest(".product--more-info__img").querySelectorAll(".product--picture").length > 1) { // Не анимировать, если только одно фото
         for (let i = 0; i < activeImg.length; i++) {
-          fadeOut(activeImg[i], "product--img__active");
+          fadeOut(activeImg[i], "product--picture__active");
         }
-        fadeIn(imgsOfProducts[index], "product--img__active");
+        fadeIn(imgsOfProducts[index], "product--picture__active");
       }
       else {
         return false;

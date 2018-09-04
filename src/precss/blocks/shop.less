@@ -100,8 +100,8 @@
 					max-height: 100px;
 				});
 				.sm-block({
-				max-height: 70px;
-			});
+					max-height: 70px;
+				});
 			}
 		}
 	}
@@ -161,12 +161,29 @@
 		}
 	}
 
-	&--img {
+	&--picture {
 		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 50%;
+		left: 50%;
 		opacity: 0;
+		transform: translate(-50%, -50%);
+		z-index: -1;	
+
+		&__active {
+			position: static;
+			transform: translate(0,0);
+			opacity: 1;
+			z-index: 1;
+		}
+	}
+
+	&--img {
 		max-height: 200px;
 		width: auto;
-		transition: transform 0.4s ease-in-out; 
+		transition: transform 0.4s ease-in-out;
 
 		.xs-block({
 			max-height: 150px;
@@ -174,13 +191,7 @@
 
 		&:hover {
 			transform: scale(1.5);
-		}		
-
-		&__active {
-			position: static;
-			opacity: 1;
-			z-index: 1;
-		}
+		}	
 	}
 
 	&--more-info {
@@ -197,6 +208,7 @@
 			});
 		}
 		&__img {
+			position: relative;
 			min-height: 200px;
 			margin-bottom: 10px;
 

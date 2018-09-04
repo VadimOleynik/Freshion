@@ -28,7 +28,7 @@ const config = {
 		dest: "/js"
 	},
 	img: { 
-		src: "/img/**/*.{png,jpg,jpeg,svg}",
+		src: "/img/**/*.{png,jpg,jpeg,svg,webp}",
 		webp: "/img/**/*.{png,jpg}",
 		dest: "/img"
 	},
