@@ -50,7 +50,7 @@ window.onload = function() {
   const thanksModal = document.querySelector(".thanks-for-order");
   const thanksModalCloseBtn = document.querySelector(".thanks-for-order--btn");
   const thanksModalOverlay = document.querySelector(".thanks-for-order--overlay");
-
+  
 
   // Мобильное меню
   mobMenuBtn.addEventListener("click", function(event) {

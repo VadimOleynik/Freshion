@@ -159,7 +159,14 @@
 		&:active {
 			.main-header--buy {
 				&::before {
-					background-position: -43px 0;
+					background-position: -83px 0;
+
+					.sm-block({
+						background-position: -67px 0;
+					});
+					.xs-block({
+						background-position: -76px 0;
+					});
 				}
 			}
 			.main-header--amount {
@@ -196,16 +203,18 @@
 			width: 40px;
 			height: 38px;
 			background: url(../img/cart.svg) 0 0 no-repeat;
-			background-size: 95px;
+			background-size: 125px;
 
 			.sm-block({
 				width: 33px;
 				height: 31px;
+				background-size: 103px;
 			});
 
 			.xs-block({
 				width: 37px;
 				height: 35px;
+				background-size: 115px;
 			});
 		}
 

@@ -316,7 +316,7 @@ section {
 .main-header--orders:active .main-header--buy::before,
 .main-header--orders:focus .main-header--buy::before,
 .main-header--orders:hover .main-header--buy::before {
-  background-position: -43px 0
+  background-position: -83px 0
 }
 .main-header--orders:active .main-header--amount,
 .main-header--orders:focus .main-header--amount,
@@ -345,7 +345,7 @@ section {
   display: inline-block;
   width: 40px;
   height: 38px;
-  background: url(../img/cart.svg) 0 0/95px no-repeat
+  background: url(../img/cart.svg) 0 0/125px no-repeat
 }
 .main-header--buy__rotate::before {
   -webkit-animation: 1s rotate;
@@ -932,23 +932,23 @@ section {
 }
 .contacts--item:active .contacts--link__address::before,
 .contacts--item:hover .contacts--link__address::before {
-  background-image: url(../img/address-active.svg)
+  background-position: -46px -2px
 }
 .contacts--item:active .contacts--link__phone::before,
 .contacts--item:hover .contacts--link__phone::before {
-  background-image: url(../img/phone-active.svg)
+  background-position: -33px 0
 }
 .contacts--item:active .contacts--link__email::before,
 .contacts--item:hover .contacts--link__email::before {
-  background-image: url(../img/email-active.svg)
+  background-position: -30px 5px
 }
 .contacts--item:active .contacts--link__inst::before,
 .contacts--item:hover .contacts--link__inst::before {
-  background-image: url(../img/instagram-active.svg)
+  background-position: -34px 3px
 }
 .contacts--item:active .contacts--link__fb::before,
 .contacts--item:hover .contacts--link__fb::before {
-  background-image: url(../img/facebook-active.svg)
+  background-position: -37px 1px
 }
 .contacts--link {
   display: -webkit-box;
@@ -970,28 +970,28 @@ section {
 }
 .contacts--link__address::before {
   background-image: url(../img/address.svg);
-  background-position: 6px 0;
-  background-size: 31px
+  background-position: 6px -2px;
+  background-size: 67px
 }
 .contacts--link__phone::before {
   background-image: url(../img/phone.svg);
-  background-position: 5px 0;
-  background-size: 55px
+  background-position: 4px 0;
+  background-size: 53px
 }
 .contacts--link__email::before {
   background-image: url(../img/email.svg);
-  background-position: 5px 2px;
-  background-size: 55px
+  background-position: 3px 5px;
+  background-size: 50px
 }
 .contacts--link__inst::before {
   background-image: url(../img/instagram.svg);
-  background-position: 5px 2px;
-  background-size: 40px
+  background-position: 5px 3px;
+  background-size: 55px
 }
 .contacts--link__fb::before {
   background-image: url(../img/facebook.svg);
-  background-position: 5px 1px;
-  background-size: 35px
+  background-position: 4px 1px;
+  background-size: 57px
 }
 .orders {
   box-sizing: border-box;
@@ -1321,6 +1321,22 @@ section {
   .contacts--frame {
     height: 280px
   }
+  .contacts--item:active .contacts--link__address::before,
+  .contacts--item:hover .contacts--link__address::before {
+    background-position: -43px -2px
+  }
+  .contacts--item:active .contacts--link__phone::before,
+  .contacts--item:hover .contacts--link__phone::before {
+    background-position: -33px 0
+  }
+  .contacts--item:active .contacts--link__email::before,
+  .contacts--item:hover .contacts--link__email::before {
+    background-position: -27px 4px
+  }
+  .contacts--item:active .contacts--link__inst::before,
+  .contacts--item:hover .contacts--link__inst::before {
+    background-position: -35px 1px
+  }
   .contacts--link {
     font-size: 16px
   }
@@ -1328,6 +1344,26 @@ section {
     width: 16px;
     height: 16px;
     margin-right: 5px
+  }
+  .contacts--link__address::before {
+    background-position: 4px -2px;
+    background-size: 60px
+  }
+  .contacts--link__phone::before {
+    background-position: 1px 0;
+    background-size: 48px
+  }
+  .contacts--link__email::before {
+    background-position: 1px 4px;
+    background-size: 43px
+  }
+  .contacts--link__inst::before {
+    background-position: 0 1px;
+    background-size: 50px
+  }
+  .contacts--link__fb::before {
+    background-position: 1px 1px;
+    background-size: 52px
   }
   .thanks-for-order {
     font-size: 18px;
@@ -1354,6 +1390,11 @@ section {
   .main-header--container {
     padding: 0
   }
+  .main-header--orders:active .main-header--buy::before,
+  .main-header--orders:focus .main-header--buy::before,
+  .main-header--orders:hover .main-header--buy::before {
+    background-position: -67px 0
+  }
   .main-header--amount {
     margin-left: 3px;
     padding: 1px 6px;
@@ -1361,7 +1402,8 @@ section {
   }
   .main-header--buy::before {
     width: 33px;
-    height: 31px
+    height: 31px;
+    background-size: 103px
   }
   .shop-nav--container {
     padding: 10px 0
@@ -1511,9 +1553,15 @@ section {
   .main-header--container {
     padding: 0
   }
+  .main-header--orders:active .main-header--buy::before,
+  .main-header--orders:focus .main-header--buy::before,
+  .main-header--orders:hover .main-header--buy::before {
+    background-position: -76px 0
+  }
   .main-header--buy::before {
     width: 37px;
-    height: 35px
+    height: 35px;
+    background-size: 115px
   }
   .shop-nav--container {
     width: calc(100% - 0px)
