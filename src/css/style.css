@@ -468,26 +468,6 @@ section {
   -ms-flex-pack: center;
   justify-content: center
 }
-.product__small .product--more-info__img {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  min-height: 110px
-}
-.product__small .product--more-info__text {
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0
-}
-.product__small .product--img {
-  max-height: 110px
-}
-.product__small .details--wrap {
-  grid-template-columns: 300px 1fr
-}
-.product__small .details--wrap .details--img {
-  max-height: 140px
-}
 .product__medium .product--more-info__img {
   min-height: 150px;
   margin-bottom: 7px
@@ -508,6 +488,26 @@ section {
 }
 .product__medium .details--wrap .details--img {
   max-height: 180px
+}
+.product__small .product--more-info__img {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-height: 110px
+}
+.product__small .product--more-info__text {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0
+}
+.product__small .product--img {
+  max-height: 110px
+}
+.product__small .details--wrap {
+  grid-template-columns: 300px 1fr
+}
+.product__small .details--wrap .details--img {
+  max-height: 140px
 }
 .product--picture {
   position: absolute;
@@ -723,18 +723,20 @@ section {
   margin-bottom: 20px;
   color: #1e3222
 }
-.details--img {
-  max-height: 250px;
-  width: auto;
-  margin: 0 auto;
+.details--picture {
   display: none;
   -webkit-box-ordinal-group: 0;
   -ms-flex-order: -1;
   order: -1;
   grid-row: span 5
 }
-.details--img__active {
+.details--picture__active {
   display: block
+}
+.details--img {
+  margin: 0 auto;
+  max-height: 250px;
+  width: auto
 }
 .details--wrap {
   display: grid;
@@ -1132,9 +1134,13 @@ section {
 .order--img {
   max-width: 100px
 }
+.order--name {
+  margin-bottom: 3px
+}
 .order--amount {
   background-color: #eafdf8;
   width: 32px;
+  margin-bottom: 3px;
   padding: 2px 0 2px 5px;
   border: none;
   border-radius: 5px;
@@ -1146,6 +1152,7 @@ section {
 }
 .order--info {
   position: relative;
+  max-width: calc(60%);
   margin-left: 10px;
   margin-right: 10px;
   text-align: left
@@ -1258,17 +1265,17 @@ section {
   .shop--item {
     width: calc(33.333333333333336% - 30px)
   }
-  .product__small .details--wrap {
-    grid-template-columns: 200px 1fr
-  }
-  .product__small .details--wrap .details--img {
-    max-height: 100px
-  }
   .product__medium .details--wrap {
     grid-template-columns: 200px 1fr
   }
   .product__medium .details--wrap .details--img {
     max-height: 150px
+  }
+  .product__small .details--wrap {
+    grid-template-columns: 200px 1fr
+  }
+  .product__small .details--wrap .details--img {
+    max-height: 100px
   }
   .details {
     width: 90%;
@@ -1420,18 +1427,6 @@ section {
   .shop--item {
     width: calc(50% - 30px)
   }
-  .product__small .product--more-info__img {
-    min-height: 100px
-  }
-  .product__small .product--img {
-    max-height: 100px
-  }
-  .product__small .details--wrap {
-    grid-template-columns: 150px 1fr
-  }
-  .product__small .details--wrap .details--img {
-    max-height: 70px
-  }
   .product__medium .product--more-info__img {
     min-height: 135px
   }
@@ -1443,6 +1438,18 @@ section {
   }
   .product__medium .details--wrap .details--img {
     max-height: 120px
+  }
+  .product__small .product--more-info__img {
+    min-height: 100px
+  }
+  .product__small .product--img {
+    max-height: 100px
+  }
+  .product__small .details--wrap {
+    grid-template-columns: 150px 1fr
+  }
+  .product__small .details--wrap .details--img {
+    max-height: 70px
   }
   .product--color {
     width: 22px;
@@ -1591,17 +1598,6 @@ section {
     margin-right: 5px;
     margin-bottom: 45px
   }
-  .product__small .product--more-info__img {
-    min-height: 75px
-  }
-  .product__small .product--more-info__text {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1
-  }
-  .product__small .product--img {
-    max-height: 75px
-  }
   .product__medium .product--more-info__img {
     min-height: 120px
   }
@@ -1612,6 +1608,17 @@ section {
   }
   .product__medium .product--img {
     max-height: 120px
+  }
+  .product__small .product--more-info__img {
+    min-height: 75px
+  }
+  .product__small .product--more-info__text {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+  }
+  .product__small .product--img {
+    max-height: 75px
   }
   .product--img {
     max-height: 150px

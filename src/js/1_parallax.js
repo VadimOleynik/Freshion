@@ -1,4 +1,4 @@
-const parallax = function(el, speed) {
+function parallax(el, speed) {
 	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
 	const yPos = (scrolled / speed);
 	

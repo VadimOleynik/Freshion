@@ -176,10 +176,15 @@
 			max-width: 80px;
 		});
 	}
+
+	&--name {
+		margin-bottom: 3px;
+	}
 	
 	&--amount {
 		background-color: @orders-bg;
 		width: 32px;
+		margin-bottom: 3px;
 		padding: 2px 0;
 		padding-left: 5px;
 		border: none;
@@ -194,6 +199,7 @@
 
 	&--info {	
 		position: relative;
+		max-width: calc(100% - 40px);
 		margin-left: 10px;
 		margin-right: 10px;
 		text-align: left;

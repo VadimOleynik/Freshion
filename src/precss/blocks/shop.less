@@ -53,59 +53,6 @@
 	flex-direction: column;
 	justify-content: center;
 
-	&__small {
-		.product--more-info {
-			&__img {
-				flex-grow: 1;
-				min-height: 110px;
-
-				.sm-block({
-					min-height: 100px;
-				});
-				.xs-block({
-					min-height: 75px;
-				});
-			}
-
-			&__text {
-				flex-grow: 0;
-				.xs-block({
-					flex-grow: 1;
-				});
-			}
-		}
-
-		.product--img {
-			max-height: 110px;
-
-			.sm-block({
-				max-height: 100px;
-			});
-			.xs-block({
-				max-height: 75px;
-			});
-		}
-		.details--wrap {
-			grid-template-columns: 300px 1fr;
-			.md-block({
-				grid-template-columns: 200px 1fr;
-			});
-			.sm-block({
-				grid-template-columns: 150px 1fr;
-			});
-
-			.details--img {
-				max-height: 140px;
-				.md-block({
-					max-height: 100px;
-				});
-				.sm-block({
-					max-height: 70px;
-				});
-			}
-		}
-	}
-
 	&__medium {
 		.product--more-info {
 			&__img {
@@ -160,6 +107,61 @@
 			}
 		}
 	}
+
+	&__small {
+		.product--more-info {
+			&__img {
+				flex-grow: 1;
+				min-height: 110px;
+
+				.sm-block({
+					min-height: 100px;
+				});
+				.xs-block({
+					min-height: 75px;
+				});
+			}
+
+			&__text {
+				flex-grow: 0;
+				.xs-block({
+					flex-grow: 1;
+				});
+			}
+		}
+
+		.product--img {
+			max-height: 110px;
+
+			.sm-block({
+				max-height: 100px;
+			});
+			.xs-block({
+				max-height: 75px;
+			});
+		}
+		.details--wrap {
+			grid-template-columns: 300px 1fr;
+			.md-block({
+				grid-template-columns: 200px 1fr;
+			});
+			.sm-block({
+				grid-template-columns: 150px 1fr;
+			});
+
+			.details--img {
+				max-height: 140px;
+				.md-block({
+					max-height: 100px;
+				});
+				.sm-block({
+					max-height: 70px;
+				});
+			}
+		}
+	}
+
+	
 
 	&--picture {
 		position: absolute;
@@ -460,13 +462,20 @@
 		});
 	}	
 
-	&--img {
-		max-height: 250px;
-		width: auto;
-		margin: 0 auto;
+	&--picture {
 		display: none;
 		order: -1;
 		grid-row: span 5;
+
+		&__active {
+			display: block;
+		}	
+	}
+
+	&--img {
+		margin: 0 auto;
+		max-height: 250px;
+		width: auto;	
 
 		.md-block({
 			max-height: 150px;
@@ -477,10 +486,6 @@
 		.xs-block({
 			margin-bottom: 20px;
 		});
-
-		&__active {
-			display: block;
-		}	
 	}
 
 	&--wrap {

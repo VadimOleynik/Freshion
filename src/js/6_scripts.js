@@ -21,7 +21,7 @@ window.onload = function() {
   const productsBtn = document.querySelectorAll(".product--buy");
   const colorSwitchBtns = document.querySelectorAll(".product--color");
   const imgsOfProducts = document.querySelectorAll(".product--picture");
-  const imgDetails = document.querySelectorAll(".details--img");
+  const imgDetails = document.querySelectorAll(".details--picture");
 
   const orders = document.querySelector(".orders");
   const ordersForm = document.querySelector("#orders--form");
@@ -156,17 +156,17 @@ window.onload = function() {
       const atr = this.getAttribute("href");
       const modal = document.querySelector(atr);
       const overlay = modal.previousElementSibling;
-      const img = this.closest(".product").querySelector(".product--img__active");
+      const img = this.closest(".product").querySelector(".product--picture__active");
       const index = [...imgsOfProducts].indexOf(img); // Прототипом imgsOfProducts является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
-      
+
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
 
       for (let i = 0; i < imgDetails.length; i++) {
-        imgDetails[i].classList.remove("details--img__active");
+        imgDetails[i].classList.remove("details--picture__active");
       }
 
-      imgDetails[index].classList.add("details--img__active");
+      imgDetails[index].classList.add("details--picture__active");
     });
   }
 
@@ -204,14 +204,17 @@ window.onload = function() {
   for (let i = 0; i < productsBtn.length; i++) {
     productsBtn[i].addEventListener("click", function(event) {
       event.preventDefault(); 
-      const productName = this.closest(".shop--item").querySelector(".product--about").innerHTML;
-      const productPrice = this.closest(".shop--item").querySelector(".product--price").innerHTML.replace(/\D+/g,""); //Оставить только цифры из строки
-      const productPhoto = this.closest(".shop--item").querySelector(".product--img__active");
-      const productPhotoLink = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("src");
-      const productPhotoAlt = this.closest(".shop--item").querySelector(".product--img__active").getAttribute("alt");
+      const productName = this.closest(".shop--item").querySelector(".product--about").textContent;
+      const productPrice = this.closest(".shop--item").querySelector(".product--price").textContent.replace(/\D+/g,""); //Оставить только цифры из строки
+      const productPicture = this.closest(".shop--item").querySelector(".product--picture__active");
+      const productPictureSrc = productPicture.querySelector("source").srcset;
+      const productPictureType = productPicture.querySelector("source").type;
+      const productPhoto = productPicture.querySelector(".product--img");
+      const productPhotoLink = productPicture.querySelector(".product--img").getAttribute("src");
+      const productPhotoAlt = productPicture.querySelector(".product--img").getAttribute("alt");
       const productInfo = this.closest(".shop--item").querySelector(".product--more-info").getAttribute("href");
       const productNumber = productInfo.replace(/\D+/g,"");
-      const productColor = this.closest(".shop--item").querySelector(".product--color__active").innerHTML;
+      const productColor = this.closest(".shop--item").querySelector(".product--color__active").textContent;
       const order = document.querySelectorAll(".order");
       const orderName = new Array;
       const orderPrice = new Array;
@@ -223,16 +226,16 @@ window.onload = function() {
       
       if (!order.length) { // Создать первый заказ
         createNewOrderItem();
-        orderPriceSumm.innerHTML = productPrice;
+        orderPriceSumm.textContent = productPrice;
         setTimeout(function() {
-          ordersAmount.innerHTML = 1;
+          ordersAmount.textContent = 1;
         }, 500)
       }
       else {
         for (let j = 0; j < order.length; j++) {
-          orderName[j] = order[j].querySelector(".order--name").innerHTML;
-          orderPrice[j] = order[j].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
-          orderPhotoLink[j] = order[j].querySelector(".order--img").getAttribute("src"); 
+          orderName[j] = order[j].querySelector(".order--name").textContent;
+          orderPrice[j] = order[j].querySelector(".order--price").textContent.replace(/\D+/g,"");
+          orderPhotoLink[j] = order[j].querySelector(".order--picture__active").querySelector(".order--img").getAttribute("src"); 
           amountsOfOrders[j] = order[j].querySelector(".order--amount").getAttribute("value");// Массивы названий, цен, ссылок и количеств товаров, которые в корзине
         }
 
@@ -258,7 +261,10 @@ window.onload = function() {
       function createNewOrderItem() {
         const newItemHTML = 
         ` <a class="order--more-info" href="${productInfo}" data-number="${productNumber}"> 
+        <picture class="order--picture order--picture__active">
+        <source srcset="${productPictureSrc}" type="${productPictureType}"/>
         <img class="order--img" src="${productPhotoLink}" alt="${productPhotoAlt}" data-color="${productColor}">
+        </picture> 
         </a>
         <div class="order--info">
         <p class="order--name">${productName}</p>
@@ -275,7 +281,7 @@ window.onload = function() {
         ordersList.appendChild(newItem);
       }
     });
-  }
+}
 
 
   // Удаление класса у корзины после окончания анимации. Два синтаксиса для разных браузеров
@@ -307,7 +313,7 @@ window.onload = function() {
       active[i].setAttribute("tabindex","1")
     }
 
-    if (window.innerWidth > smallScreen) {
+    if (window.innerWidth > mediumScreen) {
       promocod.focus();
     }
   });
@@ -375,11 +381,14 @@ window.onload = function() {
         productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
       }
 
+      console.log(imgDetailsindex);
+      console.log(index)
+
       for (let i = 0; i < imgDetails.length; i++) {
-       imgDetails[i].classList.remove("details--img__active");
+       imgDetails[i].classList.remove("details--picture__active");
      }
 
-     imgDetails[index].classList.add("details--img__active");
+     imgDetails[index].classList.add("details--picture__active");
    }
  });
 
@@ -423,7 +432,7 @@ window.onload = function() {
 
     for (let i = 0; i < order.length; i++) {
       amountsOfOrders[i] = order[i].querySelector(".order--amount").getAttribute("value");
-      orderPrice[i] = order[i].querySelector(".order--price").innerHTML.replace(/\D+/g,"");
+      orderPrice[i] = order[i].querySelector(".order--price").textContent.replace(/\D+/g,"");
     }
 
     if (amount && price) {
@@ -439,14 +448,14 @@ window.onload = function() {
       }
 
       setTimeout(function() {
-        ordersAmount.innerHTML = amountSumm.toString();
+        ordersAmount.textContent = amountSumm.toString();
       }, 500)
       
       for (let i = 0; i < orderPrice.length; i++) {
         priceSumm += orderPrice[i] * amountsOfOrders[i];
       }
 
-      orderPriceSumm.innerHTML = (priceSumm - (priceSumm / 100 * discount)).toString();
+      orderPriceSumm.textContent = (priceSumm - (priceSumm / 100 * discount)).toString();
     }
   };
 
@@ -466,8 +475,8 @@ window.onload = function() {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
-    orderPriceSumm.innerHTML = "0";
-    ordersAmount.innerHTML = "0";
+    orderPriceSumm.textContent = "0";
+    ordersAmount.textContent = "0";
     promoLabel.classList.remove("orders--label__descending");
   });
 
@@ -475,8 +484,8 @@ window.onload = function() {
     event.preventDefault();
     clearOrders(ordersList);
     ordersForm.reset();
-    orderPriceSumm.innerHTML = "0";
-    ordersAmount.innerHTML = "0";
+    orderPriceSumm.textContent = "0";
+    ordersAmount.textContent = "0";
     promoLabel.classList.remove("orders--label__descending");
   });
 
@@ -520,9 +529,9 @@ window.onload = function() {
 
     for (let i = 0; i < orders.length; i++) {
       ordersInfo.push({
-        "name" : orders[i].querySelector(".order--name").innerHTML,
+        "name" : orders[i].querySelector(".order--name").textContent,
         "amount" : orders[i].querySelector(".order--amount").value,
-        "price" : orders[i].querySelector(".order--price").innerHTML.replace(/\D+/g,""),
+        "price" : orders[i].querySelector(".order--price").textContent.replace(/\D+/g,""),
         "number" : orders[i].querySelector("[data-number]").getAttribute("data-number"),
         "color" : orders[i].querySelector("[data-color]").getAttribute("data-color")
       });
@@ -535,7 +544,7 @@ window.onload = function() {
       "order" : ordersInfo,
       "promocod" : promocod.value.toString(),
       "promocod-descending" : promoLabel.classList.contains("orders--label__descending"),
-      "summ" : orderPriceSumm.innerHTML
+      "summ" : orderPriceSumm.textContent
     });
 
     request.open("POST", "../php/form.php");
@@ -552,26 +561,26 @@ window.onload = function() {
         document.body.classList.remove("wait");
         switch(request.responseText) {
           case "err_1":
-          ordersError.innerHTML = "Заполните все поля формы";
+          ordersError.textContent = "Заполните все поля формы";
           ordersError.hidden = false;
           break;
           case "err_2_1":
-          ordersError.innerHTML = "Имя некоректно, исправьте ошибку";
+          ordersError.textContent = "Имя некоректно, исправьте ошибку";
           ordersError.hidden = false;
           break;
           case "err_2_2":
-          ordersError.innerHTML = "Фамилия некоректна, исправьте ошибку";
+          ordersError.textContent = "Фамилия некоректна, исправьте ошибку";
           ordersError.hidden = false;
           break;
           case "err_2_3":
-          ordersError.innerHTML = "Номер телефона некоректен, исправьте ошибку";
+          ordersError.textContent = "Номер телефона некоректен, исправьте ошибку";
           ordersError.hidden = false;
           break;
         }
       }
       else if (request.readyState == "4" || request.status !== 200) {
         document.body.classList.remove("wait");
-        ordersError.innerHTML = "Ошибка отправки данных, повторите попытку позже";
+        ordersError.textContent = "Ошибка отправки данных, повторите попытку позже";
         ordersError.hidden = false;
       }
     }
