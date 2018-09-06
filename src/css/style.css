@@ -1269,6 +1269,9 @@ section {
   .main-header--mobile {
     display: block
   }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-md.webp)
+  }
   .shop-nav--container {
     width: calc(83.33333333333334% - 30px)
   }
@@ -1343,7 +1346,7 @@ section {
   }
   .contacts--item:active .contacts--link__address::before,
   .contacts--item:hover .contacts--link__address::before {
-    background-position: -43px -2px
+    background-position: -39px -1px
   }
   .contacts--item:active .contacts--link__phone::before,
   .contacts--item:hover .contacts--link__phone::before {
@@ -1366,8 +1369,8 @@ section {
     margin-right: 5px
   }
   .contacts--link__address::before {
-    background-position: 4px -2px;
-    background-size: 60px
+    background-position: 4px -1px;
+    background-size: 55px
   }
   .contacts--link__phone::before {
     background-position: 1px 0;
@@ -1391,6 +1394,20 @@ section {
     line-height: 1.5
   }
 }
+@media (max-width:998px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-md.jpg)
+  }
+}
+@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:998px),
+(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:998px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-md-dpi.jpg)
+  }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-md-dpi.webp)
+  }
+}
 @media screen and (max-width:767px) {
   .container {
     padding-left: 15px;
@@ -1410,10 +1427,13 @@ section {
   .main-header--container {
     padding: 0
   }
+  .main-header--mobile::before {
+    font-size: 30px
+  }
   .main-header--orders:active .main-header--buy::before,
   .main-header--orders:focus .main-header--buy::before,
   .main-header--orders:hover .main-header--buy::before {
-    background-position: -67px 0
+    background-position: -68px 0
   }
   .main-header--amount {
     margin-left: 3px;
@@ -1424,6 +1444,9 @@ section {
     width: 33px;
     height: 31px;
     background-size: 103px
+  }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-sm.webp)
   }
   .shop-nav--container {
     padding: 10px 0
@@ -1554,6 +1577,25 @@ section {
     top: -25px
   }
 }
+@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:767px),
+(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:767px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-sm-dpi.jpg)
+  }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-sm-dpi.webp)
+  }
+}
+@media (max-width:767px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-sm.jpg)
+  }
+}
+@media (max-width:576px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-xs.jpg)
+  }
+}
 @media screen and (max-width:576px) {
   .button {
     padding: 5px 15px;
@@ -1573,6 +1615,9 @@ section {
   .main-header--container {
     padding: 0
   }
+  .main-header--mobile::before {
+    font-size: 40px
+  }
   .main-header--orders:active .main-header--buy::before,
   .main-header--orders:focus .main-header--buy::before,
   .main-header--orders:hover .main-header--buy::before {
@@ -1582,6 +1627,9 @@ section {
     width: 37px;
     height: 35px;
     background-size: 115px
+  }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-xs.webp)
   }
   .shop-nav--container {
     width: calc(100% - 0px)
@@ -1721,21 +1769,20 @@ section {
     top: -25px
   }
 }
+@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:576px),
+(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:576px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-xs-dpi.jpg)
+  }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-xs-dpi.webp)
+  }
+}
 @media screen and (min-width:0px) and (max-width:340px) {
   .header {
     font-size: 40px
   }
   .shop--item {
     width: 100%
-  }
-}
-@media (-webkit-min-device-pixel-ratio:1.5),
-(min-resolution:144dpi),
-(min-resolution:1.5dppx) {
-  .no-webp .shop-nav {
-    background-image: url(../img/nav-bg-dpi.jpg)
-  }
-  .webp .shop-nav {
-    background-image: url(../img/nav-bg-dpi.webp)
   }
 }

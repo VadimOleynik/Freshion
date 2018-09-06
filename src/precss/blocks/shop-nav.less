@@ -2,9 +2,25 @@
 	.shop-nav {
 		background: url(../img/nav-bg.jpg) center 0 / cover no-repeat;
 
-		@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-			background-image: url("../img/nav-bg-dpi.jpg");
+		@media (max-width: 998px){
+			background-image: url("../img/nav-bg-md.jpg");
+		} 
+		@media (max-width: 767px){
+			background-image: url("../img/nav-bg-sm.jpg");
+		} 
+		 @media (max-width: 576px){
+			background-image: url("../img/nav-bg-xs.jpg");
 		}
+
+		@media (min-resolution: 144dpi) and (min-resolution: 1.5dppx) and (max-width: 998px){
+			background-image: url("../img/nav-bg-md-dpi.jpg");
+		} 
+		@media (min-resolution: 144dpi) and (min-resolution: 1.5dppx) and (max-width: 767px){
+			background-image: url("../img/nav-bg-sm-dpi.jpg");
+		} 
+		 @media (min-resolution: 144dpi) and (min-resolution: 1.5dppx) and (max-width: 576px){
+			background-image: url("../img/nav-bg-xs-dpi.jpg");
+		} 
 	}
 }
 
@@ -12,9 +28,25 @@
 	.shop-nav {
 		background: url(../img/nav-bg.webp) center 0 / cover no-repeat;
 
-		@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-			background-image: url("../img/nav-bg-dpi.webp");
+		@media screen and (max-width: 998px){
+			background-image: url("../img/nav-bg-md.webp");
+		} 
+		@media screen and (max-width: 767px){
+			background-image: url("../img/nav-bg-sm.webp");
 		}
+		 @media screen and (max-width: 576px){
+			background-image: url("../img/nav-bg-xs.webp");
+		} 
+
+		@media (min-resolution: 144dpi) and (min-resolution: 1.5dppx) and (max-width: 998px){
+			background-image: url("../img/nav-bg-md-dpi.webp");
+		} 
+		@media (min-resolution: 144dpi) and (min-resolution: 1.5dppx) and (max-width: 767px){
+			background-image: url("../img/nav-bg-sm-dpi.webp");
+		} 
+		 @media (min-resolution: 144dpi) and (min-resolution: 1.5dppx) and (max-width: 576px){
+			background-image: url("../img/nav-bg-xs-dpi.webp");
+		} 
 	}
 }
 
