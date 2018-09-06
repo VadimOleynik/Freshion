@@ -35,7 +35,9 @@ const config = {
 	fonts: {
 		src: "/fonts/**/*.{woff,woff2}",
 		dest: "/fonts"
-	}
+	},
+	php: "/php/**/*.php",
+	txt: "/**/*.txt",
 };
 
 
@@ -108,7 +110,9 @@ gulp.task("copy", function () {
 	return gulp.src([
 		config.src + config.fonts.src,
 		config.src + config.img.src,
-		config.src + config.html
+		config.src + config.html,
+		config.src + config.php,
+		config.src + config.txt
 		], {
 			base: config.src
 		})

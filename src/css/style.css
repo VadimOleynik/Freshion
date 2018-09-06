@@ -1,4 +1,17 @@
-@import url(https://fonts.googleapis.com/css?family=Comfortaa:700|Cormorant+Garamond:700|Open+Sans&subset=cyrillic);
+@font-face {
+  font-family: Comfortaa;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(../fonts/Comfortaa.woff2) format("woff2"),url(../fonts/Comfortaa.woff) format("woff")
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(../fonts/Cormorant-garamound.woff2) format("woff2"),url(../fonts/Cormorant-garamound.woff) format("woff")
+}
 blockquote,
 body,
 code,
