@@ -372,17 +372,15 @@ window.onload = function() {
       const modal = document.querySelector(atr);
       const overlay = modal.previousElementSibling;
       const productImgSrc = new Array;
-      const index = [...productImgSrc].indexOf(imgSrc); // Прототипом productImgSrc является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
+
+      for (let i = 0; i < imgsOfProducts.length; i++) {
+        productImgSrc.push(imgsOfProducts[i].querySelector(".product--img").getAttribute("src"));
+      }
+
+      const index = productImgSrc.indexOf(imgSrc); // Прототипом productImgSrc является NodeList, у которого нету метода indexOf, поэтому из NodeList делается Array
 
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
-
-      for (let i = 0; i < imgsOfProducts.length; i++) {
-        productImgSrc.push(imgsOfProducts[i].getAttribute("src"));
-      }
-
-      console.log(imgDetailsindex);
-      console.log(index)
 
       for (let i = 0; i < imgDetails.length; i++) {
        imgDetails[i].classList.remove("details--picture__active");
