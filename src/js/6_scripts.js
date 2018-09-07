@@ -73,40 +73,42 @@ window.onload = function() {
   };
 
   if(window.innerWidth > mediumScreen) {
-    window.onscroll = function() {
-      parallax(needParallax, 10);
-      const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    if(typeof InstallTrigger == 'undefined') { // Проверка Firefox
+      window.onscroll = function() {
+        parallax(needParallax, 10);
+        const scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
-      for (let i = 0; i < needToggleMain.length; i++) {
-        needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
-      }
-
-      for (let i = 0; i < mainAnchorPositions.length; i++) {
-        if (scrolled >= mainAnchorPositions[i] - 200 && scrolled < mainAnchorPositions[i+1] - 200) {
-          needToggleMain[i].closest(".main-header--item").classList.add("main-header--item__active");
-        }
-        else if (scrolled >= mainAnchorPositions[mainAnchorPositions.length - 1] - 200) {
-          needToggleMain[mainAnchorPositions.length - 1].closest(".main-header--item").classList.add("main-header--item__active");
+        for (let i = 0; i < needToggleMain.length; i++) {
+          needToggleMain[i].closest(".main-header--item").classList.remove("main-header--item__active");
         }
 
-        if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
-         altMenu.classList.add("alt-nav__visible");
-         for (let i = 0; i < needToggleAlt.length; i++) {
-          needToggleAlt[i].classList.remove("alt-nav--item__active");
-        }
-
-        for (let i = 0; i < shopAnchorPositions.length; i++) {
-          if (scrolled >= shopAnchorPositions[i] - 400 && scrolled < shopAnchorPositions[i+1] - 400) {
-            needToggleAlt[i].classList.add("alt-nav--item__active");
+        for (let i = 0; i < mainAnchorPositions.length; i++) {
+          if (scrolled >= mainAnchorPositions[i] - 200 && scrolled < mainAnchorPositions[i+1] - 200) {
+            needToggleMain[i].closest(".main-header--item").classList.add("main-header--item__active");
           }
-          else if (scrolled >= shopAnchorPositions[shopAnchorPositions.length - 1] - 400) {
-            needToggleAlt[shopAnchorPositions.length - 1].classList.add("alt-nav--item__active");
+          else if (scrolled >= mainAnchorPositions[mainAnchorPositions.length - 1] - 200) {
+            needToggleMain[mainAnchorPositions.length - 1].closest(".main-header--item").classList.add("main-header--item__active");
+          }
+
+          if(scrolled >=(shopZone.topPos - 200) && scrolled < shopZone.botPos - 400) {
+           altMenu.classList.add("alt-nav__visible");
+           for (let i = 0; i < needToggleAlt.length; i++) {
+            needToggleAlt[i].classList.remove("alt-nav--item__active");
+          }
+
+          for (let i = 0; i < shopAnchorPositions.length; i++) {
+            if (scrolled >= shopAnchorPositions[i] - 400 && scrolled < shopAnchorPositions[i+1] - 400) {
+              needToggleAlt[i].classList.add("alt-nav--item__active");
+            }
+            else if (scrolled >= shopAnchorPositions[shopAnchorPositions.length - 1] - 400) {
+              needToggleAlt[shopAnchorPositions.length - 1].classList.add("alt-nav--item__active");
+            }
           }
         }
-      }
-      
-      else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
-        altMenu.classList.remove("alt-nav__visible");
+
+        else if (scrolled <(shopZone.topPos - 200) || scrolled >= shopZone.botPos - 400) {
+          altMenu.classList.remove("alt-nav__visible");
+        }
       }
     }
   }

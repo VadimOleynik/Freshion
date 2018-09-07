@@ -1,13 +1,13 @@
 @font-face {
   font-family: Comfortaa;
-  font-weight: 400;
+  font-weight: lighter;
   font-style: normal;
   font-display: swap;
   src: url(../fonts/Comfortaa.woff2) format("woff2"),url(../fonts/Comfortaa.woff) format("woff")
 }
 @font-face {
   font-family: "Cormorant Garamond";
-  font-weight: 400;
+  font-weight: lighter;
   font-style: normal;
   font-display: swap;
   src: url(../fonts/Cormorant-garamound.woff2) format("woff2"),url(../fonts/Cormorant-garamound.woff) format("woff")
@@ -117,6 +117,7 @@ body {
   background-color: #9ee0ca;
   font-size: 20px;
   font-family: Comfortaa,cursive;
+  font-weight: lighter;
   color: #1f2d2e
 }
 a {
@@ -165,7 +166,6 @@ section {
   padding: 8px 20px;
   border: none;
   font: inherit;
-  font-weight: 700;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
