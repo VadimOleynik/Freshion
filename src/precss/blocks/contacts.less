@@ -66,64 +66,44 @@
 	}
 
 	&--item {
+		display: flex;
+		align-items: center;
 		margin-bottom: 15px;
+
+		.md-block({
+			justify-content: center;
+		});
 
 		&:hover .contacts--link,
 		&:active .contacts--link {
 			color: lighten(@accent-color, 20%);
-			
-			&__address {
-				&::before {
-					background-position: -46px -2px;
+		}
 
-					.md-block({
-						background-position: -39px -1px;
-					});
-				}
-			}
+		&:hover .contacts--figure,
+		&:hover .contacts--figure{
+			fill: lighten(@accent-color, 20%);
+		}
+	}
 
-			&__phone {
-				&::before {
-					background-position: -33px 0px;
+	&--svg {
+		display: inline-block;
+		margin-right: 5px;
 
-					.md-block({
-						background-position: -33px 0px;
-					});
-				}
-			}
+		.sm-block({
+			width: 14px;
+			height: 14px;
+		});
 
-			&__email {
-				&::before {
-					background-position: -30px 5px;
-
-					.md-block({
-						background-position: -27px 4px;
-					});
-				}
-			}
-
-			&__inst {
-				&::before {
-					background-position: -34px 3px;
-
-					.md-block({
-						background-position: -35px 1px;
-					});
-				}
-			}
-
-			&__fb {
-				&::before {
-					background-position: -37px 1px;
-				}
-			}
-
+		&__address {
+			.sm-block({
+			width: 16px;
+			height: 16px;
+		});
 		}
 	}
 
 	&--link {
-		display: flex;
-		align-items: center;
+		display: inline-block;
 
 		.md-block({
 			font-size: 16px;
@@ -134,87 +114,5 @@
 		.xs-block({
 			font-size: 15px;
 		});
-
-		&::before {
-			content: "";
-			display: inline-block;
-			margin-right: 7px;
-			width: 20px;
-			height: 20px;
-			background-position: 0 0;
-			background-repeat: no-repeat;
-			background-size: contain;
-			
-			.md-block({
-				width: 16px;
-				height: 16px;
-				margin-right: 5px;
-			});
-		}
-
-		&__address {
-			&::before {
-				background-image: url(../img/address.svg);
-				background-position: 6px -2px;
-				background-size: 67px;
-
-				.md-block({
-					background-position: 4px -1px;
-					background-size: 55px;
-				});
-			}
-		}
-
-		&__phone {
-			&::before {
-				background-image: url(../img/phone.svg);
-				background-position: 4px 0px;
-				background-size: 53px;
-
-				.md-block({
-					background-position: 1px 0px;
-					background-size: 48px;
-				});
-			}
-		}
-
-		&__email {
-			&::before {
-				background-image: url(../img/email.svg);
-				background-position: 3px 5px;
-				background-size: 50px;
-
-				.md-block({
-					background-position: 1px 4px;
-					background-size: 43px;
-				});
-			}
-		}
-
-		&__inst {
-			&::before {
-				background-image: url(../img/instagram.svg);
-				background-position: 5px 3px;
-				background-size: 55px;
-
-				.md-block({
-					background-position: 0px 1px;
-					background-size: 50px;
-				});
-			}
-		}
-
-		&__fb {
-			&::before {
-				background-image: url(../img/facebook.svg);
-				background-position: 4px 1px;
-				background-size: 57px;
-
-				.md-block({
-					background-position: 1px 1px;
-					background-size: 52px;
-				});
-			}
-		}
 	}
 }
