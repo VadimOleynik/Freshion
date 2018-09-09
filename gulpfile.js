@@ -17,7 +17,6 @@ const concat = require('gulp-concat');
 const config = {
 	src: "./src",
 	dest: "./build",
-	back: "./backend",
 	css: {
 		watch: "/precss/**/*.less",
 		src: ["./src/precss/style.less", "!./src/precss/style-for-ie.less"],
@@ -38,7 +37,7 @@ const config = {
 		src: "/fonts/**/*.{woff,woff2}",
 		dest: "/fonts"
 	},
-	php: "/php/**/*.php",
+	php: "/**/*.php",
 	txt: "/**/*.txt",
 };
 
@@ -67,7 +66,7 @@ gulp.task("style", function() {
 
 
 gulp.task("style-ie", function() {
-	gulp.src(config.css.src)
+	gulp.src(config.src + config.css.ie)
 	.pipe(plumber())
 	.pipe(preproc())
 	.pipe(gcmq())
@@ -91,16 +90,17 @@ gulp.task("style-ie", function() {
 
 gulp.task("serve", function(done) {
 	server.init({
-		server: config.dest,
+		proxy: "freshion/",
 		notify: false,
 		open: true,
 		cors: true,
 		ui: false
 	});
 
-	gulp.watch(config.src + config.css.watch, ["style", "style-ie"] );
+	gulp.watch(config.src + config.css.watch, ["style", "style-ie"]);
 	gulp.watch(config.src + config.html, ["html"]);
 	gulp.watch(config.src + config.js.src, ["script"]);
+	gulp.watch(config.src + config.php, ["php"]);
 });
 
 
@@ -108,6 +108,16 @@ gulp.task("html", function() {
 	return gulp.src(config.src + config.html)
 	.pipe(plumber())
 	.pipe(htmlmin({collapseWhitespace: true}))
+	.pipe(gulp.dest(config.dest))
+	.pipe(server.stream());
+});
+
+
+gulp.task("php", function() {
+	return gulp.src(config.src + config.php)
+	.pipe(plumber())
+	.pipe(htmlmin({collapseWhitespace: true, 
+		ignoreCustomFragments: [ /<%[\s\S]*?%>/, /<\?[=|php]?[\s\S]*?\?>/ ]}))
 	.pipe(gulp.dest(config.dest))
 	.pipe(server.stream());
 });
@@ -136,7 +146,6 @@ gulp.task("copy", function () {
 		config.src + config.fonts.src,
 		config.src + config.img.src,
 		config.src + config.html,
-		config.src + config.php,
 		config.src + config.txt
 		], {
 			base: config.src
@@ -165,11 +174,5 @@ gulp.task("clean", function () {
 
 
 gulp.task("build", function (done) {
-	run("clean", "copy", "style", "script", done)
-});
-
-
-gulp.task("copy-back", function () {
-	gulp.src("./src/**/*")
-	.pipe(gulp.dest(config.back));
+	run("clean", "copy", "php", "style", "style-ie", "script", done)
 });
