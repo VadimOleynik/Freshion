@@ -1692,3 +1692,12 @@ section {
     width: 100%
   }
 }
+@media screen and (-ms-high-contrast:active),
+(-ms-high-contrast:none) {
+  .main-header--list {
+    height: 40px
+  }
+  .main-header--amount {
+    padding-top: 5px
+  }
+}
