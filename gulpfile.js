@@ -17,9 +17,11 @@ const concat = require('gulp-concat');
 const config = {
 	src: "./src",
 	dest: "./build",
+	back: "./backend",
 	css: {
 		watch: "/precss/**/*.less",
-		src: "/precss/style.less",
+		src: ["./src/precss/style.less", "!./src/precss/style-for-ie.less"],
+		ie: "/precss/style-for-ie.less",
 		dest: "/css"
 	},
 	html: "/*.html",
@@ -42,7 +44,7 @@ const config = {
 
 
 gulp.task("style", function() {
-	gulp.src(config.src + config.css.src)
+	gulp.src(config.css.src)
 	.pipe(plumber())
 	.pipe(preproc())
 	.pipe(gcmq())
@@ -64,6 +66,29 @@ gulp.task("style", function() {
 });
 
 
+gulp.task("style-ie", function() {
+	gulp.src(config.css.src)
+	.pipe(plumber())
+	.pipe(preproc())
+	.pipe(gcmq())
+	.pipe(autoprefixer({
+		browsers: ["> 0.1%"],
+		cascade: false
+	}))
+	.pipe(cleanCSS({
+		level: 2,
+		format: "beautify" 
+	}))
+	.pipe(gulp.dest(config.src + config.css.dest))
+	.pipe(cleanCSS({
+		level: 2
+	}))
+	.pipe(rename("style-for-ie.min.css"))
+	.pipe(gulp.dest(config.dest + config.css.dest))
+	.pipe(server.stream());
+});
+
+
 gulp.task("serve", function(done) {
 	server.init({
 		server: config.dest,
@@ -73,7 +98,7 @@ gulp.task("serve", function(done) {
 		ui: false
 	});
 
-	gulp.watch(config.src + config.css.watch, ["style"]);
+	gulp.watch(config.src + config.css.watch, ["style", "style-ie"] );
 	gulp.watch(config.src + config.html, ["html"]);
 	gulp.watch(config.src + config.js.src, ["script"]);
 });
@@ -141,4 +166,10 @@ gulp.task("clean", function () {
 
 gulp.task("build", function (done) {
 	run("clean", "copy", "style", "script", done)
+});
+
+
+gulp.task("copy-back", function () {
+	gulp.src("./src/**/*")
+	.pipe(gulp.dest(config.back));
 });
