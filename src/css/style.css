@@ -1700,4 +1700,10 @@ section {
   .main-header--amount {
     padding-top: 5px
   }
+  .shop-nav {
+    height: 100vh
+  }
+  .shop-nav--container {
+    margin: 0
+  }
 }

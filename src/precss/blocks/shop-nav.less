@@ -58,7 +58,10 @@
 	justify-content: center;
 	align-items: center;
 	color: @secondary-accent-color;
-	
+
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			height: 100vh;
+		}
 
 	&--container {
 		.size(8);
@@ -68,6 +71,10 @@
 		border: 10px solid fade(@secondary-accent-color, 24%);
 		text-align: center;
 		padding: 30px 0;
+
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			margin: 0;
+		}
 
 		.sm-block({
 			padding: 10px 0;
