@@ -41,7 +41,7 @@
 
 				<ol class="main-header--list main-header--list__hide">	  
 					<li class="main-header--item"><a class="main-header--link" href="#main" data-toggle-main="true" data-smooth="true">Главная</a></li>
-					<li class="main-header--item"><a class="main-header--link" href="#shop" data-toggle-main="true" data-smooth="true">Магаз</a></li>
+					<li class="main-header--item"><a class="main-header--link" href="#shop" data-toggle-main="true" data-smooth="true">Магазин</a></li>
 					<li class="main-header--item"><a class="main-header--link" href="#about-us" data-toggle-main="true" data-smooth="true">О нас</a></li>
 					<li class="main-header--item"><a class="main-header--link" href="#contacts" data-toggle-main="true" data-smooth="true">Контакты</a></li>
 				</ol>

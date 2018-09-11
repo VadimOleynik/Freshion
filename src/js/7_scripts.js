@@ -73,7 +73,7 @@ window.onload = function() {
   };
 
   if(window.innerWidth > mediumScreen) {
-    if(typeof InstallTrigger == 'undefined' && !('localStorage' in window)) { // Проверка Firefox или IE
+    if((!(navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1)) && (typeof InstallTrigger == "undefined")) { // Проверка Firefox или IE
       window.onscroll = function() {
         parallax(needParallax, 10);
         const scrolled = window.pageYOffset || document.documentElement.scrollTop;
