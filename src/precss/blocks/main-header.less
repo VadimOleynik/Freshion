@@ -43,6 +43,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
+		
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			height: 40px;
+		}
 
 		.md-block({
 			display: block;
@@ -182,6 +186,9 @@
 		color: @accent-color;
 		border: 2px solid @accent-color;
 		border-radius: 50%;
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			padding-top: 5px;
+		}
 
 		.sm-block({
 			margin-left: 3px;

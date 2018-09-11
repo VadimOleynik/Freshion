@@ -73,7 +73,7 @@ window.onload = function() {
   };
 
   if(window.innerWidth > mediumScreen) {
-    if(typeof InstallTrigger == 'undefined') { // Проверка Firefox
+    if(typeof InstallTrigger == 'undefined' && !('localStorage' in window)) { // Проверка Firefox или IE
       window.onscroll = function() {
         parallax(needParallax, 10);
         const scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -163,7 +163,6 @@ window.onload = function() {
 
       addAndRemoveClass([modal, overlay], ["modal__show", "overlay__show"], [modal, overlay], ["modal__hide", "overlay__hide"]);
       modal.querySelector('[tabindex="-1"]').setAttribute("tabindex","1");
-
       for (let i = 0; i < imgDetails.length; i++) {
         imgDetails[i].classList.remove("details--picture__active");
       }

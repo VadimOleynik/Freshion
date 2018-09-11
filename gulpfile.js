@@ -117,7 +117,7 @@ gulp.task("php", function() {
 	return gulp.src(config.src + config.php)
 	.pipe(plumber())
 	.pipe(htmlmin({collapseWhitespace: true, 
-		ignoreCustomFragments: [ /<%[\s\S]*?%>/, /<\?[=|php]?[\s\S]*?\?>/ ]}))
+		ignoreCustomFragments: [ /<%[\s\S]*?%>/, /<\?[=|php]?[\s\S]*?\?>/]}))
 	.pipe(gulp.dest(config.dest))
 	.pipe(server.stream());
 });

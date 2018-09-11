@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="css/style.min.css">
 
 	<link rel="preload" href="css/style.min.css" as="style">
-	<!--[if IE]><link rel="stylesheet" type="text/css" href="style-for-ie.css"><![endif]-->
 	<link rel="preload" href="js/scripts.min.js" as="script">
 	<link rel="preload" href="fonts/Comfortaa.woff2" as="font">
 	<link rel="preload" href="fonts/Cormorant-garamound.woff2" as="font">
