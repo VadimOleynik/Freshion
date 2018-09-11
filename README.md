@@ -17,4 +17,7 @@ Domain: http://freshion.spacefor.site
   * Minification
   * Live server
 ## Browsers support
-:small_orange_diamond: 
+:small_orange_diamond: Chrome (57+)
+:small_orange_diamond: Firefox (52+)
+:small_orange_diamond: Opera (52+)
+:small_orange_diamond: Chrome Android (67+)
