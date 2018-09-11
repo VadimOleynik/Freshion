@@ -1,18 +1,18 @@
-# ![Freshion logo](https://github.com/VadimOleynik/Freshion/blob/master/src/android-icon-48x48.png) Freshion
+# ![Freshion logo](https://github.com/VadimOleynik/Freshion/blob/master/src/favicon-16x16.png) Freshion
 Freshion - is an online store of women's accessories
 Domain: http://freshion.spacefor.site
 ## Used tehnologies
 * HTML
-** Semantics
-** Accessibility
+  * Semantics
+  * Accessibility
 * CSS (Less)
-** Mixins,
-** Flexbox,
-** CSS Grid,
+  * Mixins,
+  * Flexbox,
+  * CSS Grid,
 * Javascript
-** DOM API
-** Ajax
+  * DOM API
+  * Ajax
 * PHP
 * Build system (Gulp)
-** Minification
-** Live server
+  * Minification
+  * Live server
