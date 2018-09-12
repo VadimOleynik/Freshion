@@ -1,5 +1,5 @@
 # ![Freshion logo](https://github.com/VadimOleynik/Freshion/blob/master/src/favicon-16x16.png) Freshion
-Freshion - is an online store of women's accessories <br/>
+Freshion - is an online store of accessories for women <br/>
 Domain: http://freshion.spacefor.site
 ## Used tehnologies
 * HTML
