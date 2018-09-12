@@ -25,4 +25,4 @@ Domain: http://freshion.spacefor.site
 :small_orange_diamond: Safari (10.1+) <br />
 :small_orange_diamond: IE (11) <br />
 :small_orange_diamond: Chrome Android (67+) <br />
-:small_orange_diamond: IOS Safars (10.3+) <br />
+:small_orange_diamond: IOS Safari (10.3+) <br />
