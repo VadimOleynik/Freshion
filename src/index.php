@@ -221,7 +221,7 @@
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active black">Черный</button>
-							<button class="product--color blue">Синий</button>
+							<button class="product--color light-blue">Синий</button>
 							<button class="product--color red">Красный</button>
 						</p>
 
@@ -470,7 +470,7 @@
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active blue">Синий</button>
-							<button class="product--color green">Зеленый</button>
+							<button class="product--color light-green">Зеленый</button>
 						</p>
 
 						<a href="#product-6" class="product--more-info product--more-info__text">
@@ -657,7 +657,7 @@
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active black">Черный</button>
-							<button class="product--color bordo">Бордовый</button>
+							<button class="product--color light-bordo">Бордовый</button>
 							<button class="product--color dark-gray">Темно-серый</button>
 							<button class="product--color mustard">Горчичный</button>
 						</p>
@@ -962,28 +962,28 @@
 						<a href="#product-14" class="product--more-info product--more-info__img">
 							<picture class="product--picture product--picture__active">
 								<source srcset="img/bags/bag-7-red.webp" type="image/webp"/>
-								<img src="img/bags/bag-7-red.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: красный" class="product--img" width="276" height="281">
+								<img src="img/bags/bag-7-red.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, сиреневый. Цвет: красный" class="product--img" width="276" height="281">
 							</picture>
 							<picture class="product--picture">
 								<source srcset="img/bags/bag-7-black.webp" type="image/webp"/>
-								<img src="img/bags/bag-7-black.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: черный" class="product--img" width="278" height="277">
+								<img src="img/bags/bag-7-black.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, сиреневый. Цвет: черный" class="product--img" width="278" height="277">
 							</picture>
 							<picture class="product--picture">
 								<source srcset="img/bags/bag-7-sky-blue.webp" type="image/webp"/>
-								<img src="img/bags/bag-7-sky-blue.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: голубой" class="product--img" width="277" height="274">
+								<img src="img/bags/bag-7-sky-blue.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, сиреневый. Цвет: голубой" class="product--img" width="277" height="274">
 							</picture>
 							<picture class="product--picture">
-								<source srcset="img/bags/bag-7-violet.webp" type="image/webp"/>
-								<img src="img/bags/bag-7-violet.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: фиолетовый" class="product--img" width="280" height="282">
+								<source srcset="img/bags/bag-7-purple.webp" type="image/webp"/>
+								<img src="img/bags/bag-7-purple.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, сиреневый. Цвет: сиреневый" class="product--img" width="280" height="282">
 							</picture>
 						</a>
 
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active red">Красный</button>
-							<button class="product--color pink">Черный</button>
+							<button class="product--color black">Черный</button>
 							<button class="product--color sky-blue">Голубой</button>
-							<button class="product--color violet">Фиолетовый</button>
+							<button class="product--color purple">Сиреневый</button>
 						</p>
 
 						<a href="#product-14" class="product--more-info product--more-info__text">
@@ -1003,19 +1003,19 @@
 
 								<picture class="details--picture details--picture__active">
 									<source srcset="img/bags/bag-7-red.webp" type="image/webp"/>
-									<img src="img/bags/bag-7-red.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: красный" class="details--img" width="276" height="281">
+									<img src="img/bags/bag-7-red.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, среневый. Цвет: красный" class="details--img" width="276" height="281">
 								</picture>
 								<picture class="details--picture">
 									<source srcset="img/bags/bag-7-black.webp" type="image/webp"/>
-									<img src="img/bags/bag-7-black.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: черный" class="details--img" width="278" height="277">
+									<img src="img/bags/bag-7-black.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, среневый. Цвет: черный" class="details--img" width="278" height="277">
 								</picture>
 								<picture class="details--picture">
 									<source srcset="img/bags/bag-7-sky-blue.webp" type="image/webp"/>
-									<img src="img/bags/bag-7-sky-blue.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: голубой" class="details--img" width="277" height="274">
+									<img src="img/bags/bag-7-sky-blue.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, среневый. Цвет: голубой" class="details--img" width="277" height="274">
 								</picture>
 								<picture class="details--picture">
-									<source srcset="img/bags/bag-7-violet.webp" type="image/webp"/>
-									<img src="img/bags/bag-7-violet.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, фиолетовый. Цвет: фиолетовый" class="details--img" width="280" height="282">
+									<source srcset="img/bags/bag-7-purple.webp" type="image/webp"/>
+									<img src="img/bags/bag-7-purple.png" alt="Cумка от ТМ Zency украсит любой Ваш образ. С ней Вы всегда будете эксклюзивной, неподражаемой и индивидуальной. Такой аксессуар станет Вашим незаменимым помощником всегда и везде, ведь в нём идеально сочетаются высокая прочность, функциональность и удобство. Сумка доступна в четырех цветах: красный, черный, голубой, среневый. Цвет: среневый" class="details--img" width="280" height="282">
 								</picture>
 
 								<h5 class="details--header">О товаре</h5>
@@ -1184,7 +1184,7 @@
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active red">Красный</button>
 							<button class="product--color black">Черный</button>
-							<button class="product--color blue">Синий</button>
+							<button class="product--color light-blue">Синий</button>
 							<button class="product--color dark-violet">Темно-фиолетовый</button>
 							<button class="product--color white">Белый</button>
 						</p>
@@ -1327,9 +1327,9 @@
 						<p class="product--colors">
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active black">Черный</button>
-							<button class="product--color blue">Синий</button>
+							<button class="product--color light-blue">Синий</button>
 							<button class="product--color dark-violet">Темно-фиолетовый</button>
-							<button class="product--color green">Зеленый</button>
+							<button class="product--color dark-green">Зеленый</button>
 							<button class="product--color red">Красный</button>
 							<button class="product--color white">Белый</button>
 						</p>
@@ -1598,7 +1598,7 @@
 							<span class="visually-hidden">Кнопки для переключения фото</span>
 							<button class="product--color product--color__active black">Черный</button>
 							<button class="product--color dark-violet">Темно-фиолетовый</button>
-							<button class="product--color green">Зеленый</button>
+							<button class="product--color marsh">Зеленый</button>
 							<button class="product--color red">Красный</button>
 						</p>
 

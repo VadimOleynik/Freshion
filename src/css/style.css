@@ -706,7 +706,7 @@ section {
   background-color: #54172a
 }
 .golden {
-  background-color: #c7ad80
+  background-color: #bc9f70
 }
 .silver {
   background-color: #6b6462
@@ -719,6 +719,21 @@ section {
 }
 .turquois {
   background-color: #bfdbd7
+}
+.light-blue {
+  background-color: #26659e
+}
+.light-bordo {
+  background-color: #954547
+}
+.purple {
+  background-color: #b49df2
+}
+.dark-green {
+  background-color: #286a6a
+}
+.marsh {
+  background-color: #56612b
 }
 .details {
   box-sizing: border-box;
