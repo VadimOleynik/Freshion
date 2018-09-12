@@ -490,6 +490,7 @@ section {
   max-height: 150px
 }
 .product__medium .details--wrap {
+  -ms-grid-columns: 280px 1fr;
   grid-template-columns: 280px 1fr
 }
 .product__medium .details--wrap .details--img {
@@ -510,6 +511,7 @@ section {
   max-height: 110px
 }
 .product__small .details--wrap {
+  -ms-grid-columns: 300px 1fr;
   grid-template-columns: 300px 1fr
 }
 .product__small .details--wrap .details--img {
@@ -625,6 +627,7 @@ section {
 }
 .product--buy {
   -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center
 }
 .product--summary {
@@ -723,6 +726,15 @@ section {
   max-width: 1100px;
   padding: 30px 20px
 }
+.details--wrap {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 250px 1fr;
+  grid-template-columns: 250px 1fr;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
+}
 .details--name {
   font-size: 30px;
   text-align: center;
@@ -734,6 +746,7 @@ section {
   -webkit-box-ordinal-group: 0;
   -ms-flex-order: -1;
   order: -1;
+  -ms-grid-row: span 5;
   grid-row: span 5
 }
 .details--picture__active {
@@ -743,13 +756,6 @@ section {
   margin: 0 auto;
   max-height: 250px;
   width: auto
-}
-.details--wrap {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center
 }
 .details--header {
   text-align: center;
@@ -1163,6 +1169,15 @@ section {
     height: 300px
   }
 }
+@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:998px),
+(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:998px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-md-dpi.jpg)
+  }
+  .webp .shop-nav {
+    background-image: url(../img/nav-bg-md-dpi.webp)
+  }
+}
 @media screen and (max-width:998px) {
   .header {
     margin-bottom: 35px
@@ -1215,6 +1230,9 @@ section {
   .main-header--mobile {
     display: block
   }
+  .main-header--svg {
+    margin-right: auto
+  }
   .webp .shop-nav {
     background-image: url(../img/nav-bg-md.webp)
   }
@@ -1228,12 +1246,14 @@ section {
     width: calc(33.333333333333336% - 30px)
   }
   .product__medium .details--wrap {
+    -ms-grid-columns: 200px 1fr;
     grid-template-columns: 200px 1fr
   }
   .product__medium .details--wrap .details--img {
     max-height: 150px
   }
   .product__small .details--wrap {
+    -ms-grid-columns: 200px 1fr;
     grid-template-columns: 200px 1fr
   }
   .product__small .details--wrap .details--img {
@@ -1243,15 +1263,16 @@ section {
     width: 90%;
     padding: 20px 10px
   }
+  .details--wrap {
+    -ms-grid-columns: 170px 1fr;
+    grid-template-columns: 170px 1fr
+  }
   .details--name {
     font-size: 22px;
     margin-bottom: 15px
   }
   .details--img {
     max-height: 150px
-  }
-  .details--wrap {
-    grid-template-columns: 170px 1fr
   }
   .details--header {
     font-size: 20px
@@ -1304,18 +1325,45 @@ section {
     line-height: 1.5
   }
 }
+@media screen and (max-width:998px) and screen and (-ms-high-contrast:active),
+screen and (max-width:998px) and (-ms-high-contrast:none) {
+  .main-header--container {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+  }
+  .main-header--nav {
+    margin: 0 0 0 10px
+  }
+  .main-header--list__show {
+    height: auto!important
+  }
+}
 @media (max-width:998px) {
   .no-webp .shop-nav {
     background-image: url(../img/nav-bg-md.jpg)
   }
 }
-@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:998px),
-(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:998px) {
+@media screen and (max-width:767px) and screen and (-ms-high-contrast:active),
+screen and (max-width:767px) and (-ms-high-contrast:none) {
+  .main-header--container {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center
+  }
+}
+@media (max-width:767px) {
   .no-webp .shop-nav {
-    background-image: url(../img/nav-bg-md-dpi.jpg)
+    background-image: url(../img/nav-bg-sm.jpg)
+  }
+}
+@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:767px),
+(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:767px) {
+  .no-webp .shop-nav {
+    background-image: url(../img/nav-bg-sm-dpi.jpg)
   }
   .webp .shop-nav {
-    background-image: url(../img/nav-bg-md-dpi.webp)
+    background-image: url(../img/nav-bg-sm-dpi.webp)
   }
 }
 @media screen and (max-width:767px) {
@@ -1374,6 +1422,7 @@ section {
     max-height: 135px
   }
   .product__medium .details--wrap {
+    -ms-grid-columns: 150px 1fr;
     grid-template-columns: 150px 1fr
   }
   .product__medium .details--wrap .details--img {
@@ -1386,6 +1435,7 @@ section {
     max-height: 100px
   }
   .product__small .details--wrap {
+    -ms-grid-columns: 150px 1fr;
     grid-template-columns: 150px 1fr
   }
   .product__small .details--wrap .details--img {
@@ -1399,15 +1449,16 @@ section {
     width: 95%;
     padding: 10px
   }
+  .details--wrap {
+    -ms-grid-columns: 140px 1fr;
+    grid-template-columns: 140px 1fr
+  }
   .details--name {
     font-size: 19px;
     margin-bottom: 5px
   }
   .details--img {
     max-height: 120px
-  }
-  .details--wrap {
-    grid-template-columns: 140px 1fr
   }
   .details--header {
     font-size: 19px
@@ -1487,20 +1538,6 @@ section {
     height: 25px;
     right: -20px;
     top: -25px
-  }
-}
-@media (-webkit-min-device-pixel-ratio:1.5) and (-webkit-min-device-pixel-ratio:1.5) and (max-width:767px),
-(min-resolution:144dpi) and (min-resolution:1.5dppx) and (max-width:767px) {
-  .no-webp .shop-nav {
-    background-image: url(../img/nav-bg-sm-dpi.jpg)
-  }
-  .webp .shop-nav {
-    background-image: url(../img/nav-bg-sm-dpi.webp)
-  }
-}
-@media (max-width:767px) {
-  .no-webp .shop-nav {
-    background-image: url(../img/nav-bg-sm.jpg)
   }
 }
 @media (max-width:576px) {
@@ -1617,14 +1654,14 @@ section {
   .details {
     padding: 20px 10px
   }
+  .details--wrap {
+    display: block
+  }
   .details--name {
     margin-bottom: 10px
   }
   .details--img {
     margin-bottom: 20px
-  }
-  .details--wrap {
-    display: block
   }
   .details--info {
     margin-bottom: 10px
@@ -1705,5 +1742,23 @@ section {
   }
   .shop-nav--container {
     margin: 0
+  }
+  .shop {
+    overflow: hidden
+  }
+  .details--wrap {
+    display: block
+  }
+  .details--name {
+    margin-left: 250px
+  }
+  .details--picture {
+    float: left;
+    margin-right: 30px;
+    min-width: 250px
+  }
+  .details--price,
+  .details--size {
+    margin-left: 285px
   }
 }

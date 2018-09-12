@@ -14,6 +14,7 @@ const uglify = require("gulp-uglify");
 const htmlmin = require("gulp-htmlmin");
 const babel = require("gulp-babel");
 const concat = require('gulp-concat');
+require("@babel/polyfill");
 const config = {
 	src: "./src",
 	dest: "./build",
@@ -48,6 +49,7 @@ gulp.task("style", function() {
 	.pipe(gcmq())
 	.pipe(autoprefixer({
 		browsers: ["> 0.1%"],
+		grid: true,
 		cascade: false
 	}))
 	.pipe(cleanCSS({
