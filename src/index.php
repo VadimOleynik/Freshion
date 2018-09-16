@@ -96,7 +96,10 @@
 				<h3 class="shop--sub-header">Рюкзаки</h3>
 
 				<ul class="shop--list">
-					<li class="shop--item product">
+					<?php
+						include($_SERVER['DOCUMENT_ROOT'].'/../src/php/backpacks.php');
+					?>
+					<!--<li class="shop--item product">
 						<a href="#product-1" class="product--more-info product--more-info__img">
 							<picture class="product--picture product--picture__active">
 								<source srcset="img/backpacks/backpack-1-eggplant.webp" type="image/webp"/>
@@ -149,6 +152,9 @@
 							<p class="product--size">Размер: 27&#215;23<span class="visually-hidden"> сантиметров</span></p>
 							<b class="product--price">Цена: 545<span class="visually-hidden"> гривен</span></b>
 						</a>
+						
+						MAKE WITHOUT PHOTO
+						---------------------------------------------------------------------------------------------------
 
 						<button class="product--buy button">Купить</button>
 
@@ -556,7 +562,7 @@
 
 							<button class="modal--btn" tabindex="-1">Закрыть окно</button>
 						</details>
-					</li>
+					</li>-->
 				</ul> 
 			</article>
 
